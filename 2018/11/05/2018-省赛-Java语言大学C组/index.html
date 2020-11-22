@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2018-省赛-Java语言大学C组 | 浊客的个人博客</title><meta name="keywords" content="蓝桥杯,算法"><meta name="author" content="浊客"><meta name="copyright" content="浊客"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="2018第九届蓝桥杯Java语言C组&amp;非官方答案">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018-省赛-Java语言大学C组">
+<meta property="og:url" content="http://example.com/2018/11/05/2018-%E7%9C%81%E8%B5%9B-Java%E8%AF%AD%E8%A8%80%E5%A4%A7%E5%AD%A6C%E7%BB%84/index.html">
+<meta property="og:site_name" content="浊客的个人博客">
+<meta property="og:description" content="2018第九届蓝桥杯Java语言C组&amp;非官方答案">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg">
+<meta property="article:published_time" content="2018-11-05T09:59:45.000Z">
+<meta property="article:modified_time" content="2018-11-05T10:44:18.556Z">
+<meta property="article:author" content="浊客">
+<meta property="article:tag" content="蓝桥杯">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2018/11/05/2018-%E7%9C%81%E8%B5%9B-Java%E8%AF%AD%E8%A8%80%E5%A4%A7%E5%AD%A6C%E7%BB%84/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2018-11-05 18:44:18'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://i.loli.net/2020/06/27/nIY1saEj87i5Vg9.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">浊客的个人博客</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">2018-省赛-Java语言大学C组</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2018-11-05T09:59:45.000Z" title="发表于 2018-11-05 17:59:45">2018-11-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2018-11-05T10:44:18.556Z" title="更新于 2018-11-05 18:44:18">2018-11-05</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>2018第九届蓝桥杯Java语言C组&amp;非官方答案</p>
+<a id="more"></a>
+<h1 id="2018-省赛-java语言大学c组"><a class="markdownIt-Anchor" href="#2018-省赛-java语言大学c组"></a> 2018-省赛-Java语言大学C组</h1>
+<h5 id="1哪天返回"><a class="markdownIt-Anchor" href="#1哪天返回"></a> 1:哪天返回</h5>
+<p>小明被不明势力劫持。后被扔到x星站再无问津。小明得知每天都有飞船飞往地球，但需要108元的船票，而他却身无分文。<br />
+他决定在x星战打工。好心的老板答应包食宿，第1天给他1元钱。<br />
+并且，以后的每一天都比前一天多2元钱，直到他有足够的钱买票。<br />
+请计算一下，小明在第几天就能凑够108元，返回地球。</p>
+<p>要求提交的是一个整数，表示第几天。请不要提交任何多余的内容。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t=<span class="number">1</span>,n=<span class="number">1</span>,m=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(m&lt;<span class="number">108</span>) &#123;</span><br><span class="line">		t++;</span><br><span class="line">		n+=<span class="number">2</span>;</span><br><span class="line">		m+=n;</span><br><span class="line">	&#125;</span><br><span class="line">	System.out.println(t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2猴子分香蕉"><a class="markdownIt-Anchor" href="#2猴子分香蕉"></a> 2；猴子分香蕉</h5>
+<p>5只猴子是好朋友，在海边的椰子树上睡着了。这期间，有商船把一大堆香蕉忘记在沙滩上离去。<br />
+第1只猴子醒来，把香蕉均分成5堆，还剩下1个，就吃掉并把自己的一份藏起来继续睡觉。<br />
+第2只猴子醒来，重新把香蕉均分成5堆，还剩下2个，就吃掉并把自己的一份藏起来继续睡觉。<br />
+第3只猴子醒来，重新把香蕉均分成5堆，还剩下3个，就吃掉并把自己的一份藏起来继续睡觉。<br />
+第4只猴子醒来，重新把香蕉均分成5堆，还剩下4个，就吃掉并把自己的一份藏起来继续睡觉。<br />
+第5只猴子醒来，重新把香蕉均分成5堆，哈哈，正好不剩！</p>
+<p>请计算一开始最少有多少个香蕉。</p>
+<p>需要提交的是一个整数，不要填写任何多余的内容。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sum=<span class="number">5</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">4</span>;i&gt;<span class="number">0</span>;i--)sum=sum*<span class="number">5</span>+i;</span><br><span class="line">	System.out.println(sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="4第几个幸运数"><a class="markdownIt-Anchor" href="#4第几个幸运数"></a> 4；第几个幸运数</h5>
+<p>到x星球旅行的游客都被发给一个整数，作为游客编号。<br />
+x星的国王有个怪癖，他只喜欢数字3,5和7。<br />
+国王规定，游客的编号如果只含有因子：3,5,7,就可以获得一份奖品。</p>
+<p>我们来看前10个幸运数字是：<br />
+3 5 7 9 15 21 25 27 35 45<br />
+因而第11个幸运数字是：49</p>
+<p>小明领到了一个幸运数字 59084709587505，他去领奖的时候，人家要求他准确地说出这是第几个幸运数字，否则领不到奖品。</p>
+<p>请你帮小明计算一下，59084709587505是第几个幸运数字。</p>
+<p>需要提交的是一个整数，请不要填写任何多余内容。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> ArrayList&lt;Long&gt;  threelist =<span class="keyword">new</span>  ArrayList&lt;&gt;();</span><br><span class="line">	<span class="keyword">static</span> ArrayList&lt;Long&gt;  list =<span class="keyword">new</span>  ArrayList&lt;&gt;();</span><br><span class="line">	<span class="keyword">static</span> ArrayList&lt;Long&gt;  fivelist =<span class="keyword">new</span>  ArrayList&lt;&gt;();</span><br><span class="line">	<span class="keyword">static</span> ArrayList&lt;Long&gt;  sevenlist =<span class="keyword">new</span>  ArrayList&lt;&gt;();</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		Scanner str =<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">long</span> input = str.nextLong();</span><br><span class="line">		<span class="keyword">long</span> num=<span class="number">3</span>;</span><br><span class="line">		add(<span class="number">3</span>);</span><br><span class="line">		add(<span class="number">5</span>);</span><br><span class="line">		add(<span class="number">7</span>);</span><br><span class="line">		<span class="keyword">while</span>(num!=input) &#123;</span><br><span class="line">			num=Math.min(Math.min(threelist.get(<span class="number">0</span>)*<span class="number">3</span>, fivelist.get(<span class="number">0</span>)*<span class="number">5</span>), sevenlist.get(<span class="number">0</span>)*<span class="number">7</span>);</span><br><span class="line">			<span class="keyword">if</span>(num/threelist.get(<span class="number">0</span>)==<span class="number">3</span>) threelist.remove(<span class="number">0</span>);</span><br><span class="line">			<span class="keyword">if</span>(num/fivelist.get(<span class="number">0</span>)==<span class="number">5</span>) fivelist.remove(<span class="number">0</span>);</span><br><span class="line">			<span class="keyword">if</span>(num/sevenlist.get(<span class="number">0</span>)==<span class="number">7</span>) sevenlist.remove(<span class="number">0</span>);</span><br><span class="line">			add(num);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(list.size()+<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">long</span> i)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(!list.contains(i)) &#123;</span><br><span class="line">			list.add(i);</span><br><span class="line">			threelist.add(i);</span><br><span class="line">			fivelist.add(i);</span><br><span class="line">			sevenlist.add(i);</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="5书号验证"><a class="markdownIt-Anchor" href="#5书号验证"></a> 5:书号验证</h5>
+<p>2004年起，国际ISBN中心出版了《13位国际标准书号指南》。<br />
+原有10位书号前加978作为商品分类标识；校验规则也改变。<br />
+校验位的加权算法与10位ISBN的算法不同，具体算法是：<br />
+用1分别乘ISBN的前12位中的奇数位（从左边开始数起），用3乘以偶数位，乘积之和以10为模，10与模值的差值再对10取模（即取个位的数字）即可得到校验位的值，其值范围应该为0~9。</p>
+<p>下面的程序实现了该算法，请仔细阅读源码，填写缺失的部分。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">f</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> k=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.length(); i++)&#123;</span><br><span class="line">		<span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">		<span class="keyword">if</span>(c==<span class="string">&#x27;-&#x27;</span> || c==<span class="string">&#x27; &#x27;</span>) <span class="keyword">continue</span>;</span><br><span class="line">		sum +=(k%<span class="number">2</span>+<span class="number">1</span>)*<span class="number">3</span>*(<span class="keyword">int</span>)(<span class="string">&#x27;c&#x27;</span>-<span class="number">48</span>)+(k%<span class="number">2</span>)*(<span class="keyword">int</span>)(<span class="string">&#x27;c&#x27;</span>-<span class="number">48</span>) ;  <span class="comment">//填空</span></span><br><span class="line">		k++;</span><br><span class="line">		<span class="keyword">if</span>(k&gt;<span class="number">12</span>) <span class="keyword">break</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> s.charAt(s.length()-<span class="number">1</span>)-<span class="string">&#x27;0&#x27;</span> == (<span class="number">10</span>-sum % <span class="number">10</span>)%<span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	System.out.println(f(<span class="string">&quot;978-7-301-04815-3&quot;</span>));</span><br><span class="line">	System.out.println(f(<span class="string">&quot;978-7-115-38821-6&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="6打印大x"><a class="markdownIt-Anchor" href="#6打印大x"></a> 6:打印大X</h5>
+<p>如下的程序目的是在控制台打印输出大X。<br />
+可以控制两个参数：图形的高度，以及笔宽。</p>
+<p>用程序中的测试数据输出效果：<br />
+(如果显示有问题，可以参看p1.png)</p>
+<p>高度=15, 笔宽=3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">***           ***</span><br><span class="line"> ***         ***</span><br><span class="line">  ***       ***</span><br><span class="line">   ***     ***</span><br><span class="line">    ***   ***</span><br><span class="line">     *** ***</span><br><span class="line">      *****</span><br><span class="line">       ***</span><br><span class="line">      *****</span><br><span class="line">     *** ***</span><br><span class="line">    ***   ***</span><br><span class="line">   ***     ***</span><br><span class="line">  ***       ***</span><br><span class="line"> ***         ***</span><br><span class="line">***           ***</span><br><span class="line">高度&#x3D;8, 笔宽&#x3D;5</span><br><span class="line">*****  *****</span><br><span class="line"> **********</span><br><span class="line">  ********</span><br><span class="line">   ******</span><br><span class="line">   ******</span><br><span class="line">  ********</span><br><span class="line"> **********</span><br><span class="line">*****  *****</span><br><span class="line"></span><br><span class="line">请仔细分析程序流程，填写缺失的代码。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class A</span><br><span class="line">&#123;</span><br><span class="line">	static void f(int h, int w)&#123;</span><br><span class="line">		System.out.println(String.format(&quot;高度&#x3D;%d, 笔宽&#x3D;%d&quot;,h,w));</span><br><span class="line">		int a1 &#x3D; 0;</span><br><span class="line">		int a2 &#x3D; h - 1;</span><br><span class="line">		</span><br><span class="line">		for(int k&#x3D;0; k&lt;h; k++)&#123;</span><br><span class="line">			int p &#x3D; Math.min(a1,a2);</span><br><span class="line">			int q &#x3D; Math.max(a1+w,a2+w);</span><br><span class="line">			</span><br><span class="line">			for(int i&#x3D;0; i&lt;p; i++) System.out.print(&quot; &quot;);</span><br><span class="line">			</span><br><span class="line">			if(q-p&lt;w*2)&#123;</span><br><span class="line">				for(int i&#x3D;0; i&lt;q-p; i++) System.out.print(&quot;*&quot;);; &#x2F;&#x2F;填空</span><br><span class="line">			&#125;</span><br><span class="line">			else&#123;</span><br><span class="line">				for(int i&#x3D;0; i&lt;w; i++) System.out.print(&quot;*&quot;);</span><br><span class="line">				for(int i&#x3D;0; i&lt;q-p-w*2; i++) System.out.print(&quot; &quot;);</span><br><span class="line">				for(int i&#x3D;0; i&lt;w; i++) System.out.print(&quot;*&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">			a1++;</span><br><span class="line">			a2--;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		f(15,3);</span><br><span class="line">		f(8,5);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">注意：只填写缺失的代码，不要拷贝已经存在的代码。</span><br></pre></td></tr></table></figure>
+<h5 id="8等腰三角形"><a class="markdownIt-Anchor" href="#8等腰三角形"></a> 8：等腰三角形</h5>
+<p>本题目要求你在控制台输出一个由数字组成的等腰三角形。<br />
+具体的步骤是：</p>
+<ol>
+<li>先用1,2,3，…的自然数拼一个足够长的串</li>
+<li>用这个串填充三角形的三条边。从上方顶点开始，逆时针填充。<br />
+比如，当三角形高度是8时：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">       1</span><br><span class="line">      2 1</span><br><span class="line">     3   8</span><br><span class="line">    4     1</span><br><span class="line">   5       7</span><br><span class="line">  6         1</span><br><span class="line"> 7           6</span><br><span class="line">891011121314151</span><br></pre></td></tr></table></figure>
+<p>输入，一个正整数n(3&lt;n&lt;300),表示三角形的高度<br />
+输出，用数字填充的等腰三角形。</p>
+<p>为了便于测评，我们要求空格一律用&quot;.&quot;代替。</p>
+<p>例如：<br />
+输入：<br />
+5</p>
+<p>程序应该输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">....1</span><br><span class="line">...2.1</span><br><span class="line">..3...2</span><br><span class="line">.4.....1</span><br><span class="line">567891011</span><br></pre></td></tr></table></figure>
+<p>再例如：<br />
+输入：<br />
+10</p>
+<p>程序应该输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.........1</span><br><span class="line">........2.2</span><br><span class="line">.......3...2</span><br><span class="line">......4.....2</span><br><span class="line">.....5.......1</span><br><span class="line">....6.........2</span><br><span class="line">...7...........0</span><br><span class="line">..8.............2</span><br><span class="line">.9...............9</span><br><span class="line">1011121314151617181</span><br></pre></td></tr></table></figure>
+<p>资源约定：<br />
+峰值内存消耗（含虚拟机） &lt; 256M<br />
+CPU消耗  &lt; 1000ms</p>
+<p>请严格按要求输出，不要画蛇添足地打印类似：“请您输入…” 的多余内容。</p>
+<p>所有代码放在同一个源文件中，调试通过后，拷贝提交该源码。<br />
+不要使用package语句。不要使用jdk1.7及以上版本的特性。<br />
+主类的名字必须是：Main，否则按无效代码处理。</p>
+<h5 id="标8小朋友崇拜圈"><a class="markdownIt-Anchor" href="#标8小朋友崇拜圈"></a> 标8：小朋友崇拜圈</h5>
+<p>班里N个小朋友，每个人都有自己最崇拜的一个小朋友（也可以是自己）。<br />
+在一个游戏中，需要小朋友坐一个圈，<br />
+每个小朋友都有自己最崇拜的小朋友在他的右手边。<br />
+求满足条件的圈最大多少人？</p>
+<p>小朋友编号为1,2,3,…N<br />
+输入第一行，一个整数N（3&lt;N&lt;100000）<br />
+接下来一行N个整数，由空格分开。</p>
+<p>要求输出一个整数，表示满足条件的最大圈的人数。</p>
+<p>例如：<br />
+输入：<br />
+9<br />
+3 4 2 5 3 8 4 6 9</p>
+<p>则程序应该输出：<br />
+4</p>
+<p>解释：<br />
+<img src="https://www.dropbox.com/s/3u7m7a9cc9dckr2/p1.png?dl=0&amp;raw=1" alt="p1.png" /><br />
+如图所示，崇拜关系用箭头表示，红色表示不在圈中。<br />
+显然，最大圈是[2 4 5 3] 构成的圈</p>
+<p>再例如：<br />
+输入：<br />
+30<br />
+22 28 16 6 27 21 30 1 29 10 9 14 24 11 7 2 8 5 26 4 12 3 25 18 20 19 23 17 13 15</p>
+<p>程序应该输出：<br />
+16</p>
+<p>资源约定：<br />
+峰值内存消耗（含虚拟机） &lt; 256M<br />
+CPU消耗  &lt; 1000ms</p>
+<p>请严格按要求输出，不要画蛇添足地打印类似：“请您输入…” 的多余内容。</p>
+<p>所有代码放在同一个源文件中，调试通过后，拷贝提交该源码。<br />
+不要使用package语句。不要使用jdk1.7及以上版本的特性。<br />
+主类的名字必须是：Main，否则按无效代码处理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		Scanner str = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> n = str.nextInt();</span><br><span class="line">		<span class="keyword">int</span> a[] = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">			a[i]=str.nextInt();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> Max=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> j;</span><br><span class="line">		ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">			j=i;</span><br><span class="line">			<span class="keyword">while</span>(list.indexOf(a[j])==-<span class="number">1</span>)&#123;</span><br><span class="line">				</span><br><span class="line">				list.add(a[j]);</span><br><span class="line">				j=a[j];</span><br><span class="line">			&#125;</span><br><span class="line">			Max=Math.max(list.size(), Max);</span><br><span class="line">			list.clear();</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(Max);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="5耐摔指数"><a class="markdownIt-Anchor" href="#5耐摔指数"></a> 5:耐摔指数</h5>
+<p>x星球的居民脾气不太好，但好在他们生气的时候唯一的异常举动是：摔手机。<br />
+各大厂商也就纷纷推出各种耐摔型手机。x星球的质监局规定了手机必须经过耐摔测试，并且评定出一个耐摔指数来，之后才允许上市流通。</p>
+<p>x星球有很多高耸入云的高塔，刚好可以用来做耐摔测试。塔的每一层高度都是一样的，与地球上稍有不同的是，他们的第一层不是地面，而是相当于我们的2楼。</p>
+<p>如果手机从第7层扔下去没摔坏，但第8层摔坏了，则手机耐摔指数=7。<br />
+特别地，如果手机从第1层扔下去就坏了，则耐摔指数=0。<br />
+如果到了塔的最高层第n层扔没摔坏，则耐摔指数=n</p>
+<p>为了减少测试次数，从每个厂家抽样3部手机参加测试。</p>
+<p>如果已知了测试塔的高度，并且采用最佳策略，在最坏的运气下最多需要测试多少次才能确定手机的耐摔指数呢？</p>
+<p>输入数据，一个整数n（3&lt;n&lt;10000）,表示测试塔的高度。<br />
+输出一个整数，表示最多测试多少次。</p>
+<p>例如：<br />
+输入：<br />
+3</p>
+<p>程序应该输出：<br />
+2</p>
+<p>解释：<br />
+手机a从2楼扔下去，坏了，就把b手机从1楼扔；否则a手机继续3层扔下</p>
+<p>再例如：<br />
+输入：<br />
+7</p>
+<p>程序应该输出：<br />
+3</p>
+<p>解释：<br />
+a手机从4层扔，坏了，则下面有3层，b,c 两部手机2次足可以测出指数；<br />
+若是没坏，手机充足，上面5,6,7 三层2次也容易测出。</p>
+<p>资源约定：<br />
+峰值内存消耗（含虚拟机） &lt; 256M<br />
+CPU消耗  &lt; 1000ms</p>
+<p>请严格按要求输出，不要画蛇添足地打印类似：“请您输入…” 的多余内容。</p>
+<p>所有代码放在同一个源文件中，调试通过后，拷贝提交该源码。<br />
+不要使用package语句。不要使用jdk1.7及以上版本的特性。<br />
+主类的名字必须是：Main，否则按无效代码处理。</p>
+<hr />
+<p>笨笨有话说：<br />
+我觉得3个手机太难了，要是2个手机还可以考虑一下。</p>
+<p>歪歪有话说：<br />
+想什么呢，你！要是1部手机还用你编程啊？那样的话只好从下往上一层一层测。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">	Scanner str &#x3D;new  Scanner(System.in);</span><br><span class="line">	System.out.println(num(str.nextInt()));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private static int num(int nextInt) &#123;</span><br><span class="line">	&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">	if(nextInt&lt;&#x3D;3) return 2;</span><br><span class="line">	return num(nextInt&#x2F;2)+1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">浊客</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2018/11/05/2018-%E7%9C%81%E8%B5%9B-Java%E8%AF%AD%E8%A8%80%E5%A4%A7%E5%AD%A6C%E7%BB%84/">http://example.com/2018/11/05/2018-%E7%9C%81%E8%B5%9B-Java%E8%AF%AD%E8%A8%80%E5%A4%A7%E5%AD%A6C%E7%BB%84/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">浊客的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2018/11/18/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/"><img class="prev-cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">网络技术</div></div></a></div><div class="next-post pull-right"><a href="/2018/10/30/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%20(2)/"><img class="next-cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">数据持久化</div></div></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://i.loli.net/2020/06/27/nIY1saEj87i5Vg9.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">浊客</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2018-%E7%9C%81%E8%B5%9B-java%E8%AF%AD%E8%A8%80%E5%A4%A7%E5%AD%A6c%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text"> 2018-省赛-Java语言大学C组</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E5%93%AA%E5%A4%A9%E8%BF%94%E5%9B%9E"><span class="toc-number">1.0.0.0.1.</span> <span class="toc-text"> 1:哪天返回</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E7%8C%B4%E5%AD%90%E5%88%86%E9%A6%99%E8%95%89"><span class="toc-number">1.0.0.0.2.</span> <span class="toc-text"> 2；猴子分香蕉</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E7%AC%AC%E5%87%A0%E4%B8%AA%E5%B9%B8%E8%BF%90%E6%95%B0"><span class="toc-number">1.0.0.0.3.</span> <span class="toc-text"> 4；第几个幸运数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5%E4%B9%A6%E5%8F%B7%E9%AA%8C%E8%AF%81"><span class="toc-number">1.0.0.0.4.</span> <span class="toc-text"> 5:书号验证</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6%E6%89%93%E5%8D%B0%E5%A4%A7x"><span class="toc-number">1.0.0.0.5.</span> <span class="toc-text"> 6:打印大X</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8%E7%AD%89%E8%85%B0%E4%B8%89%E8%A7%92%E5%BD%A2"><span class="toc-number">1.0.0.0.6.</span> <span class="toc-text"> 8：等腰三角形</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%878%E5%B0%8F%E6%9C%8B%E5%8F%8B%E5%B4%87%E6%8B%9C%E5%9C%88"><span class="toc-number">1.0.0.0.7.</span> <span class="toc-text"> 标8：小朋友崇拜圈</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5%E8%80%90%E6%91%94%E6%8C%87%E6%95%B0"><span class="toc-number">1.0.0.0.8.</span> <span class="toc-text"> 5:耐摔指数</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/11/22/redis%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="无题"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2020/11/22/redis%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="无题">无题</a><time datetime="2020-11-22T10:07:26.433Z" title="发表于 2020-11-22 18:07:26">2020-11-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/22/C++/" title="无题"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2020/11/22/C++/" title="无题">无题</a><time datetime="2020-11-22T10:07:26.416Z" title="发表于 2020-11-22 18:07:26">2020-11-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/22/hello-world/" title="Hello World"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2020/11/22/hello-world/" title="Hello World">Hello World</a><time datetime="2020-11-22T08:42:45.700Z" title="发表于 2020-11-22 16:42:45">2020-11-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/08/15/2020-08-15-Docker%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/" title="Docker学习实践记录"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Docker学习实践记录"/></a><div class="content"><a class="title" href="/2020/08/15/2020-08-15-Docker%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/" title="Docker学习实践记录">Docker学习实践记录</a><time datetime="2020-08-15T15:01:58.000Z" title="发表于 2020-08-15 23:01:58">2020-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/10/Java%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" title="Java开发学习路线"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java开发学习路线"/></a><div class="content"><a class="title" href="/2020/07/10/Java%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" title="Java开发学习路线">Java开发学习路线</a><time datetime="2020-07-10T15:25:48.000Z" title="发表于 2020-07-10 23:25:48">2020-07-10</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2020 By 浊客</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/state/outPortal/loginPortal.action"><img class="icp-icon" src="/img/icp.png" alt="ICP"/><span>粤ICP备20058715号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
