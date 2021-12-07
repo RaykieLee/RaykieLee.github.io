@@ -1,0 +1,385 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>酌客的个人博客</title><meta name="author" content="酌客"><meta name="copyright" content="酌客"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta property="og:type" content="website">
+<meta property="og:title" content="酌客的个人博客">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="酌客的个人博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg">
+<meta property="article:author" content="酌客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/GayHub1/images/img/favicon.png"><link rel="canonical" href="http://example.com/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-12-07 23:10:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/GayHub1/images/flush.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/qiandao/"><i class="fa-fw fas fa-calendar-check"></i><span> 签到</span></a></li><li><a class="site-page" href="/oneDrive"><i class="fa-fw fa fa-file"></i><span> 个人网盘</span></a></li><li><a class="site-page" href="/pyadmin"><i class="fa-fw fas fa-database"></i><span> MyAdmin</span></a></li><li><a class="site-page" href="/rsshub"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page" href="/ttrss"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li></ul></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/GayHub1/images/img/back.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">酌客的个人博客</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/qiandao/"><i class="fa-fw fas fa-calendar-check"></i><span> 签到</span></a></li><li><a class="site-page" href="/oneDrive"><i class="fa-fw fa fa-file"></i><span> 个人网盘</span></a></li><li><a class="site-page" href="/pyadmin"><i class="fa-fw fas fa-database"></i><span> MyAdmin</span></a></li><li><a class="site-page" href="/rsshub"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page" href="/ttrss"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li></ul></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site-title">酌客的个人博客</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/12/01/%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E7%AC%94%E8%AE%B0/" title="凤凰架构笔记">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/logo-color.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="凤凰架构笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/12/01/%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E7%AC%94%E8%AE%B0/" title="凤凰架构笔记">凤凰架构笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-11-30T16:00:00.000Z" title="发表于 2021-12-01 00:00:00">2021-12-01</time></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/%E9%9B%B6%E9%9B%B6%E6%95%A3%E6%95%A3/">零零散散</a></span></div><div class="content"> 凤凰架构笔记
+ 什么是“凤凰架构”
+
+这其中的关键点便是承认细胞等这些零部件可能会出错，某个具体的零部件可能会崩溃消亡，但在存续生命的微生态系统中一定会有其后代的出现，重新代替该零部件的作用，以维持系统的整体稳定。在这个微生态里，每一个部件都可以看作一只不死鸟（Phoenix），它会老迈，而之后又能涅槃重生。
+
+
+只要在整体架构设计有恰当的、自动化的错误熔断、服务淘汰和重建的机制，在系统外部来观察，整体上仍然有可能表现出稳定和健壮的服务能力。
+
+将一个系统看作是一个像人一样的生物。每一刻内部都有细胞老去凋零，也有新细胞的诞生 ，将细胞（部件）的“死去“看作是正常生理过程，并为之设计恰当的容错机制，使得内部的错误得到处理，在内部这种不断迭代情况下，从整体上看依旧具有健壮性。
+ 演进中的架构
+ 原始分布式时代
+探索过程中的产物
+
+NCA是未来远程服务调用的雏形
+AFS 文件系统
+Kerberos 协议服务认证和访问控制的基础性协议
+DCE规范( 包含 RPC  DFS等等)
+
+失败的原因
+
+机器硬件条件下性能上的差异
+摩尔定律稳定发挥作用
+分布式架构尚未成熟
+
+
+“如同本地调用一般简单透 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/11/13/%E9%BB%91%E7%BE%A4%E6%99%96%20%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" title="无题">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/11/13/%E9%BB%91%E7%BE%A4%E6%99%96%20%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" title="无题">无题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-11-13T06:36:42.380Z" title="发表于 2021-11-13 14:36:42">2021-11-13</time></span></div><div class="content"> 黑群晖 折腾笔记
+前段时间咸鱼入了个星际蜗牛~~~  折腾了一波 最近不小心把系统弄崩了 干脆重新安装系统并把折腾过程记录下来
+ 安装
+黑群晖的安装参考的是阿文菌大佬的几篇教程
+黑群晖NAS保姆级教程：手把手教您安装DS918+固件，开启显卡解码功能！3分钟玩转黑群NAS!
+启动盘软件尽量使用管理员权限打开
+Intel和博通网卡的无法安装918+ 无奈之下只能安装917
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/09/01/%E6%9E%B6%E6%9E%84%E5%B8%88%E7%AC%94%E8%AE%B0/" title="架构师笔记">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/image-20210905234112916.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="架构师笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/09/01/%E6%9E%B6%E6%9E%84%E5%B8%88%E7%AC%94%E8%AE%B0/" title="架构师笔记">架构师笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-08-31T16:00:00.000Z" title="发表于 2021-09-01 00:00:00">2021-09-01</time></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/%E9%9B%B6%E9%9B%B6%E6%95%A3%E6%95%A3/">零零散散</a></span></div><div class="content"> 架构师笔记
+
+综合知识 先做容易的，清晰的题，模棱两可的放后面
+案例分析：提高分析能力
+论文：组织内容能力，主观性较强，
+知识点表
+
+ 计算机组成与体系结构
+ 计算机结构分类：
+Flynm
+
+CISC与RISC
+
+CISC:计算机早期使用指令类型多且复杂
+RISC：计算机开始通用开始要求简洁，精简。
+ 层次化存储
+
+ Cache
+
+ 内存
+
+
+地址单元数量=结束地址−开始地址+1=C7FFFH−AC000H+1=C8000H−AC000H=1C000H=112K地址单元数量=结束地址-开始地址+1 
+= C7FFFH-AC000H+1
+= C8000H-AC000H
+= 1C000H
+=112K
+地址单元数量=结束地址−开始地址+1=C7FFFH−AC000H+1=C8000H−AC000H=1C000H=112K
+ 磁盘
+
+
+优化前【图左】 除了第一块其余都要重新转一圈
+第一块：旋转时间+处理时间 = （33/11块）+3=6
+其余需要选择一周再处理=(33+3)*10=360
+sum=366
+优化后每块不需要选择一周只需要旋转一格
+旋转时间+处理时间 = （（33/11块）+3） ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/06/07/Java-%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E7%AC%94%E8%AE%B0/" title="Java 编程的逻辑笔记">     <img class="post_bg" data-lazy-src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/s29680277.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 编程的逻辑笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/07/Java-%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E7%AC%94%E8%AE%B0/" title="Java 编程的逻辑笔记">Java 编程的逻辑笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-06-06T16:00:00.000Z" title="发表于 2021-06-07 00:00:00">2021-06-07</time></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a></span></div><div class="content"> Java 编程的逻辑
+ 编程基础
+程序：基本上就是告诉计算机要操作的数据和执行的指令序列，即对什么数据做什么操作
+ 数据类型和变量
+
+整数类型：byte/short/int/long（取值范围1/2/4/8）
+小数类型：float/double（不同的取值范围和精度）
+-字符类型：char（单个字符）
+真假类型：boolean（真假）
+
+变量：给数据起名字，方便找不同的数据，它的值可以变，但含义不应变。
+ 数组类型
+三种赋值形式
+123int[] arr = &#123;1,2,3&#125;;int[] arr = new int[]&#123;1,2,3&#125;;int[] arr = new int[3]; //3可以为变量，生成动态的长度的数组
+数组长度确定后不可变
+默认值：数值类型的值为0, boolean为false, char为空字符
+数组内存空间：一个基本类型变量，内存中只会有一块对应的内存空间。但数组有两块：一块用于存储数组内容本身，另一块用于存储内容的位置。
+ 基本运算
+算术运算
+
+运算时要注意结果的范围，使用恰当的数据类型
+小数计算结果不精确
+
+比较运算
+
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/05/31/ShardingShpere%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6/" title="ShardingShpere数据库中间件">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/1630253147433.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ShardingShpere数据库中间件"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/31/ShardingShpere%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6/" title="ShardingShpere数据库中间件">ShardingShpere数据库中间件</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-30T16:00:00.000Z" title="发表于 2021-05-31 00:00:00">2021-05-31</time></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/%E9%9B%B6%E9%9B%B6%E6%95%A3%E6%95%A3/">零零散散</a></span></div><div class="content"> ShardingShpere数据库中间件
+周末无聊，刚好看见狂神新出的ShardingShpere，以前看过他Redis的一个系列视频，几点还不错，就学习了一波并做了个笔记。（还氪了kuangstudy一个月会员，心疼）。
+
+ Apache ShardingSphere概述
+关于这种概述一般官网的介绍是最为准确与到位的。这里就贴上官网的概述。
+
+Apache ShardingSphere 是一套开源的分布式数据库解决方案组成的生态圈，它由 JDBC、Proxy 和 Sidecar（规划中）这 3 款既能够独立部署，又支持混合部署配合使用的产品组成。 它们均提供标准化的数据水平扩展、分布式事务和分布式治理等功能，可适用于如 Java 同构、异构语言、云原生等各种多样化的应用场景。
+Apache ShardingSphere 旨在充分合理地在分布式的场景下利用关系型数据库的计算和存储能力，而并非实现一个全新的关系型数据库。 关系型数据库当今依然占有巨大市场份额，是企业核心系统的基石，未来也难于撼动，我们更加注重在原有基础上提供增量，而非颠覆。
+Apache ShardingSphere  ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/05/31/%E5%B7%A6%E8%80%B3%E5%90%AC%E9%A3%8E%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/" title="左耳听风专栏笔记">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/1630253207490.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="左耳听风专栏笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/31/%E5%B7%A6%E8%80%B3%E5%90%AC%E9%A3%8E%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/" title="左耳听风专栏笔记">左耳听风专栏笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-30T16:00:00.000Z" title="发表于 2021-05-31 00:00:00">2021-05-31</time></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/%E9%9B%B6%E9%9B%B6%E6%95%A3%E6%95%A3/">零零散散</a></span></div><div class="content"> 左耳听风专栏笔记
+ 技术变现
+
+程序员用手艺、技术养活自己，不依靠公司；
+提高工作效率，去研究那些难的，公司内外的核心技术；
+注重输出，输出技术、价值观，帮助更多的人，提高影响力。
+去高速发展的公司，而不是初创业务未稳定或项目维护期的。
+提升业务代码编写效率，争取时间学习。
+关注技术的本质，新技术的出现解决了什么问题和不可替代性
+技术付费点，挣钱和省钱。
+找到有价值的信息源。（西方美国）
+朋友圈
+
+ 技术领导力
+
+
+扎实的基础技术
+
+
+非同一般的学习能力
+
+
+坚持做正确的事
+
+
+不断得高对自己的要求标准；
+
+
+ 新技术
+能否发展要素
+
+
+有没有一个比较好的社区。
+
+
+有没有一个或多个杀手级应用。
+
+
+学习难度是否低，上手是否快。
+
+
+没有一个不错的提高开发效率的开发框架。
+
+
+是否有一个或多个巨型的技术公司作为后盾。
+
+
+ 时间管理大师
+ 投资自己的时间
+
+
+花时间学习基础知识，花时间读文档。系统地学习一门知识
+
+
+花时间在解放自己生产力的事上（可以牺牲现在时间解放为了更多的时间 - 代码规范 设计模式）
+
+
+花时间在让自己成长的事上
+
+
+花时间在建立高效的环境上
+
+
+ 规划自己的时 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/05/30/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/" title="无题">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/30/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/" title="无题">无题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-30T12:28:09.972Z" title="发表于 2021-05-30 20:28:09">2021-05-30</time></span></div><div class="content"> 搭建本地自动化部署环境
+ Docker开启远程访问
+1234567891011vim /lib/systemd/system/docker.service#修改ExecStart这行ExecStart=/usr/bin/dockerd  -H tcp://0.0.0.0:2375  -H unix:///var/run/docker.sock# 重新加载配置文件systemctl daemon-reload #重启服务systemctl restart docker.service #查看端口是否开启 netstat -nlpt#直接curl看是否生效curl http://127.0.0.1:2375/info
+ Idea中Docker配置
+可以直接在idea-&gt;plug 或者在官网下载idea对应版本的的Docker integration 安装。安装后restart Idea 即可。
+
+重启后配置docker，连接到远程docker服务。从File-&gt;Settings-&gt;Build,Execution,Deployment-&gt;Docker打开配置界面。
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/05/19/%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81/" title="无题">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/19/%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81/" title="无题">无题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-19T15:59:56.651Z" title="发表于 2021-05-19 23:59:56">2021-05-19</time></span></div><div class="content"> 架构整洁
+ 设计与架构
+底层设计细节和高层架构信息是不可分割的 。 它们组合在一起，共同定义了整个软件系统，缺一不可 。 所谓的底层和高层本身就是一系列决策组成的连续体，并没有清晰的分界线。
+ 好的软件设计的终极目标
+软件架构的终极目标是，用最小的人力成本来满足构建和维护该系统的需求 。  并且在系统的整个生命周期内 一直都能维持这样的低成本  。
+ 个人思考
+作为一个打工人，理所应当要学会如何“偷懒”，在最开始开发时就应该从整个开发周期的角度进行设计，尽可能的考虑代码的扩展性，尽量避免重构这种高成本的事情。从根本上提高开发效率。
+ 两个价值维度
+ 行为价值
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/05/19/%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/" title="无题">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/19/%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/" title="无题">无题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-05-19T13:17:47.785Z" title="发表于 2021-05-19 21:17:47">2021-05-19</time></span></div><div class="content"> 数据一致性
+
+
+重复请求
+防重操作
+悲观锁  （行锁）
+
+
+
+事务一致性
+CAP原理
+一致性( Consistency）:客户端知道一系列的操作都会同时发生(生效)
+可用性( Availability):每个操作都必须以可预期的响应结束
+分区容错性( Partition tolerance):即使出现单个组件无法可用,操作依然可
+以完成
+Base
+Basically Available(基本可用)
+Soft state(软状态) ：牺牲强一致性，出现不同时刻的（处理中的状态）状态（趋向于最终状态）
+Eventually consistent(最终一致性)
+
+
+ 分布式事务
+
+
+二阶段提交 （唯一一个保证强一致性）
+
+
+
+Raft
+nb
+
+
+异步确保型
+
+
+事务型消息
+
+
+TCC型
+
+
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/01/31/Jenkins%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/" title="无题">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/31/Jenkins%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/" title="无题">无题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-31T08:34:15.082Z" title="发表于 2021-01-31 16:34:15">2021-01-31</time></span></div><div class="content">Jenkins安装记录
+安装环境
+
+
+Window 10 Docker Engine v20.10.2
+拉取运行镜像
+1docker run -d -v D:\jenkins\data:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts
+打开localhost:8080加载一段时间后进入登陆页面；
+
+
+
+默认生成的密码可以之间查看容器日志或者查看页面中提供的地址；
+
+
+然后选择安装推荐的插件
+
+然后就在安装常用的插件了。
+访问不到源可以更换成清华源
+Jenkins 使用国内镜像快速安装（rpm安装）
+
+创建用户-》实例配置-》开始使用。
+</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">酌客</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/GayHub1"><i class="fab fa-github"></i><span>Follow Me</span></a></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的个人博客</div></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/01/%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E7%AC%94%E8%AE%B0/" title="凤凰架构笔记"><img data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/logo-color.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="凤凰架构笔记"/></a><div class="content"><a class="title" href="/2021/12/01/%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E7%AC%94%E8%AE%B0/" title="凤凰架构笔记">凤凰架构笔记</a><time datetime="2021-11-30T16:00:00.000Z" title="发表于 2021-12-01 00:00:00">2021-12-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/13/%E9%BB%91%E7%BE%A4%E6%99%96%20%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" title="无题"><img data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2021/11/13/%E9%BB%91%E7%BE%A4%E6%99%96%20%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" title="无题">无题</a><time datetime="2021-11-13T06:36:42.380Z" title="发表于 2021-11-13 14:36:42">2021-11-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/01/%E6%9E%B6%E6%9E%84%E5%B8%88%E7%AC%94%E8%AE%B0/" title="架构师笔记"><img data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/image-20210905234112916.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="架构师笔记"/></a><div class="content"><a class="title" href="/2021/09/01/%E6%9E%B6%E6%9E%84%E5%B8%88%E7%AC%94%E8%AE%B0/" title="架构师笔记">架构师笔记</a><time datetime="2021-08-31T16:00:00.000Z" title="发表于 2021-09-01 00:00:00">2021-09-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/07/Java-%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E7%AC%94%E8%AE%B0/" title="Java 编程的逻辑笔记"><img data-lazy-src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/s29680277.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 编程的逻辑笔记"/></a><div class="content"><a class="title" href="/2021/06/07/Java-%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E7%AC%94%E8%AE%B0/" title="Java 编程的逻辑笔记">Java 编程的逻辑笔记</a><time datetime="2021-06-06T16:00:00.000Z" title="发表于 2021-06-07 00:00:00">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/31/ShardingShpere%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6/" title="ShardingShpere数据库中间件"><img data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/1630253147433.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ShardingShpere数据库中间件"/></a><div class="content"><a class="title" href="/2021/05/31/ShardingShpere%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6/" title="ShardingShpere数据库中间件">ShardingShpere数据库中间件</a><time datetime="2021-05-30T16:00:00.000Z" title="发表于 2021-05-31 00:00:00">2021-05-31</time></div></div></div></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Android/" style="font-size: 1.5em; color: #99a9bf">Android</a> <a href="/tags/Centos7/" style="font-size: 1.2em; color: #999da3">Centos7</a> <a href="/tags/Java/" style="font-size: 1.1em; color: #999">Java</a> <a href="/tags/MybatisPlus/" style="font-size: 1.2em; color: #999da3">MybatisPlus</a> <a href="/tags/SpringBoot/" style="font-size: 1.5em; color: #99a9bf">SpringBoot</a> <a href="/tags/Zabbix/" style="font-size: 1.1em; color: #999">Zabbix</a> <a href="/tags/cmd/" style="font-size: 1.1em; color: #999">cmd</a> <a href="/tags/docker/" style="font-size: 1.1em; color: #999">docker</a> <a href="/tags/hexo/" style="font-size: 1.2em; color: #999da3">hexo</a> <a href="/tags/java/" style="font-size: 1.1em; color: #999">java</a> <a href="/tags/nginx/" style="font-size: 1.1em; color: #999">nginx</a> <a href="/tags/redis/" style="font-size: 1.1em; color: #999">redis</a> <a href="/tags/sql/" style="font-size: 1.1em; color: #999">sql</a> <a href="/tags/tool/" style="font-size: 1.1em; color: #999">tool</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 1.1em; color: #999">动态规划</a> <a href="/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" style="font-size: 1.1em; color: #999">定时任务</a> <a href="/tags/%E5%AE%9D%E5%A1%94/" style="font-size: 1.1em; color: #999">宝塔</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" style="font-size: 1.1em; color: #999">数学公式</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/" style="font-size: 1.1em; color: #999">数据持久化</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.1em; color: #999">数据结构</a> <a href="/tags/%E6%97%A5%E5%BF%97/" style="font-size: 1.1em; color: #999">日志</a> <a href="/tags/%E6%9D%83%E9%99%90/" style="font-size: 1.1em; color: #999">权限</a> <a href="/tags/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/" style="font-size: 1.3em; color: #99a1ac">第一行代码笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">算法</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/" style="font-size: 1.1em; color: #999">网络技术</a> <a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 1.1em; color: #999">蓝桥杯</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.1em; color: #999">读书笔记</a> <a href="/tags/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0/" style="font-size: 1.1em; color: #999">软考笔记</a> <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 1.1em; color: #999">阿里云</a> <a href="/tags/%E9%9B%B6%E9%9B%B6%E6%95%A3%E6%95%A3/" style="font-size: 1.4em; color: #99a5b6">零零散散</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/12/"><span class="card-archive-list-date">十二月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/11/"><span class="card-archive-list-date">十一月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/09/"><span class="card-archive-list-date">九月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">六月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/05/"><span class="card-archive-list-date">五月 2021</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item more is-center"><a class="card-archive-list-link-more" href="/archives/">
+              <span>查看更多</span><i class="fas fa-angle-right"  ></i></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">46</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-12-07T15:10:38.959Z"></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2021 By 酌客</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/state/outPortal/loginPortal.action"><img class="icp-icon" src="/img/icp.png" alt="ICP"/><span>粤ICP备20058715号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script></div></body></html>

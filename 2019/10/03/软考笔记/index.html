@@ -1,0 +1,751 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>软考笔记 | 酌客的个人博客</title><meta name="keywords" content="软考笔记"><meta name="author" content="酌客"><meta name="copyright" content="酌客"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="软考笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软考笔记">
+<meta property="og:url" content="http://example.com/2019/10/03/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="酌客的个人博客">
+<meta property="og:description" content="软考笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg">
+<meta property="article:published_time" content="2019-10-03T06:31:14.000Z">
+<meta property="article:modified_time" content="2019-11-06T16:50:10.002Z">
+<meta property="article:author" content="酌客">
+<meta property="article:tag" content="软考笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/GayHub1/images/img/favicon.png"><link rel="canonical" href="http://example.com/2019/10/03/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2019-11-07 00:50:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/GayHub1/images/flush.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/qiandao/"><i class="fa-fw fas fa-calendar-check"></i><span> 签到</span></a></li><li><a class="site-page" href="/oneDrive"><i class="fa-fw fa fa-file"></i><span> 个人网盘</span></a></li><li><a class="site-page" href="/pyadmin"><i class="fa-fw fas fa-database"></i><span> MyAdmin</span></a></li><li><a class="site-page" href="/rsshub"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page" href="/ttrss"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li></ul></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">酌客的个人博客</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/qiandao/"><i class="fa-fw fas fa-calendar-check"></i><span> 签到</span></a></li><li><a class="site-page" href="/oneDrive"><i class="fa-fw fa fa-file"></i><span> 个人网盘</span></a></li><li><a class="site-page" href="/pyadmin"><i class="fa-fw fas fa-database"></i><span> MyAdmin</span></a></li><li><a class="site-page" href="/rsshub"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page" href="/ttrss"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li></ul></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">软考笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-10-03T06:31:14.000Z" title="发表于 2019-10-03 14:31:14">2019-10-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2019-11-06T16:50:10.002Z" title="更新于 2019-11-07 00:50:10">2019-11-07</time></span></div><div class="meta-secondline"> </div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="软考笔记"><a class="markdownIt-Anchor" href="#软考笔记"></a> 软考笔记</h1>
+<span id="more"></span>
+<h2 id="计算机组成原理与体系结构"><a class="markdownIt-Anchor" href="#计算机组成原理与体系结构"></a> 计算机组成原理与体系结构</h2>
+<h3 id="数据的表示"><a class="markdownIt-Anchor" href="#数据的表示"></a> 数据的表示</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1600356820752520271&amp;wfr=spider&amp;for=pc">进制转换</a></li>
+<li>符号数（原码反码补码移码）</li>
+<li>原码</li>
+</ul>
+<blockquote>
+<p>正数的原码等于自身的二进制数，负数的原码第一位为1(符号位，表示负数)，后面为自身的二进制数</p>
+</blockquote>
+<ul>
+<li>反码</li>
+</ul>
+<blockquote>
+<p>正数的反码等于自身的二进制数，负数的反码符号位不动，其余各位按位取反</p>
+</blockquote>
+<ul>
+<li>补码</li>
+</ul>
+<blockquote>
+<p>正数的补码等于自身的二进制数，负数的补码是在反码的基础上+1</p>
+</blockquote>
+<ul>
+<li>移码(增码)</li>
+</ul>
+<blockquote>
+<p>无论正负数，只要将其补码的符号位取反即可</p>
+</blockquote>
+<ul>
+<li>符号数的应用<br />
+在计算机中，最适合数字加减运算的数字编码是补码，最适合表示浮点数阶码的数字编码是移码。</li>
+<li>浮点数运算<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/02/lWChw6vdg7yqjX4.png" alt="UTOOLS1570021206390.png" /></li>
+</ul>
+<blockquote>
+<p>对阶 ——尾数计算 —— 结果格式化</p>
+</blockquote>
+<h3 id="cpu"><a class="markdownIt-Anchor" href="#cpu"></a> cpu</h3>
+<ul>
+<li>CPU结构（运算器与控制器的组成)<br />
+运算器、控制器、寄存器和内部总线，其中控制器不仅要保证程序的正确执行，而且要能够处理异常事件。<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/02/u2iZEIayJ5dFf7o.png" alt="CPU结构（运算器与控制器的组成)" /></li>
+<li>Flynn分类法简介<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/02/IcKeEazCdMfuxUl.png" alt="Flynn分类法简介" /></li>
+<li>CISC(早期 复杂)和RISC（简单） 指令<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/02/rDWldNtXSOTGsCM.png" alt="捕获.PNG" /></li>
+<li>流水线的基本概念</li>
+</ul>
+<blockquote>
+<p>流水线是指在程序执行时多条指令重叠进行操作的一种准并行处理实现技<br />
+术。各种部件同时处理是针对不同指令而言的，它们可同时为多条指令的<br />
+不同部分进行工作，以提高各部件的利用率和指令的平均执行速度</p>
+</blockquote>
+<ul>
+<li>流水线周期及流水线执行时间计算</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/02/Eo4u2AS3paqkwTy.png" alt="流水线周期及流水线执行时间计算." /></p>
+<p>考试时优先为理论时间<br />
+k为多少部分 例题中为k=3</p>
+<ul>
+<li>流水线吞吐量的计算</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/03/1WsV9LCH3oZqrfz.png" alt="流水线吞吐量的计算" /></p>
+<ul>
+<li>流水线吞效率的计算</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/03/OICVHQbMftSu4U6.png" alt="流水线吞吐量的计算" /></p>
+<h3 id="计算机组成与体系结构"><a class="markdownIt-Anchor" href="#计算机组成与体系结构"></a> 计算机组成与体系结构</h3>
+<ul>
+<li>
+<p>层次化存储结构<br />
+CPU[寄存器] —Cache[按内容存取]—内存（主存）—外存（辅存）[硬盘，光盘，U盘]</p>
+</li>
+<li>
+<p>Cache概念<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/03/NSK8DapVZe5bhkI.png" alt="Cache概念 " /></p>
+</li>
+<li>
+<p>局部性原理<br />
+时间局部性<br />
+时间局部性<br />
+工作集理论：工作集是进程运行时被频繁访问的的页面集合</p>
+</li>
+<li>
+<p>存储器分类<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/03/eiTGAazDVLRcUqb.png" alt="存储器分类.PNG" /><br />
+RAM：随机存取存储器，可以随时读写（刷新时除外），而且速度很快，一旦断电所存储的数据将随之丢失。<br />
+ROM：只读存储器是一种只能读出事先所存数据的固态半导体存储器。不会因为电源关闭而消失。</p>
+</li>
+<li>
+<p>存储器编址<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/03/8DRvHWod3sm6PAq.png" alt="UTOOLS1570108670652.png" /><br />
+-磁盘结构与参数<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/03/J8oOFPL9YAhWEyj.png" alt="UTOOLS1570109841355.png" /><br />
+例题&amp;讲解截图：<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/03/guafVXwJtzbPMLQ.png" alt="UTOOLS1570110770790.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/03/nosfzQqI7VAT3O4.png" alt="UTOOLS_COMPRESS_1570110443273.png" /><br />
+每个物理块旋转时间为 33/11=3ms<br />
+最差情况：第一个 物理块存储时间等于旋转加处理时间 等于 6ms，剩下的由于磁头过了对应的区块（一直转不能停）所以剩下的物理块每块存储时间为 33+3=36，总时间为36*10+6=336==366<br />
+优化分布后：每块都是刚刚好一处理完 就刚刚好转到下一块：即 6 *11=66</p>
+</li>
+<li>
+<p>计算机总线<br />
+内部总线（芯片与处理器），外部总线，控制总线（插件板与cpu接口）<br />
+控制总线（假设为32bit）分为：<br />
+数据总线（一个周期32bit数据）<br />
+地址总线（地址空间2的32次方 即4g）<br />
+控制总线（发送控制信号）</p>
+</li>
+<li>
+<p>串联与并联可靠性分析<br />
+串联： R=R1+R2+R3+…<br />
+并联：R=1-（1-R1）<em>（1-R2）</em>（1-R3）<br />
+失效率=1-R<br />
+串并联：先整体 后局部<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/03/KJbMNazX7wAcfW6.png" alt="UTOOLS1570112402956.png" /></p>
+</li>
+</ul>
+<h3 id="校验码"><a class="markdownIt-Anchor" href="#校验码"></a> 校验码</h3>
+<p>增大码子距离实现<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/03/bAiopOL7v3UMn6I.png" alt="UTOOLS1570113260693.png" /></p>
+<ul>
+<li>循环校验码 CRC<br />
+通过异或 计算 （相同为0 不同为1 ）<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/21/6MBcRzOmlISbAx9.png" alt="UTOOLS1571660831958.png" /><br />
+校验码位数为除数位数-1<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/21/H6haTBgELxU1Glj.png" alt="UTOOLS1571663289817.png" /><br />
+2^R = R+x+1 (R=校验位数 x信息位数)<br />
+第七位为信息位 则 7 =2<sup>2+2</sup>1+2^0 则第七位 分别与 r0,r1,r2,当计算有关位校验数时 第七位的信息位参与其或以计算，校验所以有关信息位或以计算结果就是校验位的值 。<br />
+重新计算信息位与效验码或异 值为1 就是出现错误的位数</li>
+</ul>
+<h2 id="操作系统基本原理"><a class="markdownIt-Anchor" href="#操作系统基本原理"></a> 操作系统基本原理</h2>
+<p>###进程管理</p>
+<ul>
+<li>进程状态<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/21/oK1BCQfEJcmOTrW.png" alt="UTOOLS1571668921221.png" /><br />
+就绪状态是仅仅缺cpu 不缺其他资源<br />
+挂起到静止就绪是人为主动挂起</li>
+<li>前趋图<br />
+用前趋图的形式表达一系列活动的先后约束关系</li>
+<li>同步与互斥<br />
+互斥： 同一时刻仅仅允许一个资源使用 （共享）<br />
+同步： 多个资源同时使用，速度有差异时，有速度匹配要求，差太多快的要等慢的（异步）</li>
+<li>PV操作<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/28/yZGPwuTgfzlUrhS.png" alt="UTOOLS1572241178839.png" /></li>
+</ul>
+<p>pv操作解决并发进程之间某个约束问题 （不就是进程锁嘛）</p>
+<p>v（）开始阻塞 ++操作 s（）开始线程–操作</p>
+<p>前趋图 起点是 v（） 箭头指向是p（v）</p>
+<p>死锁： 最小资源数=k（进程数）*（n-1）+1 【k：进程数 n 每个进程资源数】<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/29/e5f8LzMPHJdBKA3.png" alt="UTOOLS_COMPRESS_1572328747534.png" /><br />
+-银行家算法<br />
+系统安全即不会发生死锁<br />
+银行家算法 一个一个进程或者选项地推，走不通就是错误的；</p>
+<h3 id="存储管理"><a class="markdownIt-Anchor" href="#存储管理"></a> 存储管理</h3>
+<ul>
+<li>分区管理组织<br />
+首次适应法: 从上到下<br />
+最佳适应法：从小空间到大空间分配（缺点 运行久后碎片多且小）<br />
+最差适应法：从大空间到小空间分配<br />
+循环首次适应法：首次适应法连成环 一个一个依次分配<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/29/mlpn6XIKCciBr2A.png" alt="UTOOLS1572330371381.png" /></li>
+<li>页式存储组织<br />
+掌握逻辑地址与物理地址的转换<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/29/5syHLjApkCVcF43.png" alt="UTOOLS_COMPRESS_1572346978738.png" /><br />
+练习题：<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/29/YIUvXN7O1nVfdsy.png" alt="UTOOLS1572347691064.png" /><br />
+解题过程： 页面大小：4k=2^12 即 页内地址为12位 ，对应3个十六进制位。即题中的页内地址为题中的A29，页号为5<br />
+，通过查表5对应的物理地址即页帧号为6 所以完整物理地址为6A29H。不在内存无法淘汰，所以题中3，4无法淘汰，而且刚刚访问的无法淘汰，故，应该淘汰的页号为<br />
+0，2无法淘汰。答案为1.</li>
+<li>段式存储组织<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/29/FyQvBdXnjR48Zgm.png" alt="UTOOLS1572358109067.png" /><br />
+段式存储组织按照代码逻辑的方式划分内存（每段不一定大小一致），便于共享。</li>
+<li>段页式存储组织<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/30/zoRuIwQTtPWx1BC.png" alt="UTOOLS1572440718063.png" /></li>
+<li>块表<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/30/p9sC3e4k8lFEtqY.png" alt="UTOOLS1572440825869.png" /><br />
+快表：cache 慢表：内存</li>
+<li>页面置换算法<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/30/tsv7P4aVWgEdGeR.png" alt="UTOOLS1572449845039.png" /><br />
+抖动： 分配更多资源却起反效果效率降低</li>
+<li>计算题<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/31/UBDh5GjcMVAotla.png" alt="UTOOLS1572451609631.png" /></li>
+<li>索引文件结构<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/31/XhPmly3swdjJvpe.png" alt="UTOOLS1572452219138.png" /><br />
+默认13个节点的结构<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/31/aXof2Y37GynMwiR.png" alt="UTOOLS1572452131496.png" /></li>
+<li>树形文件结构<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/31/kuZhbYV9xKzHfc5.png" alt="UTOOLS1572452579219.png" /></li>
+<li>空闲存储空间管理<br />
+空闲区表法： 用一个表记录空闲区域<br />
+空闲链表： 用链表记录空闲区域<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/31/XsP1YNHD2GoZQlO.png" alt="UTOOLS1572484188104.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/31/5G29uL18PJmcKHI.png" alt="UTOOLS1572484285478.png" /><br />
+坑点：位置是从0开始算</li>
+</ul>
+<h3 id="设备管理"><a class="markdownIt-Anchor" href="#设备管理"></a> 设备管理</h3>
+<ul>
+<li>数据传输控制方法<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/31/1vFV7leDjCBOzSm.png" alt="UTOOLS1572489766957.png" /></li>
+<li>虚设备与SPOOLING技术<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/31/7Oz8tQwBVsbAJHP.png" alt="UTOOLS1572490426257.png" /><br />
+核心：开辟缓冲区 ，提高效率</li>
+<li>微内核<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/10/31/AJKjkWtbLe3pQ5I.png" alt="UTOOLS1572490782216.png" /></li>
+</ul>
+<h2 id="数据库系统"><a class="markdownIt-Anchor" href="#数据库系统"></a> 数据库系统</h2>
+<h3 id="数据库模式"><a class="markdownIt-Anchor" href="#数据库模式"></a> 数据库模式</h3>
+<ul>
+<li>三级模式两级映射<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/01/YsytH6IfUBKL3Te.png" alt="UTOOLS1572584681026.png" /></li>
+<li>数据库设计过程<br />
+了解流程以及每个阶段的产出物<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/01/Mh8iqOV36DbuQNf.png" alt="UTOOLS1572585179196.png" /></li>
+<li>ER图<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/01/M42kdUthio98zxW.png" alt="UTOOLS1572611460852.png" /><br />
+先局部后连整体<br />
+一对一联系 最少2个<br />
+一对2联系 最少2个<br />
+多对多 最少3个 （多对多的联系转成一个）<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/01/MOKDYS3ryk9BjwR.png" alt="UTOOLS1572611527573.png" /></li>
+<li>关系代数<br />
+并： 合并并去重<br />
+交：公共部分<br />
+差：A-B 为 去掉a里面a与b的公共部分<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/01/c9jh1MQ4A8kJlzL.png" alt="UTOOLS1572611426368.png" /><br />
+笛卡儿积：A*B A每一行与B每一行一一对应。<br />
+投影：某一列或行    （有时是属性名 有时是数字编码注意编号从1开始）<br />
+选择： 带条件的筛选<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/01/FUXi2ShgT6tKcwz.png" alt="UTOOLS1572611376828.png" /><br />
+连接：两个表某两个字段（默认是相同字段做等值）</li>
+</ul>
+<h3 id="规范化理论"><a class="markdownIt-Anchor" href="#规范化理论"></a> 规范化理论</h3>
+<ul>
+<li>函数依赖<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/01/YLy2RqholCWArbT.png" alt="UTOOLS1572613898812.png" /></li>
+<li>规范化理论价值与用途<br />
+非规范化的关系模式，可能存在数据冗余 ，更新，插入，删除异常</li>
+<li>键<br />
+超键与候选键的区别是：超键可能存在冗余属性<br />
+求候选键：<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/01/iQXsZMudh2zfboS.png" alt="UTOOLS1572616371759.png" /><br />
+可以从这个没有其他节点指向的点（或组合点）遍历全部点</li>
+<li>范式 【必考】<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/01/nw5sLHz6yrotdhN.png" alt="UTOOLS1572618779897.png" /><br />
+1nf： 没有每个键不可拆<br />
+2nf： 每个非主属性完全依赖主键（把不依赖的独立出去）<br />
+3nf：非主键不依赖非主键<br />
+bc范式：依赖左边必须是候选键<br />
+范式越高数据拆分越细，影响性能效率<br />
+主属性：候选键的一部分<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/01/F7rgboZ9HS4W3d1.png" alt="UTOOLS1572621434035.png" /></li>
+<li>模式拆分<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/uWyUZOYeQPvactM.png" alt="UTOOLS1572676197457.png" /><br />
+无损：可还原<br />
+是否无损的方法：<br />
+直接将可推的内容拉同一个表看是否与原表相同；<br />
+表格法：<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/pUGVREteyCa2cFO.png" alt="UTOOLS1572676360343.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/nPtNoZhaMYUeHvj.png" alt="UTOOLS1572676382968.png" /><br />
+集合法（只适合拆分成两份时适应）<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/oFTibAY16JHWGxK.png" alt="UTOOLS1572676462232.png" /></li>
+</ul>
+<h3 id="并发控制"><a class="markdownIt-Anchor" href="#并发控制"></a> 并发控制</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/MW8YcwGjNkBF1X2.png" alt="UTOOLS1572678014732.png" /><br />
+原子性： 整个流程是整体不可分<br />
+一致性：内部守恒一致<br />
+隔离性：与外部隔离，事务直接互不影响<br />
+持续性：结果影响是持续性的<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/OgzJhXtnMQ6FiRc.png" alt="UTOOLS1572678792265.png" /></p>
+<h3 id="完整性约束"><a class="markdownIt-Anchor" href="#完整性约束"></a> 完整性约束</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/YNP8h5D7nBApIVF.png" alt="UTOOLS1572679211246.png" /><br />
+实体： 例如 非空<br />
+参照完整性： 例如 必须存在该部门或班级<br />
+对数据输入有一定约束，提高数据的可靠性</p>
+<h3 id="数据库安全"><a class="markdownIt-Anchor" href="#数据库安全"></a> 数据库安全</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/ivFOXKsEWN79Bw5.png" alt="UTOOLS1572679286185.png" /></p>
+<h3 id="数据库备份与恢复"><a class="markdownIt-Anchor" href="#数据库备份与恢复"></a> 数据库备份与恢复</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/yAPhRrnvsIS9QKz.png" alt="UTOOLS1572680129586.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/ECASnsk1woj6JO4.png" alt="UTOOLS1572680596770.png" /><br />
+rollback语句命令实现回滚</p>
+<h3 id="数据仓库与数据挖掘"><a class="markdownIt-Anchor" href="#数据仓库与数据挖掘"></a> 数据仓库与数据挖掘</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/D5xKBJuiVSFLIqA.png" alt="UTOOLS1572681791208.png" /><br />
+数据库 ：要效率速度<br />
+数据仓库： 数据不改变，大规模查询分析<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/dwbDzMgLJCNh8xp.png" alt="UTOOLS1572682035163.png" /></p>
+<h3 id="反规范号"><a class="markdownIt-Anchor" href="#反规范号"></a> 反规范号</h3>
+<p>规范化逆过程<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/k1iGg4J958MX6NQ." alt="UTOOLS1572683257466.png" /></p>
+<h3 id="大数据"><a class="markdownIt-Anchor" href="#大数据"></a> 大数据</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/8egOL9oGkKjVyar.png" alt="UTOOLS1572683509557.png" /></p>
+<h2 id="计算机网络"><a class="markdownIt-Anchor" href="#计算机网络"></a> 计算机网络</h2>
+<h3 id="七层模型"><a class="markdownIt-Anchor" href="#七层模型"></a> 七层模型</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/iXQnBJRqpG3sk1V.png" alt="UTOOLS1572686590172.png" /><br />
+一二层为局域网，第三次开始拦截广播（广播只能在局域网）<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/HWLA476PVeEBUGn.png" alt="UTOOLS1572686830592.png" /><br />
+###网络技术标准与协议<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/gSXT62dOCVQk7Km.png" alt="UTOOLS1572699634668.png" /><br />
+-DHCP<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/ack4K3SPX6UBstJ.png" alt="UTOOLS1572700755337.png" /><br />
+递归查询与迭代查询<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/o9cwamtSsvRB3CI.png" alt="UTOOLS1572700798492.png" /></p>
+<h3 id="网络类型与拓扑结构"><a class="markdownIt-Anchor" href="#网络类型与拓扑结构"></a> 网络类型与拓扑结构</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/02/lKnyvAOE92QLxq1.png" alt="UTOOLS1572700934367.png" /></p>
+<h3 id="网络规划与设计"><a class="markdownIt-Anchor" href="#网络规划与设计"></a> 网络规划与设计</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/1dl4SKrU8i6QFzg.png" alt="UTOOLS1572766879217.png" /></p>
+<ul>
+<li>分层设计<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/q4WoM9dkQFycx7r.png" alt="UTOOLS1572766819425.png" /></li>
+</ul>
+<h3 id="ip地址"><a class="markdownIt-Anchor" href="#ip地址"></a> ip地址</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/nBQb7t3cGRNgxdC.png" alt="UTOOLS1572769783230.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/Rs3gK7F5XiCoSxL.png" alt="UTOOLS1572770078167.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/y63JW5qHksNUhug.png" alt="UTOOLS1572769886050.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/vUGD9Iald6mSzCh.png" alt="UTOOLS1572769924046.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/tlpHgzJdUrEOw76.png" alt="UTOOLS1572770000323.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/VaJ4bZUil6AXEOP.png" alt="UTOOLS1572770042648.png" /></p>
+<h3 id="html"><a class="markdownIt-Anchor" href="#html"></a> html</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/vtLfy4DkKVXAHU5.png" alt="UTOOLS1572770703317.png" /></p>
+<h3 id="无线网"><a class="markdownIt-Anchor" href="#无线网"></a> 无线网</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/u8KmcdGoYyBLJMh.png" alt="UTOOLS1572770780447.png" /></p>
+<h3 id="接入技术"><a class="markdownIt-Anchor" href="#接入技术"></a> 接入技术</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/I4DKMFpRc3ygqLC.png" alt="UTOOLS1572771936879.png" /></p>
+<h3 id="ipv6"><a class="markdownIt-Anchor" href="#ipv6"></a> ipv6</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/EuUbJmWlziVpOP9.png" alt="UTOOLS1572772411391.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/lqKQThaZEnUHzjc.png" alt="UTOOLS1572788931833.png" /></p>
+<h2 id="信息安全"><a class="markdownIt-Anchor" href="#信息安全"></a> 信息安全</h2>
+<h3 id="信息系统安全属性"><a class="markdownIt-Anchor" href="#信息系统安全属性"></a> 信息系统安全属性</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/lqKQThaZEnUHzjc.png" alt="UTOOLS1572788931833.png" /></p>
+<h3 id="对称加密与非对称加密"><a class="markdownIt-Anchor" href="#对称加密与非对称加密"></a> 对称加密与非对称加密</h3>
+<p>对称加密 （加密解密用同一个密钥）<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/Jq6PbkXe4HWVtpd.png" alt="UTOOLS1572789192226.png" /><br />
+非对称加密（加密速度慢）<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/HvFjXNf4xbugZwo.png" alt="UTOOLS1572789314289.png" /><br />
+对称加密技术：<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/YAubPFndgSVNMa3.png" alt="UTOOLS1572789852189.png" /><br />
+非对称加密技术（甲乙各有私钥公钥，且只能用对应私钥解密例如：甲公钥加密只能由甲私钥解密。给甲发数据就用甲公钥加密数据。）<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/3ARzOjbE1ZetscX.png" alt="UTOOLS1572789882966.png" /></p>
+<h3 id="信息摘要"><a class="markdownIt-Anchor" href="#信息摘要"></a> 信息摘要</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/ezSQH1qTIWX7k6s.png" alt="UTOOLS1572790560432.png" /></p>
+<h3 id="数字签名"><a class="markdownIt-Anchor" href="#数字签名"></a> 数字签名</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/GKnruoBh4vYEkgO.png" alt="UTOOLS1572791247039.png" /></p>
+<h3 id="数字证书与pgp"><a class="markdownIt-Anchor" href="#数字证书与pgp"></a> 数字证书与PGP</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/Bd5Apoz9lgcWiqN.png" alt="UTOOLS1572791871174.png" /></p>
+<h3 id="练习题"><a class="markdownIt-Anchor" href="#练习题"></a> 练习题</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/IoUsrM7gmY5tvu2.png" alt="UTOOLS1572792542826.png" /></p>
+<h3 id="各个网络层次的安全保障"><a class="markdownIt-Anchor" href="#各个网络层次的安全保障"></a> 各个网络层次的安全保障</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/03/FVxoeQpMsUtcavG.png" alt="UTOOLS1572796016634.png" /></p>
+<h3 id="网络威胁与攻击"><a class="markdownIt-Anchor" href="#网络威胁与攻击"></a> 网络威胁与攻击</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/mWQMYIABEx4OVDb.png" alt="UTOOLS1572797962812.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/fStnXjk6v9soZPc.png" alt="UTOOLS1572798056264.png" /></p>
+<h3 id="防火墙"><a class="markdownIt-Anchor" href="#防火墙"></a> 防火墙</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/O4LCjJ1zy2lgqbs.png" alt="UTOOLS1572799640113.png" /></p>
+<h2 id="数据结构与算法"><a class="markdownIt-Anchor" href="#数据结构与算法"></a> 数据结构与算法</h2>
+<h3 id="数组"><a class="markdownIt-Anchor" href="#数组"></a> 数组</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/XRfIa7Nrwi4qFPK.png" alt="UTOOLS1572837441108.png" /></p>
+<h3 id="稀疏矩阵"><a class="markdownIt-Anchor" href="#稀疏矩阵"></a> 稀疏矩阵</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/VKrZSja6BRFLQue.png" alt="UTOOLS1572837954222.png" /><br />
+求公式时直接用代入法</p>
+<h3 id="线性表"><a class="markdownIt-Anchor" href="#线性表"></a> 线性表</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/V8K9nMZ6NwWQS4E.png" alt="UTOOLS1572838196976.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/c9SldAQ1LZVen5o.png" alt="UTOOLS1572839484349.png" /></p>
+<h3 id="队列与栈"><a class="markdownIt-Anchor" href="#队列与栈"></a> 队列与栈</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/1q25etUSswjpfE9.png" alt="UTOOLS1572840379062.png" /></p>
+<h3 id="广义表"><a class="markdownIt-Anchor" href="#广义表"></a> 广义表</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/J4za6OuyCh5sIe3.png" alt="UTOOLS1572840735391.png" /></p>
+<h3 id="二叉树"><a class="markdownIt-Anchor" href="#二叉树"></a> 二叉树</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/8vbnVZ4oRFXlxNC.png" alt="UTOOLS1572841462131.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/t2Jea8blGQdoFTI.png" alt="UTOOLS1572841531534.png" /></p>
+<ul>
+<li>前中后续遍历<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/ObwfNuerSPzqYAx.png" alt="UTOOLS1572842657719.png" /></li>
+<li>构造二叉树 ： 先找根节点 然后分左右 然后左找根 一步步递归下去<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/DAZHhJXqyUmO9eg.png" alt="UTOOLS1572842260443.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/OM9GkPlY6RD2AUQ.png" alt="UTOOLS1572846477084.png" /></li>
+<li>最优二叉树（哈夫曼树）<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/2FniSxfAoUhORc7.png" alt="UTOOLS1572848584759.png" /></li>
+<li>线段树<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/ku5EdU74BPKDlJw.png" alt="UTOOLS1572851028134.png" /></li>
+<li>平衡二叉树<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/BCXynTA7qIrojFW.png" alt="UTOOLS1572852420066.png" /></li>
+</ul>
+<h3 id="图"><a class="markdownIt-Anchor" href="#图"></a> 图</h3>
+<p>树与图的区别在于树没有环路<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/9sS1TKxW8JBwCOg.png" alt="UTOOLS1572852512867.png" /></p>
+<ul>
+<li>接邻矩阵<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/LF9HijWRmloZEtB.png" alt="UTOOLS1572852559835.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/qAa26GZWtxUFOTK.png" alt="UTOOLS1572852683999.png" /></li>
+<li>遍历<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/B6AbEtUxeVR4gLY.png" alt="UTOOLS1572852925425.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/ifCuM9Y7DbIJWRx.png" alt="UTOOLS1572854986567.png" /></li>
+<li>拓扑序列<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/ifCuM9Y7DbIJWRx.png" alt="UTOOLS1572854986567.png" /></li>
+<li>最小生成树<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/9YmMGoz48gLjOi1.png" alt="UTOOLS1572856431978.png" /><br />
+普里奥算法：选一个点为红点集，剩下的为蓝点集，从蓝点集选一个最短的点连接最近的红点，并将该点纳入红点集，然后循环从蓝点集选一个距离红点集最短的点连接并纳入红点集如此反复循环，不许形成环路。<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/BSIq7jfCgtLPbd4.png" alt="UTOOLS1572856645859.png" /><br />
+克鲁斯卡尔算法： 直接选n-1条最短不成环的边相连<br />
+###算法<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/s5vBmYyCg78knHb.png" alt="UTOOLS1572857121011.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/sdYAyB1ptf9QLMx.png" alt="UTOOLS1572857164770.png" /><br />
+-查找问题<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/Hces361Uw9txabk.png" alt="UTOOLS1572857210733.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/04/pkYColwXDrPTHvK.png" alt="UTOOLS1572857263017.png" /><br />
+折半查找在查找成功时关键字的比较次数最多为[log2n」+1次<br />
+折半查找的时间复杂度为O(log2n）<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/Kxq2rR.png" alt="Kxq2rR.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KxqfVx.png" alt="KxqfVx.png" /></li>
+<li>排序<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KzC2E4.png" alt="KzC2E4.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KxOO4f.png" alt="KxOO4f.png" /></li>
+<li>插入排序<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KxXiEq.png" alt="KxXiEq.png" /></li>
+<li>希尔排序<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KxXV8U.png" alt="KxXV8U.png" /></li>
+<li>直接插入排序<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KxXKbR.png" alt="KxXKbR.png" /></li>
+<li>冒泡排序<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KxXYxe.png" alt="KxXYxe.png" /><br />
+-归并排序<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KxXUrd.png" alt="KxXUrd.png" /><br />
+-堆排序<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KxzFL4.png" alt="KxzFL4.png" /><br />
+建堆<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KxznW6.png" alt="KxznW6.png" /><br />
+排序<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KxzlOe.png" alt="KxzlOe.png" /></li>
+<li>快速排序<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KzS8jU.png" alt="KzS8jU.png" /></li>
+<li>基数排序<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KzpQVH.png" alt="KzpQVH.png" /></li>
+</ul>
+<h3 id="算法下午题"><a class="markdownIt-Anchor" href="#算法下午题"></a> 算法(下午题)</h3>
+<ul>
+<li>分治<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KzVCq0.png" alt="KzVCq0.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KzVZRJ.png" alt="KzVZRJ.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KzVldK.png" alt="KzVldK.png" /></li>
+<li>回溯<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KzVBo8.png" alt="KzVBo8.png" /></li>
+<li>贪心<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KzVIFU.png" alt="KzVIFU.png" /></li>
+<li>动态规划<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/04/KzVjw6.png" alt="KzVjw6.png" /></li>
+</ul>
+<h2 id="程序设计语言与语言处理程序基础编译原理"><a class="markdownIt-Anchor" href="#程序设计语言与语言处理程序基础编译原理"></a> 程序设计语言与语言处理程序基础（编译原理）</h2>
+<p><img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/05/KzWwnO.png" alt="KzWwnO.png" /><br />
+-编译过程<br />
+<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/05/KzWhDS.png" alt="KzWhDS.png" /></p>
+<ul>
+<li>文法<br />
+定义<img src= "/img/loading.gif" data-lazy-src="https://s2.ax1x.com/2019/11/05/KzOCPf.png" alt="KzOCPf.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/q9b4LeCKhSRyO7H.png" alt="UTOOLS1572917104744.png" /><br />
+语法数：<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/uFTPLMDOrZx6fNS.png" alt="UTOOLS1572917151353.png" /><br />
+给定字符串起点能不能到终点<br />
+-有限自动机<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/mRhbE2KdgIrBqCF.png" alt="UTOOLS1572918060751.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/nPXBtZfoH7wFR9L.png" alt="UTOOLS1572918093513.png" /><br />
+例题：<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/cdOfw5aY3hmoNEx.png" alt="UTOOLS1572918005523.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/tvjdClL1iDpehrk.png" alt="UTOOLS1572918214333.png" /></li>
+<li>表达式<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/xITmh15Zjrv3XdU.png" alt="UTOOLS1572918387319.png" /></li>
+<li>值传导 和引用传导<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/PEAJ5NzuBdVpkoK.png" alt="UTOOLS1572918483619.png" /></li>
+<li>程序语言特点<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/t1vlRVwjsyJX8Sb.png" alt="UTOOLS1572918589720.png" /></li>
+</ul>
+<h2 id="法律法规"><a class="markdownIt-Anchor" href="#法律法规"></a> 法律法规</h2>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/2YhTSxseK1U4A6t.png" alt="UTOOLS1572922734899.png" /></p>
+<ul>
+<li>保护期限<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/RLnDIFbHoTNVyUi.png" alt="UTOOLS1572923194153.png" /></li>
+<li>知识产权人确定<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/QPehLT9UJ76Vgym.png" alt="UTOOLS1572923964240.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/kPipf7J4dqXxNv3.png" alt="UTOOLS1572923997358.png" /></li>
+<li>侵权判定<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/KQwGBdtAofrbXkY.png" alt="UTOOLS1572925335514.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/sm7tC4QXnJWrwGE.png" alt="UTOOLS1572925723855.png" /><br />
+-标准化<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/aUEeQNRT9AtKD5j.png" alt="UTOOLS1572925956850.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/zPStXyebF53VMlw.png" alt="UTOOLS1572926221031.png" /></li>
+</ul>
+<h2 id="多媒体基础"><a class="markdownIt-Anchor" href="#多媒体基础"></a> 多媒体基础</h2>
+<ul>
+<li>音频<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/y3X7NETGn1wgDtR.png" alt="UTOOLS1572931961560.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/eV2ukO3DEQN5xoF.png" alt="UTOOLS1572943633025.png" /></li>
+<li>媒体种类<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/RT8Fs4ScfdqYku6.png" alt="UTOOLS1572943789838.png" /></li>
+<li>多媒体计算<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/bCiM8towXxfAu4p.png" alt="UTOOLS1572944249885.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/yM3GZcmLgnhTlNC.png" alt="UTOOLS1572944337244.png" /></li>
+<li>多媒体标准<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/kpbTHGlY37IeOLi.png" alt="UTOOLS1572945029261.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/LSYamEQ3W4xdsqv.png" alt="UTOOLS1572945527699.png" /></li>
+<li>有损无损<br />
+![UTOOLS1572945753742.png](<a target="_blank" rel="noopener" href="https://i.loli.net/2019/11/05/j4vMhzHVLs5GEwt.png">https://i.loli.net/2019/11/05/j4vMhzHVLs5GEwt.png</a></li>
+</ul>
+<h2 id="系统开发基础"><a class="markdownIt-Anchor" href="#系统开发基础"></a> 系统开发基础</h2>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/DbIt4Q6qlc7ECjX.png" alt="UTOOLS1572950522608.png" /></p>
+<h3 id="瀑布模型适合需求明确或二次开发"><a class="markdownIt-Anchor" href="#瀑布模型适合需求明确或二次开发"></a> 瀑布模型（适合需求明确或二次开发）</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/wvSBxtl2WcrZ47H.png" alt="UTOOLS1572950544828.png" /><br />
+###原型 演化模型 增量模型<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/W6rJuMRvcZNiGma.png" alt="UTOOLS1572950728867.png" /></p>
+<h3 id="螺旋模型"><a class="markdownIt-Anchor" href="#螺旋模型"></a> 螺旋模型</h3>
+<p>特点 有风险分析<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/Tx28OeSpDsdloVu.png" alt="UTOOLS1572950914991.png" /><br />
+优先选原型.</p>
+<h3 id="v模型"><a class="markdownIt-Anchor" href="#v模型"></a> v模型</h3>
+<p>特点：测试细化 需求对应验收。在需求分析时写验收测试与系统测试，概要设计写集成测试，详细设计写单元测试。测试贯穿开发始终。</p>
+<h3 id="喷泉模型"><a class="markdownIt-Anchor" href="#喷泉模型"></a> 喷泉模型</h3>
+<p>特点 : 面向对象，迭代 无间隙</p>
+<h3 id="rad"><a class="markdownIt-Anchor" href="#rad"></a> rad</h3>
+<p>快<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/gAeD5ivnTar86RI.png" alt="UTOOLS1572964445101.png" /></p>
+<ul>
+<li>构件组装模型（CDSB）<br />
+特点 提高复用性 ，开发时长短，软件成本降低，可靠性增加。<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/05/Fm5CSQeq2xT8E4J.png" alt="UTOOLS1572965585350.png" /></li>
+<li>敏捷开发方法<br />
+特点 ： 小型项目<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/06/KzAnX8SMbPYUyeT.png" alt="UTOOLS1573041220510.png" /></li>
+</ul>
+<p>###结构化方法<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/06/kQqplKoGIgbA6Pi.png" alt="UTOOLS1573041559992.png" /><br />
+结构化： 不够灵活（系统与现实有区别）</p>
+<h3 id="需求分类与需求获取"><a class="markdownIt-Anchor" href="#需求分类与需求获取"></a> 需求分类与需求获取</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/06/ZiuVhnm6zKstSXG.png" alt="UTOOLS1573043230677.png" /></p>
+<h3 id="结构化设计"><a class="markdownIt-Anchor" href="#结构化设计"></a> 结构化设计</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/06/4xBXNJ8uUthfzqY.png" alt="UTOOLS1573043621853.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/06/2cXaGJ4VWKL1BvO.png" alt="UTOOLS1573043717420.png" /><br />
+内聚：一个模块内部空间联系紧密程度<br />
+耦合 ： 模块之间的联系紧密程度</p>
+<h3 id="软件测试"><a class="markdownIt-Anchor" href="#软件测试"></a> 软件测试</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/06/V4bURv3LsCQAqZn.png" alt="UTOOLS1573044025053.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/06/fBXnkpmNZCtq7UL.png" alt="UTOOLS1573044818610.png" /></p>
+<ul>
+<li>用例设计<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/06/EXlMrKeT2pxfmOV.png" alt="UTOOLS1573045611404.png" /></li>
+<li>测试阶段<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/06/O1LtfvakH3WX2MN.png" alt="UTOOLS1573046959866.png" /></li>
+<li>环路（mccabe）复杂度<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/06/EhP6fN7dj4GWDb8.png" alt="UTOOLS1573047428436.png" /></li>
+<li>运行与维护<br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/06/Wiwgc4mPslT5tr1.png" alt="UTOOLS1573047592968.png" /><br />
+完善性： 变得更吊<br />
+适应性：适应环境</li>
+</ul>
+<h3 id="cmmi"><a class="markdownIt-Anchor" href="#cmmi"></a> CMMI</h3>
+<h3 id="项目管理"><a class="markdownIt-Anchor" href="#项目管理"></a> 项目管理</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/06/lH6eA8IpPTiSyXU.png" alt="UTOOLS1573049954485.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/06/ujRmXUsYzKaiF1P.png" alt="UTOOLS1573049991090.png" /><br />
+<img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/06/9xovRMnSFUE357O.png" alt="UTOOLS1573050177710.png" /></p>
+<h2 id="面向对象设计"><a class="markdownIt-Anchor" href="#面向对象设计"></a> 面向对象设计</h2>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/07/k4uysnmzTEepVdO.png" alt="UTOOLS1573058801494.png" /></p>
+<h3 id="设计原则"><a class="markdownIt-Anchor" href="#设计原则"></a> 设计原则</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/11/07/ZL2FExqhnQlWPVJ.png" alt="UTOOLS1573058939908.png" /></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">酌客</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2019/10/03/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0/">http://example.com/2019/10/03/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">酌客的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0/">软考笔记</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/12/12/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E4%BD%9C%E4%B8%9A/"><img class="prev-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">项目管理作业</div></div></a></div><div class="next-post pull-right"><a href="/2019/08/03/%E7%BA%A2%E9%BB%91%E6%A0%91/"><img class="next-cover" data-lazy-src="https://upload.wikimedia.org/wikipedia/commons/6/66/Red-black_tree_example.svg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">红黑树</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">酌客</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/GayHub1"><i class="fab fa-github"></i><span>Follow Me</span></a></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的个人博客</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text"> 软考笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text"> 计算机组成原理与体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 数据的表示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cpu"><span class="toc-number">1.1.2.</span> <span class="toc-text"> cpu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 计算机组成与体系结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%A1%E9%AA%8C%E7%A0%81"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 校验码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text"> 操作系统基本原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 存储管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 设备管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.3.</span> <span class="toc-text"> 数据库系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 数据库模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E8%8C%83%E5%8C%96%E7%90%86%E8%AE%BA"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 规范化理论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 并发控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 完整性约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8"><span class="toc-number">1.3.5.</span> <span class="toc-text"> 数据库安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D"><span class="toc-number">1.3.6.</span> <span class="toc-text"> 数据库备份与恢复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98"><span class="toc-number">1.3.7.</span> <span class="toc-text"> 数据仓库与数据挖掘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E8%A7%84%E8%8C%83%E5%8F%B7"><span class="toc-number">1.3.8.</span> <span class="toc-text"> 反规范号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E6%95%B0%E6%8D%AE"><span class="toc-number">1.3.9.</span> <span class="toc-text"> 大数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="toc-number">1.4.</span> <span class="toc-text"> 计算机网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 七层模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B%E4%B8%8E%E6%8B%93%E6%89%91%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 网络类型与拓扑结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%A7%84%E5%88%92%E4%B8%8E%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 网络规划与设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ip%E5%9C%B0%E5%9D%80"><span class="toc-number">1.4.4.</span> <span class="toc-text"> ip地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#html"><span class="toc-number">1.4.5.</span> <span class="toc-text"> html</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E7%BA%BF%E7%BD%91"><span class="toc-number">1.4.6.</span> <span class="toc-text"> 无线网</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%85%A5%E6%8A%80%E6%9C%AF"><span class="toc-number">1.4.7.</span> <span class="toc-text"> 接入技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ipv6"><span class="toc-number">1.4.8.</span> <span class="toc-text"> ipv6</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8"><span class="toc-number">1.5.</span> <span class="toc-text"> 信息安全</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E5%B1%9E%E6%80%A7"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 信息系统安全属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E4%B8%8E%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 对称加密与非对称加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%91%98%E8%A6%81"><span class="toc-number">1.5.3.</span> <span class="toc-text"> 信息摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="toc-number">1.5.4.</span> <span class="toc-text"> 数字签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6%E4%B8%8Epgp"><span class="toc-number">1.5.5.</span> <span class="toc-text"> 数字证书与PGP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-number">1.5.6.</span> <span class="toc-text"> 练习题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E4%B8%AA%E7%BD%91%E7%BB%9C%E5%B1%82%E6%AC%A1%E7%9A%84%E5%AE%89%E5%85%A8%E4%BF%9D%E9%9A%9C"><span class="toc-number">1.5.7.</span> <span class="toc-text"> 各个网络层次的安全保障</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%A8%81%E8%83%81%E4%B8%8E%E6%94%BB%E5%87%BB"><span class="toc-number">1.5.8.</span> <span class="toc-text"> 网络威胁与攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">1.5.9.</span> <span class="toc-text"> 防火墙</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text"> 数据结构与算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 稀疏矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 线性表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 队列与栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E4%B9%89%E8%A1%A8"><span class="toc-number">1.6.5.</span> <span class="toc-text"> 广义表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.6.6.</span> <span class="toc-text"> 二叉树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-number">1.6.7.</span> <span class="toc-text"> 图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E4%B8%8B%E5%8D%88%E9%A2%98"><span class="toc-number">1.6.8.</span> <span class="toc-text"> 算法(下午题)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><span class="toc-number">1.7.</span> <span class="toc-text"> 程序设计语言与语言处理程序基础（编译原理）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%95%E5%BE%8B%E6%B3%95%E8%A7%84"><span class="toc-number">1.8.</span> <span class="toc-text"> 法律法规</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%AA%92%E4%BD%93%E5%9F%BA%E7%A1%80"><span class="toc-number">1.9.</span> <span class="toc-text"> 多媒体基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80"><span class="toc-number">1.10.</span> <span class="toc-text"> 系统开发基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B%E9%80%82%E5%90%88%E9%9C%80%E6%B1%82%E6%98%8E%E7%A1%AE%E6%88%96%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91"><span class="toc-number">1.10.1.</span> <span class="toc-text"> 瀑布模型（适合需求明确或二次开发）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%9E%BA%E6%97%8B%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.10.2.</span> <span class="toc-text"> 螺旋模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.10.3.</span> <span class="toc-text"> v模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%96%B7%E6%B3%89%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.10.4.</span> <span class="toc-text"> 喷泉模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rad"><span class="toc-number">1.10.5.</span> <span class="toc-text"> rad</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E7%B1%BB%E4%B8%8E%E9%9C%80%E6%B1%82%E8%8E%B7%E5%8F%96"><span class="toc-number">1.10.6.</span> <span class="toc-text"> 需求分类与需求获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.10.7.</span> <span class="toc-text"> 结构化设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95"><span class="toc-number">1.10.8.</span> <span class="toc-text"> 软件测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cmmi"><span class="toc-number">1.10.9.</span> <span class="toc-text"> CMMI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86"><span class="toc-number">1.10.10.</span> <span class="toc-text"> 项目管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.11.</span> <span class="toc-text"> 面向对象设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-number">1.11.1.</span> <span class="toc-text"> 设计原则</span></a></li></ol></li></ol></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/01/%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E7%AC%94%E8%AE%B0/" title="凤凰架构笔记"><img data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/logo-color.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="凤凰架构笔记"/></a><div class="content"><a class="title" href="/2021/12/01/%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E7%AC%94%E8%AE%B0/" title="凤凰架构笔记">凤凰架构笔记</a><time datetime="2021-11-30T16:00:00.000Z" title="发表于 2021-12-01 00:00:00">2021-12-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/13/%E9%BB%91%E7%BE%A4%E6%99%96%20%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" title="无题"><img data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2021/11/13/%E9%BB%91%E7%BE%A4%E6%99%96%20%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" title="无题">无题</a><time datetime="2021-11-13T06:36:42.380Z" title="发表于 2021-11-13 14:36:42">2021-11-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/01/%E6%9E%B6%E6%9E%84%E5%B8%88%E7%AC%94%E8%AE%B0/" title="架构师笔记"><img data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/image-20210905234112916.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="架构师笔记"/></a><div class="content"><a class="title" href="/2021/09/01/%E6%9E%B6%E6%9E%84%E5%B8%88%E7%AC%94%E8%AE%B0/" title="架构师笔记">架构师笔记</a><time datetime="2021-08-31T16:00:00.000Z" title="发表于 2021-09-01 00:00:00">2021-09-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/07/Java-%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E7%AC%94%E8%AE%B0/" title="Java 编程的逻辑笔记"><img data-lazy-src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/s29680277.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 编程的逻辑笔记"/></a><div class="content"><a class="title" href="/2021/06/07/Java-%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E7%AC%94%E8%AE%B0/" title="Java 编程的逻辑笔记">Java 编程的逻辑笔记</a><time datetime="2021-06-06T16:00:00.000Z" title="发表于 2021-06-07 00:00:00">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/31/ShardingShpere%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6/" title="ShardingShpere数据库中间件"><img data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/1630253147433.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ShardingShpere数据库中间件"/></a><div class="content"><a class="title" href="/2021/05/31/ShardingShpere%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6/" title="ShardingShpere数据库中间件">ShardingShpere数据库中间件</a><time datetime="2021-05-30T16:00:00.000Z" title="发表于 2021-05-31 00:00:00">2021-05-31</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2021 By 酌客</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/state/outPortal/loginPortal.action"><img class="icp-icon" src="/img/icp.png" alt="ICP"/><span>粤ICP备20058715号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    let initData = {
+      el: '#vcomment',
+      appId: 'hxN4EMnnWWFNeyk4xbNxQJT7-gzGzoHsz',
+      appKey: 'lewYKS5k1rb7D5sVgI4QeTAx',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/',
+      emojiMaps: {"bilibilitv2":"bilibilitv/[tv_doge].png","bilibilitv3":"bilibilitv/[tv_亲亲].png","bilibilitv4":"bilibilitv/[tv_偷笑].png","bilibilitv5":"bilibilitv/[tv_再见].png","bilibilitv6":"bilibilitv/[tv_冷漠].png","bilibilitv7":"bilibilitv/[tv_发怒].png","bilibilitv8":"bilibilitv/[tv_发财].png","bilibilitv9":"bilibilitv/[tv_可爱].png","bilibilitv10":"bilibilitv/[tv_吐血].png","bilibilitv11":"bilibilitv/[tv_呆].png","bilibilitv12":"bilibilitv/[tv_呕吐].png","bilibilitv13":"bilibilitv/[tv_困].png","bilibilitv14":"bilibilitv/[tv_坏笑].png","bilibilitv15":"bilibilitv/[tv_大佬].png","bilibilitv16":"bilibilitv/[tv_大哭].png","bilibilitv17":"bilibilitv/[tv_委屈].png","bilibilitv18":"bilibilitv/[tv_害羞].png","bilibilitv19":"bilibilitv/[tv_尴尬].png","bilibilitv20":"bilibilitv/[tv_微笑].png","bilibilitv21":"bilibilitv/[tv_思考].png","bilibilitv22":"bilibilitv/[tv_惊吓].png","bilibilitv23":"bilibilitv/[tv_打脸].png","bilibilitv24":"bilibilitv/[tv_抓狂].png","bilibilitv25":"bilibilitv/[tv_抠鼻].png","bilibilitv26":"bilibilitv/[tv_斜眼笑].png","bilibilitv27":"bilibilitv/[tv_无奈].png","bilibilitv28":"bilibilitv/[tv_晕].png","bilibilitv29":"bilibilitv/[tv_流汗].png","bilibilitv30":"bilibilitv/[tv_流泪].png","bilibilitv31":"bilibilitv/[tv_流鼻血].png","bilibilitv32":"bilibilitv/[tv_点赞].png","bilibilitv33":"bilibilitv/[tv_生气].png","bilibilitv34":"bilibilitv/[tv_生病].png","bilibilitv35":"bilibilitv/[tv_疑问].png","bilibilitv36":"bilibilitv/[tv_白眼].png","bilibilitv37":"bilibilitv/[tv_皱眉].png","bilibilitv38":"bilibilitv/[tv_目瞪口呆].png","bilibilitv39":"bilibilitv/[tv_睡着].png","bilibilitv40":"bilibilitv/[tv_笑哭].png","bilibilitv41":"bilibilitv/[tv_腼腆].png","bilibilitv42":"bilibilitv/[tv_色].png","bilibilitv43":"bilibilitv/[tv_调侃].png","bilibilitv44":"bilibilitv/[tv_调皮].png","bilibilitv45":"bilibilitv/[tv_鄙视].png","bilibilitv46":"bilibilitv/[tv_闭嘴].png","bilibilitv47":"bilibilitv/[tv_难过].png","bilibilitv48":"bilibilitv/[tv_馋].png","bilibilitv49":"bilibilitv/[tv_鬼脸].png","bilibilitv50":"bilibilitv/[tv_黑人问号].png","bilibilitv51":"bilibilitv/[tv_鼓掌].png","bilibili22332":"bilibili2233/[2233娘_卖萌].png","bilibili22333":"bilibili2233/[2233娘_吃惊].png","bilibili22334":"bilibili2233/[2233娘_吐魂].png","bilibili22335":"bilibili2233/[2233娘_喝水].png","bilibili22336":"bilibili2233/[2233娘_困惑].png","bilibili22337":"bilibili2233/[2233娘_大哭].png","bilibili22338":"bilibili2233/[2233娘_大笑].png","bilibili22339":"bilibili2233/[2233娘_委屈].png","bilibili223310":"bilibili2233/[2233娘_怒].png","bilibili223311":"bilibili2233/[2233娘_无言].png","bilibili223312":"bilibili2233/[2233娘_汗].png","bilibili223313":"bilibili2233/[2233娘_疑问].png","bilibili223314":"bilibili2233/[2233娘_第一].png","bilibili223315":"bilibili2233/[2233娘_耶].png","bilibili223316":"bilibili2233/[2233娘_郁闷].png","Heybox1":"Heybox/expression_cube.png","Heybox2":"Heybox/expression_cube_bingbujiandan.png","Heybox3":"Heybox/expression_cube_bizui.png","Heybox4":"Heybox/expression_cube_cangsang.png","Heybox5":"Heybox/expression_cube_dalian.png","Heybox6":"Heybox/expression_cube_doge.png","Heybox7":"Heybox/expression_cube_gandong.png","Heybox8":"Heybox/expression_cube_guai.png","Heybox9":"Heybox/expression_cube_gugu.png","Heybox10":"Heybox/expression_cube_han.png","Heybox11":"Heybox/expression_cube_hbi.png","Heybox12":"Heybox/expression_cube_heirenwenhao.png","Heybox13":"Heybox/expression_cube_huaji.png","Heybox14":"Heybox/expression_cube_jiayou.png","Heybox15":"Heybox/expression_cube_jingya.png","Heybox16":"Heybox/expression_cube_kaixin.png","Heybox17":"Heybox/expression_cube_ku.png","Heybox18":"Heybox/expression_cube_kun.png","Heybox19":"Heybox/expression_cube_kuqi.png","Heybox20":"Heybox/expression_cube_nu.png","Heybox21":"Heybox/expression_cube_penshui.png","Heybox22":"Heybox/expression_cube_qiliang.png","Heybox23":"Heybox/expression_cube_shengqi.png","Heybox24":"Heybox/expression_cube_shuijiao.png","Heybox25":"Heybox/expression_cube_tanqi.png","Heybox26":"Heybox/expression_cube_tanshou.png","Heybox27":"Heybox/expression_cube_tu.png","Heybox28":"Heybox/expression_cube_wa.png","Heybox29":"Heybox/expression_cube_weiqu.png","Heybox30":"Heybox/expression_cube_weixiao.png","Heybox31":"Heybox/expression_cube_wulianku.png","Heybox32":"Heybox/expression_cube_xia.png","Heybox33":"Heybox/expression_cube_xiaocry.png","Heybox34":"Heybox/expression_cube_xihuan.png","Heybox35":"Heybox/expression_cube_xuexi.png","Heybox36":"Heybox/expression_cube_yun.png","Heybox37":"Heybox/expression_cube_zan.png","Heybox38":"Heybox/expression_heyboxgirl.png","Heybox39":"Heybox/expression_heyboxgirl_v2.png","Heybox40":"Heybox/expression_heygirl.png","Heybox41":"Heybox/expression_heygirl_aidao.png","Heybox42":"Heybox/expression_heygirl_baipiaoguai.png","Heybox43":"Heybox/expression_heygirl_chi.png","Heybox44":"Heybox/expression_heygirl_chigua.png","Heybox45":"Heybox/expression_heygirl_eihei.png","Heybox46":"Heybox/expression_heygirl_haha.png","Heybox47":"Heybox/expression_heygirl_haixiu.png","Heybox48":"Heybox/expression_heygirl_henaicha.png","Heybox49":"Heybox/expression_heygirl_huaji.png","Heybox50":"Heybox/expression_heygirl_jing.png","Heybox51":"Heybox/expression_heygirl_jixialai.png","Heybox52":"Heybox/expression_heygirl_kaikele.png","Heybox53":"Heybox/expression_heygirl_ku.png","Heybox54":"Heybox/expression_heygirl_kujiuruhou.png","Heybox55":"Heybox/expression_heygirl_nielian.png","Heybox56":"Heybox/expression_heygirl_qiaokaixin.png","Heybox57":"Heybox/expression_heygirl_qiehua.png","Heybox58":"Heybox/expression_heygirl_rua.png","Heybox59":"Heybox/expression_heygirl_toukan.png","Heybox60":"Heybox/expression_heygirl_tu.png","Heybox61":"Heybox/expression_heygirl_wuyu.png","Heybox62":"Heybox/expression_heygirl_xihuan.png","Heybox63":"Heybox/expression_heygirl_yiwen.png","Heybox64":"Heybox/expression_heygirl_zhe.png","Heybox65":"Heybox/expression_heziji_1.png","Heybox66":"Heybox/expression_heziji_10.png","Heybox67":"Heybox/expression_heziji_11.png","Heybox68":"Heybox/expression_heziji_12.png","Heybox69":"Heybox/expression_heziji_13.png","Heybox70":"Heybox/expression_heziji_14.png","Heybox71":"Heybox/expression_heziji_15.png","Heybox72":"Heybox/expression_heziji_16.png","Heybox73":"Heybox/expression_heziji_17.png","Heybox74":"Heybox/expression_heziji_18.png","Heybox75":"Heybox/expression_heziji_19.png","Heybox76":"Heybox/expression_heziji_2.png","Heybox77":"Heybox/expression_heziji_20.png","Heybox78":"Heybox/expression_heziji_21.png","Heybox79":"Heybox/expression_heziji_22.png","Heybox80":"Heybox/expression_heziji_23.png","Heybox81":"Heybox/expression_heziji_24.png","Heybox82":"Heybox/expression_heziji_25.png","Heybox83":"Heybox/expression_heziji_26.png","Heybox84":"Heybox/expression_heziji_27.png","Heybox85":"Heybox/expression_heziji_28.png","Heybox86":"Heybox/expression_heziji_29.png","Heybox87":"Heybox/expression_heziji_3.png","Heybox88":"Heybox/expression_heziji_30.png","Heybox89":"Heybox/expression_heziji_31.png","Heybox90":"Heybox/expression_heziji_32.png","Heybox91":"Heybox/expression_heziji_4.png","Heybox92":"Heybox/expression_heziji_5.png","Heybox93":"Heybox/expression_heziji_6.png","Heybox94":"Heybox/expression_heziji_7.png","Heybox95":"Heybox/expression_heziji_8.png","Heybox96":"Heybox/expression_heziji_9.png","Sweetie-Bunny1":"Sweetie-Bunny/12311678.png","Sweetie-Bunny2":"Sweetie-Bunny/12311679.png","Sweetie-Bunny3":"Sweetie-Bunny/12311680.png","Sweetie-Bunny4":"Sweetie-Bunny/12311681.png","Sweetie-Bunny5":"Sweetie-Bunny/12311682.png","Sweetie-Bunny6":"Sweetie-Bunny/12311683.png","Sweetie-Bunny7":"Sweetie-Bunny/12311684.png","Sweetie-Bunny8":"Sweetie-Bunny/12311685.png","Sweetie-Bunny9":"Sweetie-Bunny/12311686.png","Sweetie-Bunny10":"Sweetie-Bunny/12311687.png","Sweetie-Bunny11":"Sweetie-Bunny/12311688.png","Sweetie-Bunny12":"Sweetie-Bunny/12311689.png","Sweetie-Bunny13":"Sweetie-Bunny/12311690.png","Sweetie-Bunny14":"Sweetie-Bunny/12311691.png","Sweetie-Bunny15":"Sweetie-Bunny/12311692.png","Sweetie-Bunny16":"Sweetie-Bunny/12311693.png","Sweetie-Bunny17":"Sweetie-Bunny/12311694.png","Sweetie-Bunny18":"Sweetie-Bunny/12311695.png","Sweetie-Bunny19":"Sweetie-Bunny/12311696.png","Sweetie-Bunny20":"Sweetie-Bunny/12311697.png","Sweetie-Bunny21":"Sweetie-Bunny/12311698.png","Sweetie-Bunny22":"Sweetie-Bunny/12311699.png","Sweetie-Bunny23":"Sweetie-Bunny/12311700.png","Sweetie-Bunny24":"Sweetie-Bunny/12311701.png","Sweetie-Bunny25":"Sweetie-Bunny/12311702.png","Sweetie-Bunny26":"Sweetie-Bunny/12311703.png","Sweetie-Bunny27":"Sweetie-Bunny/12311704.png","Sweetie-Bunny28":"Sweetie-Bunny/12311705.png","Sweetie-Bunny29":"Sweetie-Bunny/12311706.png","Sweetie-Bunny30":"Sweetie-Bunny/12311707.png","Sweetie-Bunny31":"Sweetie-Bunny/12311708.png","Sweetie-Bunny32":"Sweetie-Bunny/12311709.png","Sweetie-Bunny33":"Sweetie-Bunny/12311710.png","Sweetie-Bunny34":"Sweetie-Bunny/12311711.png","Sweetie-Bunny35":"Sweetie-Bunny/12311712.png","Sweetie-Bunny36":"Sweetie-Bunny/12311713.png","Sweetie-Bunny37":"Sweetie-Bunny/12311714.png","Sweetie-Bunny38":"Sweetie-Bunny/12311715.png","Sweetie-Bunny39":"Sweetie-Bunny/12311716.png","Sweetie-Bunny40":"Sweetie-Bunny/12311717.png","Snow-Miku1":"Snow-Miku/3583066@2x.png","Snow-Miku2":"Snow-Miku/3583067@2x.png","Snow-Miku3":"Snow-Miku/3583068@2x.png","Snow-Miku4":"Snow-Miku/3583069@2x.png","Snow-Miku5":"Snow-Miku/3583070@2x.png","Snow-Miku6":"Snow-Miku/3583071@2x.png","Snow-Miku7":"Snow-Miku/3583072@2x.png","Snow-Miku8":"Snow-Miku/3583073@2x.png","Snow-Miku9":"Snow-Miku/3583074@2x.png","Snow-Miku10":"Snow-Miku/3583075@2x.png","Snow-Miku11":"Snow-Miku/3583076@2x.png","Snow-Miku12":"Snow-Miku/3583077@2x.png","Snow-Miku13":"Snow-Miku/3583078@2x.png","Snow-Miku14":"Snow-Miku/3583079@2x.png","Snow-Miku15":"Snow-Miku/3583080@2x.png","Snow-Miku16":"Snow-Miku/3583081@2x.png","Snow-Miku17":"Snow-Miku/3583082@2x.png","Snow-Miku18":"Snow-Miku/3583083@2x.png","Snow-Miku19":"Snow-Miku/3583084@2x.png","Snow-Miku20":"Snow-Miku/3583085@2x.png","Snow-Miku21":"Snow-Miku/3583086@2x.png","Snow-Miku22":"Snow-Miku/3583087@2x.png","Snow-Miku23":"Snow-Miku/3583088@2x.png","Snow-Miku24":"Snow-Miku/3583089@2x.png","Snow-Miku25":"Snow-Miku/3583090@2x.png","Snow-Miku26":"Snow-Miku/3583091@2x.png","Snow-Miku27":"Snow-Miku/3583092@2x.png","Snow-Miku28":"Snow-Miku/3583093@2x.png","Snow-Miku29":"Snow-Miku/3583094@2x.png","Snow-Miku30":"Snow-Miku/3583095@2x.png","Snow-Miku31":"Snow-Miku/3583096@2x.png","Snow-Miku32":"Snow-Miku/3583097@2x.png","Snow-Miku33":"Snow-Miku/3583098@2x.png","Snow-Miku34":"Snow-Miku/3583099@2x.png","Snow-Miku35":"Snow-Miku/3583100@2x.png","Snow-Miku36":"Snow-Miku/3583101@2x.png","Snow-Miku37":"Snow-Miku/3583102@2x.png","Snow-Miku38":"Snow-Miku/3583103@2x.png","Snow-Miku39":"Snow-Miku/3583104@2x.png","Snow-Miku40":"Snow-Miku/3583105@2x.png","Mafumafu1":"Mafumafu/199749454.png","Mafumafu2":"Mafumafu/199749455.png","Mafumafu3":"Mafumafu/199749456.png","Mafumafu4":"Mafumafu/199749457.png","Mafumafu5":"Mafumafu/199749458.png","Mafumafu6":"Mafumafu/199749459.png","Mafumafu7":"Mafumafu/199749460.png","Mafumafu8":"Mafumafu/199749461.png","Mafumafu9":"Mafumafu/199749462.png","Mafumafu10":"Mafumafu/199749463.png","Mafumafu11":"Mafumafu/199749464.png","Mafumafu12":"Mafumafu/199749465.png","Mafumafu13":"Mafumafu/199749466.png","Mafumafu14":"Mafumafu/199749467.png","Mafumafu15":"Mafumafu/199749468.png","Mafumafu16":"Mafumafu/199749469.png","Mafumafu17":"Mafumafu/199749470.png","Mafumafu18":"Mafumafu/199749471.png","Mafumafu19":"Mafumafu/199749472.png","Mafumafu20":"Mafumafu/199749473.png","Mafumafu21":"Mafumafu/199749474.png","Mafumafu22":"Mafumafu/199749475.png","Mafumafu23":"Mafumafu/199749476.png","Mafumafu24":"Mafumafu/199749477.png"},
+      enableQQ: true,
+      path: window.location.pathname,
+    }
+
+    if (true) { 
+      initData.requiredFields= ('nick,mail'.split(','))
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign({}, initData, otherData)
+    }
+    
+    const valine = new Valine(initData)
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else $.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.querySelector('#vcomment'),loadValine)
+  else setTimeout(() => loadValine(), 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script></div></body></html>

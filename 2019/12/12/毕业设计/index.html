@@ -1,0 +1,398 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>毕业设计 | 酌客的个人博客</title><meta name="keywords" content="SpringBoot,Android"><meta name="author" content="酌客"><meta name="copyright" content="酌客"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="引言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="毕业设计">
+<meta property="og:url" content="http://example.com/2019/12/12/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="酌客的个人博客">
+<meta property="og:description" content="引言">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg">
+<meta property="article:published_time" content="2019-12-11T16:27:18.000Z">
+<meta property="article:modified_time" content="2020-07-08T15:48:43.243Z">
+<meta property="article:author" content="酌客">
+<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/GayHub1/images/img/favicon.png"><link rel="canonical" href="http://example.com/2019/12/12/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-07-08 23:48:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/GayHub1/images/flush.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/qiandao/"><i class="fa-fw fas fa-calendar-check"></i><span> 签到</span></a></li><li><a class="site-page" href="/oneDrive"><i class="fa-fw fa fa-file"></i><span> 个人网盘</span></a></li><li><a class="site-page" href="/pyadmin"><i class="fa-fw fas fa-database"></i><span> MyAdmin</span></a></li><li><a class="site-page" href="/rsshub"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page" href="/ttrss"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li></ul></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">酌客的个人博客</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/qiandao/"><i class="fa-fw fas fa-calendar-check"></i><span> 签到</span></a></li><li><a class="site-page" href="/oneDrive"><i class="fa-fw fa fa-file"></i><span> 个人网盘</span></a></li><li><a class="site-page" href="/pyadmin"><i class="fa-fw fas fa-database"></i><span> MyAdmin</span></a></li><li><a class="site-page" href="/rsshub"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page" href="/ttrss"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li></ul></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">毕业设计</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-12-11T16:27:18.000Z" title="发表于 2019-12-12 00:27:18">2019-12-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-07-08T15:48:43.243Z" title="更新于 2020-07-08 23:48:43">2020-07-08</time></span></div><div class="meta-secondline"> </div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="引言"><a class="markdownIt-Anchor" href="#引言"></a> 引言</h2>
+<span id="more"></span>
+<!-- ### 项目背景与问题概述
+#### 项目背景 
+基于移动互联网这个全新的时代背景,甚至有业内人士预测随着无线互联蚕食有线联市场,未来可能70%都是无线互联市场,人们日常上网的主要通道将是手机。正是预见到手机用户的无线市场的巨大发展空间,各行各业纷纷加速无线战略布局以抢占先机。移动电子商务未来的巨大发展潜力是吸引京东、当当、卓越以及淘宝等电子商务企业进入这一领域的主要诱因。程善宝指出,淘宝、京东等传统电子商务进入移动电子商务,依附商品渠道、运营经验等方面的优势,在移动电子商务领域会比电信运营商software提供商以及新兴的移动电子商务企业具备更好远景随着移动通信的发展以及互联网向移动终端的普及,网络和用户对移动终端的要求越来越高,而 Symbian, Windows Mobile PalmOS等手机平台过于封闭,不能很好的满足用户的需求,因此市场迫切需要一个开放性很强的平台。经过多年的发展,第三代数字通信(3G技术获得了广泛的接受,它为移动终端用户带来了更快的薮据传输速率。随着3G网络的使用,移动终端不再仅是通讯网络的终端,还将成为互联网的终端。因此,移动终端的应用软件和需要的服务将会有很大的发展空间。           
+
+Google为此于2007年11月推出了一个专为移动设备设计的软件平台—一 Android。 Android是一套真正意义上的开放性的移动设备综合平台,它包括操作系统、中间件和一些关键的平台应用。 Android是由 Linux+Java构成的开源软件,允许所有厂商和个人在其基础上进行开发。 android平台的开放性等特点既能促进技术(包括平台自身)的创新,又有助于降低开发成本,还可以使运营商能非常方便地制定自己的特色化的产品。因此,它具有很大的市场发展潜力问题概述
+    
+随着网络技术的不断发展，网上购物已经成为消费者的一种消费习惯，不仅服装、日用品等在网上销售火热，还有许多其他行业也在网络销售火热。中国网购市场保持高速增长，网络用户以及电商数量不断增长，2013年网购交易规模超1.85万亿元，2017年将突破4万亿元；2013年网购占零售销售总额比列达8%，2014年预计达10%；2013年网购用户规模突破3亿人，在网民中的使用率接近一半；2013年电商企业数量接近3万家，行业竞争激烈，市场一片光明。
+#### 问题概述
+对用户提供的服务有：
+- 注册登录
+- 在主界面滚动推荐的商品以及在主界面的滚动推荐下面也有更多推荐的商品。
+-  搜索想要的商品，加入购物车。并且下订单
+- 搜索后再打开搜索有搜索历史。
+- 超时支付系统就会取消订单
+- 浏览以及修改个人资料主页  
+网上商城系统普遍存在着没有实际体验，买到假货，运送慢，库存等问题。
+### 研究的意义和重要性
+#### 研究的意义
+现在购物方式多种多样，有网上购物与线下购物，如何让用户在网上购物有更好的体验是我们研究的意义。
+#### 研究的重要性
+可以有效的售卖自己的库存，用户也能足不出户的购买好商品，是双赢的局面。本系统就是以这个为目的编写出来的。
+#### 研究的内容
+本系统主要分为前端与后端。前后端使用了统一的JAVA语言作为开发语言，均使用了mvp框架；前端为Android 端的App，后端为Spring boot与 Mybatis为框架组成了程序的大体框架；
+## 需求分析
+软件需求过程是整个软件开发初始阶段，对软件的品质具有决定性的作用。软件需求工程研究如何理解和说明用户对所开发软件的要求和期望。
+需求就是以一种清晰、简明、一致且无二义性的方式对一个待开发系统中的各个方面有意义的陈述的集合[4]。需求必须是完整的，足以使设计师和工程师来开发一个使客户满意的软件制品。
+IEEE软件工程标准词汇表(1997年)中定义需求为[5]：
+（1）	用户解决问题或达到目标所需的条件或能力(Capability)；
+（2）	系统或系统部件要满足合同、标准、规范或其它正式规定文档所需具有的条件或能力；
+（3）	一种反映上面(l)或(2)所描述的条件或能力的文档说明。
+软件需求包括三个不同的层次：业务需求、用户需求和功能需求（也包括非功能需求）[6]。
+### 	业务需求
+业务需求(business requirement)是客户对软件制品目标的高层次要求。
+### 业务描述
+-	能够实现注册登录、浏览以及修改个人资料、商品检索、商品选择并加入购物车、下订单和超时支付系统取消订单等功能，对网上购物的全过程进行管理
+-	实现对网上购物过程中产生的所有业务数据的管理，如订货单、支付记录、搜索记录和发货信息的管理与维护
+-	具有配套的系统后台管理维护功能，能够对商品信息、用户信息、系统日志等信息进行管理与维护，并能够进行对应的权限管理
+-	响应速度合理，安全性较高
+-	系统运行稳定，并且应易于维护
+### 	注册业务流程图
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: 用户注册</span><br><span class="line">account=&gt;operation: 输入用户名</span><br><span class="line">pass=&gt;operation: 输入密码</span><br><span class="line">npass=&gt;operation: 再次输入密码</span><br><span class="line">name=&gt;operation: 输入真实姓名</span><br><span class="line">phone=&gt;operation: 输入手机号码</span><br><span class="line">sex=&gt;operation: 输入性别</span><br><span class="line">cond=&gt;condition: 注册信息是否有误?</span><br><span class="line">e=&gt;end: 进入商城t</span><br><span class="line">st-&gt;account-&gt;pass-&gt;npass-&gt;name-&gt;phone-&gt;sex-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;account</span><br></pre></td></tr></table></figure>
+<h2 id="功能分析"><a class="markdownIt-Anchor" href="#功能分析"></a> 功能分析</h2>
+<p>系统主要有注册登录、修改个人资料、浏览商品、搜索商品、下订单等功能</p>
+<h3 id="角色分析"><a class="markdownIt-Anchor" href="#角色分析"></a> 角色分析</h3>
+<p>以下从网上购物系统的实际需求分析，系统涉及到以下角色：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">角色</th>
+<th style="text-align:center">职责或功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">客户(买家)</td>
+<td style="text-align:center">系统主要参与者，进行用户注册与登录、修改个人资料、搜索商品以及加入购物车、下订单等功能</td>
+</tr>
+<tr>
+<td style="text-align:center">系统管理员</td>
+<td style="text-align:center">管理和维护整个系统的用户组织结构，负责对用户、角色、用户级别的增、删、改、查等管理。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="功能描述"><a class="markdownIt-Anchor" href="#功能描述"></a> 功能描述</h3>
+<ol>
+<li>用户注册与登录<br />
+用户进行输入账户的帐号密码性别等各种信息来进行注册，并且登录。来实现下一层功能。</li>
+<li>用户通过该网上商城系统用来浏览以及搜索商品</li>
+<li>通过浏览商品来加入购物车或者下订单。</li>
+<li>超时购买将取消订单。<br />
+4.修改个人信息<br />
+可以通过个人主页来修改个人信息。<br />
+5.管理员功能<br />
+管理员可以增删查改用户的各种信息。</li>
+</ol>
+<h2 id="系统设计"><a class="markdownIt-Anchor" href="#系统设计"></a> 系统设计</h2>
+<p>网上购物系统最主要的就是针对广大用户在互联网上购物的需求和特点进行系统总体结构设计。而在购物过程中，主要是为了应对商品的选购，购物订单的下达，货款的支付，用户信息的处理和查询等操作，以便于整个购物系统的有序的进行和管理，规范化和统一化，对不同模块进行分工管理，最后由系统统一实施。</p>
+<p>系统一共分为商品选购、货款支付、订单管理、发货信息管理共4个模块。其中商品选购主要满足买家通过系统购买商品的功能需求；货款支付主要为了满足买家购买商品时进行付款的功能需；订单管理主要满足买家对自己的订单进行维护的功能需求；发货信息管理主要为了满足买家进行发货信息维护的功能需求；</p>
+<h3 id="功能结构设计"><a class="markdownIt-Anchor" href="#功能结构设计"></a> 功能结构设计</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/12/30/VgANxafsubHoze7.png" alt="1.png" /><br />
+“商品选购”功能主要目的是为买家提供购买卖家提供的商品的功能；此外，该功能还负责将用户选中的商品放入购物车，对购物车进行管理。因此，商品选购模块主要涉及商品信息的查询获取以及购物车管理两个子模块。其中商品信息获取模块主要分为检索商品和查看商品详细信息两个组成部分.购物车管理又分为将商品放入购物车和将商品从购物车移除和购买数量设置三个部分。 --&gt;</p>
+<h3 id="java后端-涉及技术及框架"><a class="markdownIt-Anchor" href="#java后端-涉及技术及框架"></a> java后端 涉及技术及框架</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">技术</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">官网</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">SpringBoot</td>
+<td style="text-align:center">容器+MVC框架</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-boot">spring.io</a></td>
+</tr>
+<tr>
+<td style="text-align:center">MyBatis</td>
+<td style="text-align:center">ORM框架</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="http://www.mybatis.org/mybatis-3/zh/index.html">mybstis.org</a></td>
+</tr>
+<tr>
+<td style="text-align:center">MyBatisGenerator</td>
+<td style="text-align:center">数据层代码生成</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="http://www.mybatis.org/generator/index.html">mybstis.org</a></td>
+</tr>
+<tr>
+<td style="text-align:center">PageHelper	MyBatis</td>
+<td style="text-align:center">物理分页插件</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="http://git.oschina.net/free/Mybatis_PageHelper">oschina.net</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Swagger-UI</td>
+<td style="text-align:center">文档生产工具</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://github.com/swagger-api/swagger-ui">swagger-api</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Redis</td>
+<td style="text-align:center">缓存</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://redis.io/">redis.io</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="android-端-涉及技术及框架"><a class="markdownIt-Anchor" href="#android-端-涉及技术及框架"></a> Android 端 涉及技术及框架</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">技术</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">官网或github地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">rxjava3</td>
+<td style="text-align:center">异步框架</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="http://reactivex.io/">reactivex.io</a></td>
+</tr>
+<tr>
+<td style="text-align:center">retrofit2</td>
+<td style="text-align:center">网络框架</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://square.github.io/retrofit/">square.github.io</a></td>
+</tr>
+<tr>
+<td style="text-align:center">XUI</td>
+<td style="text-align:center">UI框架</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://github.com/xuexiangjys/XUI">xuexiangjys</a></td>
+</tr>
+<tr>
+<td style="text-align:center">glide</td>
+<td style="text-align:center">图片加载框架</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://muyangmin.github.io/glide-docs-cn/">muyangmin</a></td>
+</tr>
+<tr>
+<td style="text-align:center">gson</td>
+<td style="text-align:center">json解析工具</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://github.com/google/gson">gson</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="数据库"><a class="markdownIt-Anchor" href="#数据库"></a> 数据库</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/12/12/g2Qot58ZM19iJpw.png" alt="UTOOLS1576138436432.png" /></p>
+<h3 id="接口"><a class="markdownIt-Anchor" href="#接口"></a> 接口</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2019/12/12/sm8QBcZLhneJw6W.png" alt="UTOOLS1576138522209.png" /></p>
+<h3 id="mybatis-generator插件"><a class="markdownIt-Anchor" href="#mybatis-generator插件"></a> Mybatis Generator插件</h3>
+<h4 id="生成代码"><a class="markdownIt-Anchor" href="#生成代码"></a> 生成代码</h4>
+<ul>
+<li>引入 MyBatis Generator 依赖</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mybatis-generator-core&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;1.3.7&lt;/version&gt;</span><br><span class="line">	&lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>引入 MyBatis Generator Maven 插件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">	&lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mybatis-generator-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;1.3.7&lt;/version&gt;</span><br><span class="line"></span><br><span class="line">	&lt;configuration&gt;</span><br><span class="line">		&lt;configurationFile&gt;src/main/resources/mybatis-generator.xml&lt;/configurationFile&gt;</span><br><span class="line">		&lt;overwrite&gt;true&lt;/overwrite&gt;</span><br><span class="line">	&lt;/configuration&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">			&lt;version&gt;8.0.12&lt;/version&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>准备 MyBatis Generator 配置文件<br />
+MyBatis Generator 需要一个 xml格式的配置文件，该文件的位置配在了引入 MyBatis Generator Maven 插件的 xml配置里，即src/main/resources/mybatis-generator.xml</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE generatorConfiguration</span><br><span class="line">        PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;</span><br><span class="line">        &quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;generatorConfiguration&gt;</span><br><span class="line"></span><br><span class="line">    &lt;context id=&quot;MySql&quot; defaultModelType=&quot;flat&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;plugin type=&quot;org.mybatis.generator.plugins.SerializablePlugin&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;jdbcConnection</span><br><span class="line">                driverClass=&quot;com.mysql.cj.jdbc.Driver&quot;</span><br><span class="line">                connectionURL=&quot;jdbc:mysql://localhost:3306/shopping?serverTimezone=UTC&amp;amp;useSSL=false&amp;amp;allowPublicKeyRetrieval=true&amp;amp;nullCatalogMeansCurrent=true&quot;</span><br><span class="line">                userId=&quot;root&quot;</span><br><span class="line">                password=&quot;密码&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;javaModelGenerator targetPackage=&quot;com.example.mall.entity&quot; targetProject=&quot;src/main/java&quot;&gt;&lt;/javaModelGenerator&gt;</span><br><span class="line"></span><br><span class="line">        &lt;sqlMapGenerator targetPackage=&quot;mapper&quot;  targetProject=&quot;src/main/resources&quot;&gt;&lt;/sqlMapGenerator&gt;</span><br><span class="line"></span><br><span class="line">        &lt;javaClientGenerator targetPackage=&quot;com.example.mall.mapper&quot; targetProject=&quot;src/main/java&quot; type=&quot;ANNOTATEDMAPPER&quot;&gt;&lt;/javaClientGenerator&gt;</span><br><span class="line"></span><br><span class="line">        &lt;table tableName=&quot;user&quot;&gt;</span><br><span class="line">            &lt;property name=&quot;modelOnly&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">        &lt;/table&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/context&gt;</span><br><span class="line"></span><br><span class="line">&lt;/generatorConfiguration&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>直接生成简单crud</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">tableName</span>=<span class="string">&quot;user&quot;</span> <span class="attr">enableCountByExample</span>=<span class="string">&quot;false&quot;</span> <span class="attr">enableUpdateByExample</span>=<span class="string">&quot;false&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;modelOnly&quot;</span> <span class="attr">value</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>connectionUrl中含有&amp;符号问题<br />
+在&amp;字符后添加 amp; 即改为 '&amp;'即可。</li>
+<li>&lt; jdbcConnection /&gt; 数据库连接配置，至关重要</li>
+<li><javaModelGenerator /> 指定自动生成的 POJO置于哪个包下</li>
+<li><sqlMapGenerator /> 指定自动生成的 mapper.xml置于哪个包下</li>
+<li><javaClientGenerator /> 指定自动生成的 DAO接口置于哪个包下</li>
+<li>
+<table /> 指定数据表名，可以使用_和%通配符
+</li>
+</ul>
+<h3 id="rxjava3与retrofit2配合使用模板"><a class="markdownIt-Anchor" href="#rxjava3与retrofit2配合使用模板"></a> rxjava3与retrofit2配合使用模板</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">   Retrofit retrofit = new Retrofit.Builder()</span><br><span class="line">           //这里建议：- Base URL: 总是以/结尾；- @Url: 不要以/开头</span><br><span class="line">           .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">           .addCallAdapterFactory(RxJavaCallAdapterFactory.create())//新的配置</span><br><span class="line">           .baseUrl(&quot;http://mymall.free.idcfengye.com&quot;)</span><br><span class="line">           .build();</span><br><span class="line">   MyApi apiStores = retrofit.create(MyApi.class);</span><br><span class="line">                   apiStores.login(accounttext, passwordtext)        //获取Observable对象</span><br><span class="line">                           .subscribeOn(Schedulers.newThread())//请求在新的线程中执行</span><br><span class="line">                           .observeOn(AndroidSchedulers.mainThread())//最后在主线程中执行</span><br><span class="line">                           .subscribe(new Subscriber&lt;CommonResult&lt;User&gt;&gt;() &#123;</span><br><span class="line">                               @Override</span><br><span class="line">                               public void onCompleted() &#123;</span><br><span class="line">                                   mMiniLoadingDialog.dismiss();</span><br><span class="line"></span><br><span class="line">                               &#125;</span><br><span class="line"></span><br><span class="line">                               @Override</span><br><span class="line">                               public void onError(Throwable e) &#123;</span><br><span class="line">                                   Log.i(&quot;wxl&quot;, &quot;response=&quot; + e.getMessage());</span><br><span class="line">                                 //  mMiniLoadingDialog.dismiss();</span><br><span class="line">                                   //请求失败</span><br><span class="line">                               &#125;</span><br><span class="line"></span><br><span class="line">                               @Override</span><br><span class="line">                               public void onNext(CommonResult&lt;User&gt; commonResult) &#123;</span><br><span class="line">                                   Log.i(&quot;wxl&quot;, &quot;response=&quot; + commonResult.getMessage());</span><br><span class="line"></span><br><span class="line">                                   if(commonResult.getCode()==200)&#123;</span><br><span class="line">                                       SnackbarUtils.Short(view, commonResult.getMessage())</span><br><span class="line">                                               .confirm()</span><br><span class="line">                                               .radius(30, 0, Color.GREEN)</span><br><span class="line">                                               .show();</span><br><span class="line">                                       PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString(&quot;name&quot;, accounttext).apply();</span><br><span class="line">                                       PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString(&quot;pass&quot;, passwordtext).apply();</span><br><span class="line">                                       startActivity(new Intent(LoginActivity.this,MainActivity.class));</span><br><span class="line"></span><br><span class="line">                                   &#125;else&#123;</span><br><span class="line">                                       SnackbarUtils.Short(view, commonResult.getMessage())</span><br><span class="line">                                               .danger()</span><br><span class="line">                                               .radius(30, 1, Color.GRAY)</span><br><span class="line">                                               .show();</span><br><span class="line">                                   &#125;</span><br><span class="line">                                   Log.i(&quot;wxl&quot;, &quot;response=&quot; );</span><br><span class="line">                                   //请求成功</span><br><span class="line">                               &#125;</span><br><span class="line">                           &#125;);</span><br><span class="line">						</span><br><span class="line">@FormUrlEncoded</span><br><span class="line">   @POST(&quot;/user/login&quot;)</span><br><span class="line">   Observable&lt;CommonResult&lt;User&gt;&gt; login(@Field(&quot;account&quot;) String  account,</span><br><span class="line">                                        @Field(&quot;password&quot;) String  password);</span><br><span class="line">						</span><br></pre></td></tr></table></figure>
+<h2 id="git"><a class="markdownIt-Anchor" href="#git"></a> git</h2>
+<h3 id="git-更新出现stderr-error-bad-signature-fatal-index-file-corrupt"><a class="markdownIt-Anchor" href="#git-更新出现stderr-error-bad-signature-fatal-index-file-corrupt"></a> git 更新出现stderr: error: bad signature fatal: index file corrupt</h3>
+<p>因为git在更新操作的时候会更新.git文件夹下的index文件，方便下一次更新的时候会找到更新的节点，而现在电脑突然崩溃，这个文件可能只更新了一部分，甚至直接导致这个文件破坏，所以再次更新的时候，发现这个index文件信息不全或者文件无法读取，这样就会出现上面的提示</p>
+<blockquote>
+<p>到.git平行目录下依次执行以下命令<br />
+$ rm -f .git/index     删除文件index，也可以手动删除<br />
+$ git reset       这个是git命名可以恢复指定的版本号，这里没有就默认恢复上一次正确的文件<br />
+重启即可<br />
+然后发现自己本地的代码都丢完了。。。。。</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">酌客</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2019/12/12/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/">http://example.com/2019/12/12/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">酌客的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SpringBoot/">SpringBoot</a><a class="post-meta__tags" href="/tags/Android/">Android</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/01/13/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB/"><img class="prev-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">面试题汇总</div></div></a></div><div class="next-post pull-right"><a href="/2019/12/12/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E4%BD%9C%E4%B8%9A/"><img class="next-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">项目管理作业</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2019/12/12/项目管理作业/" title="项目管理作业"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-12-12</div><div class="title">项目管理作业</div></div></a></div><div><a href="/2020/06/03/SpringBoot语法技巧/" title="SpringBoot语法技巧"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-06-03</div><div class="title">SpringBoot语法技巧</div></div></a></div><div><a href="/2020/07/01/基于注解@Scheduled的定时任务配置/" title="注解@Scheduled的定时任务配置"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-01</div><div class="title">注解@Scheduled的定时任务配置</div></div></a></div><div><a href="/2020/07/10/在spring boot 调用 cmd 命令/" title="在spring boot 调用 cmd 命令"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-10</div><div class="title">在spring boot 调用 cmd 命令</div></div></a></div><div><a href="/2018/10/30/数据持久化 (2)/" title="数据持久化"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-10-30</div><div class="title">数据持久化</div></div></a></div><div><a href="/2018/11/28/获取权限/" title="获取权限"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-11-28</div><div class="title">获取权限</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">酌客</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/GayHub1"><i class="fab fa-github"></i><span>Follow Me</span></a></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的个人博客</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 引言</span></a></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/01/%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E7%AC%94%E8%AE%B0/" title="凤凰架构笔记"><img data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/logo-color.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="凤凰架构笔记"/></a><div class="content"><a class="title" href="/2021/12/01/%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E7%AC%94%E8%AE%B0/" title="凤凰架构笔记">凤凰架构笔记</a><time datetime="2021-11-30T16:00:00.000Z" title="发表于 2021-12-01 00:00:00">2021-12-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/13/%E9%BB%91%E7%BE%A4%E6%99%96%20%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" title="无题"><img data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2021/11/13/%E9%BB%91%E7%BE%A4%E6%99%96%20%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" title="无题">无题</a><time datetime="2021-11-13T06:36:42.380Z" title="发表于 2021-11-13 14:36:42">2021-11-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/01/%E6%9E%B6%E6%9E%84%E5%B8%88%E7%AC%94%E8%AE%B0/" title="架构师笔记"><img data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/image-20210905234112916.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="架构师笔记"/></a><div class="content"><a class="title" href="/2021/09/01/%E6%9E%B6%E6%9E%84%E5%B8%88%E7%AC%94%E8%AE%B0/" title="架构师笔记">架构师笔记</a><time datetime="2021-08-31T16:00:00.000Z" title="发表于 2021-09-01 00:00:00">2021-09-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/07/Java-%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E7%AC%94%E8%AE%B0/" title="Java 编程的逻辑笔记"><img data-lazy-src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/s29680277.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 编程的逻辑笔记"/></a><div class="content"><a class="title" href="/2021/06/07/Java-%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E7%AC%94%E8%AE%B0/" title="Java 编程的逻辑笔记">Java 编程的逻辑笔记</a><time datetime="2021-06-06T16:00:00.000Z" title="发表于 2021-06-07 00:00:00">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/31/ShardingShpere%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6/" title="ShardingShpere数据库中间件"><img data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/1630253147433.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ShardingShpere数据库中间件"/></a><div class="content"><a class="title" href="/2021/05/31/ShardingShpere%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6/" title="ShardingShpere数据库中间件">ShardingShpere数据库中间件</a><time datetime="2021-05-30T16:00:00.000Z" title="发表于 2021-05-31 00:00:00">2021-05-31</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2021 By 酌客</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/state/outPortal/loginPortal.action"><img class="icp-icon" src="/img/icp.png" alt="ICP"/><span>粤ICP备20058715号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    let initData = {
+      el: '#vcomment',
+      appId: 'hxN4EMnnWWFNeyk4xbNxQJT7-gzGzoHsz',
+      appKey: 'lewYKS5k1rb7D5sVgI4QeTAx',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/',
+      emojiMaps: {"bilibilitv2":"bilibilitv/[tv_doge].png","bilibilitv3":"bilibilitv/[tv_亲亲].png","bilibilitv4":"bilibilitv/[tv_偷笑].png","bilibilitv5":"bilibilitv/[tv_再见].png","bilibilitv6":"bilibilitv/[tv_冷漠].png","bilibilitv7":"bilibilitv/[tv_发怒].png","bilibilitv8":"bilibilitv/[tv_发财].png","bilibilitv9":"bilibilitv/[tv_可爱].png","bilibilitv10":"bilibilitv/[tv_吐血].png","bilibilitv11":"bilibilitv/[tv_呆].png","bilibilitv12":"bilibilitv/[tv_呕吐].png","bilibilitv13":"bilibilitv/[tv_困].png","bilibilitv14":"bilibilitv/[tv_坏笑].png","bilibilitv15":"bilibilitv/[tv_大佬].png","bilibilitv16":"bilibilitv/[tv_大哭].png","bilibilitv17":"bilibilitv/[tv_委屈].png","bilibilitv18":"bilibilitv/[tv_害羞].png","bilibilitv19":"bilibilitv/[tv_尴尬].png","bilibilitv20":"bilibilitv/[tv_微笑].png","bilibilitv21":"bilibilitv/[tv_思考].png","bilibilitv22":"bilibilitv/[tv_惊吓].png","bilibilitv23":"bilibilitv/[tv_打脸].png","bilibilitv24":"bilibilitv/[tv_抓狂].png","bilibilitv25":"bilibilitv/[tv_抠鼻].png","bilibilitv26":"bilibilitv/[tv_斜眼笑].png","bilibilitv27":"bilibilitv/[tv_无奈].png","bilibilitv28":"bilibilitv/[tv_晕].png","bilibilitv29":"bilibilitv/[tv_流汗].png","bilibilitv30":"bilibilitv/[tv_流泪].png","bilibilitv31":"bilibilitv/[tv_流鼻血].png","bilibilitv32":"bilibilitv/[tv_点赞].png","bilibilitv33":"bilibilitv/[tv_生气].png","bilibilitv34":"bilibilitv/[tv_生病].png","bilibilitv35":"bilibilitv/[tv_疑问].png","bilibilitv36":"bilibilitv/[tv_白眼].png","bilibilitv37":"bilibilitv/[tv_皱眉].png","bilibilitv38":"bilibilitv/[tv_目瞪口呆].png","bilibilitv39":"bilibilitv/[tv_睡着].png","bilibilitv40":"bilibilitv/[tv_笑哭].png","bilibilitv41":"bilibilitv/[tv_腼腆].png","bilibilitv42":"bilibilitv/[tv_色].png","bilibilitv43":"bilibilitv/[tv_调侃].png","bilibilitv44":"bilibilitv/[tv_调皮].png","bilibilitv45":"bilibilitv/[tv_鄙视].png","bilibilitv46":"bilibilitv/[tv_闭嘴].png","bilibilitv47":"bilibilitv/[tv_难过].png","bilibilitv48":"bilibilitv/[tv_馋].png","bilibilitv49":"bilibilitv/[tv_鬼脸].png","bilibilitv50":"bilibilitv/[tv_黑人问号].png","bilibilitv51":"bilibilitv/[tv_鼓掌].png","bilibili22332":"bilibili2233/[2233娘_卖萌].png","bilibili22333":"bilibili2233/[2233娘_吃惊].png","bilibili22334":"bilibili2233/[2233娘_吐魂].png","bilibili22335":"bilibili2233/[2233娘_喝水].png","bilibili22336":"bilibili2233/[2233娘_困惑].png","bilibili22337":"bilibili2233/[2233娘_大哭].png","bilibili22338":"bilibili2233/[2233娘_大笑].png","bilibili22339":"bilibili2233/[2233娘_委屈].png","bilibili223310":"bilibili2233/[2233娘_怒].png","bilibili223311":"bilibili2233/[2233娘_无言].png","bilibili223312":"bilibili2233/[2233娘_汗].png","bilibili223313":"bilibili2233/[2233娘_疑问].png","bilibili223314":"bilibili2233/[2233娘_第一].png","bilibili223315":"bilibili2233/[2233娘_耶].png","bilibili223316":"bilibili2233/[2233娘_郁闷].png","Heybox1":"Heybox/expression_cube.png","Heybox2":"Heybox/expression_cube_bingbujiandan.png","Heybox3":"Heybox/expression_cube_bizui.png","Heybox4":"Heybox/expression_cube_cangsang.png","Heybox5":"Heybox/expression_cube_dalian.png","Heybox6":"Heybox/expression_cube_doge.png","Heybox7":"Heybox/expression_cube_gandong.png","Heybox8":"Heybox/expression_cube_guai.png","Heybox9":"Heybox/expression_cube_gugu.png","Heybox10":"Heybox/expression_cube_han.png","Heybox11":"Heybox/expression_cube_hbi.png","Heybox12":"Heybox/expression_cube_heirenwenhao.png","Heybox13":"Heybox/expression_cube_huaji.png","Heybox14":"Heybox/expression_cube_jiayou.png","Heybox15":"Heybox/expression_cube_jingya.png","Heybox16":"Heybox/expression_cube_kaixin.png","Heybox17":"Heybox/expression_cube_ku.png","Heybox18":"Heybox/expression_cube_kun.png","Heybox19":"Heybox/expression_cube_kuqi.png","Heybox20":"Heybox/expression_cube_nu.png","Heybox21":"Heybox/expression_cube_penshui.png","Heybox22":"Heybox/expression_cube_qiliang.png","Heybox23":"Heybox/expression_cube_shengqi.png","Heybox24":"Heybox/expression_cube_shuijiao.png","Heybox25":"Heybox/expression_cube_tanqi.png","Heybox26":"Heybox/expression_cube_tanshou.png","Heybox27":"Heybox/expression_cube_tu.png","Heybox28":"Heybox/expression_cube_wa.png","Heybox29":"Heybox/expression_cube_weiqu.png","Heybox30":"Heybox/expression_cube_weixiao.png","Heybox31":"Heybox/expression_cube_wulianku.png","Heybox32":"Heybox/expression_cube_xia.png","Heybox33":"Heybox/expression_cube_xiaocry.png","Heybox34":"Heybox/expression_cube_xihuan.png","Heybox35":"Heybox/expression_cube_xuexi.png","Heybox36":"Heybox/expression_cube_yun.png","Heybox37":"Heybox/expression_cube_zan.png","Heybox38":"Heybox/expression_heyboxgirl.png","Heybox39":"Heybox/expression_heyboxgirl_v2.png","Heybox40":"Heybox/expression_heygirl.png","Heybox41":"Heybox/expression_heygirl_aidao.png","Heybox42":"Heybox/expression_heygirl_baipiaoguai.png","Heybox43":"Heybox/expression_heygirl_chi.png","Heybox44":"Heybox/expression_heygirl_chigua.png","Heybox45":"Heybox/expression_heygirl_eihei.png","Heybox46":"Heybox/expression_heygirl_haha.png","Heybox47":"Heybox/expression_heygirl_haixiu.png","Heybox48":"Heybox/expression_heygirl_henaicha.png","Heybox49":"Heybox/expression_heygirl_huaji.png","Heybox50":"Heybox/expression_heygirl_jing.png","Heybox51":"Heybox/expression_heygirl_jixialai.png","Heybox52":"Heybox/expression_heygirl_kaikele.png","Heybox53":"Heybox/expression_heygirl_ku.png","Heybox54":"Heybox/expression_heygirl_kujiuruhou.png","Heybox55":"Heybox/expression_heygirl_nielian.png","Heybox56":"Heybox/expression_heygirl_qiaokaixin.png","Heybox57":"Heybox/expression_heygirl_qiehua.png","Heybox58":"Heybox/expression_heygirl_rua.png","Heybox59":"Heybox/expression_heygirl_toukan.png","Heybox60":"Heybox/expression_heygirl_tu.png","Heybox61":"Heybox/expression_heygirl_wuyu.png","Heybox62":"Heybox/expression_heygirl_xihuan.png","Heybox63":"Heybox/expression_heygirl_yiwen.png","Heybox64":"Heybox/expression_heygirl_zhe.png","Heybox65":"Heybox/expression_heziji_1.png","Heybox66":"Heybox/expression_heziji_10.png","Heybox67":"Heybox/expression_heziji_11.png","Heybox68":"Heybox/expression_heziji_12.png","Heybox69":"Heybox/expression_heziji_13.png","Heybox70":"Heybox/expression_heziji_14.png","Heybox71":"Heybox/expression_heziji_15.png","Heybox72":"Heybox/expression_heziji_16.png","Heybox73":"Heybox/expression_heziji_17.png","Heybox74":"Heybox/expression_heziji_18.png","Heybox75":"Heybox/expression_heziji_19.png","Heybox76":"Heybox/expression_heziji_2.png","Heybox77":"Heybox/expression_heziji_20.png","Heybox78":"Heybox/expression_heziji_21.png","Heybox79":"Heybox/expression_heziji_22.png","Heybox80":"Heybox/expression_heziji_23.png","Heybox81":"Heybox/expression_heziji_24.png","Heybox82":"Heybox/expression_heziji_25.png","Heybox83":"Heybox/expression_heziji_26.png","Heybox84":"Heybox/expression_heziji_27.png","Heybox85":"Heybox/expression_heziji_28.png","Heybox86":"Heybox/expression_heziji_29.png","Heybox87":"Heybox/expression_heziji_3.png","Heybox88":"Heybox/expression_heziji_30.png","Heybox89":"Heybox/expression_heziji_31.png","Heybox90":"Heybox/expression_heziji_32.png","Heybox91":"Heybox/expression_heziji_4.png","Heybox92":"Heybox/expression_heziji_5.png","Heybox93":"Heybox/expression_heziji_6.png","Heybox94":"Heybox/expression_heziji_7.png","Heybox95":"Heybox/expression_heziji_8.png","Heybox96":"Heybox/expression_heziji_9.png","Sweetie-Bunny1":"Sweetie-Bunny/12311678.png","Sweetie-Bunny2":"Sweetie-Bunny/12311679.png","Sweetie-Bunny3":"Sweetie-Bunny/12311680.png","Sweetie-Bunny4":"Sweetie-Bunny/12311681.png","Sweetie-Bunny5":"Sweetie-Bunny/12311682.png","Sweetie-Bunny6":"Sweetie-Bunny/12311683.png","Sweetie-Bunny7":"Sweetie-Bunny/12311684.png","Sweetie-Bunny8":"Sweetie-Bunny/12311685.png","Sweetie-Bunny9":"Sweetie-Bunny/12311686.png","Sweetie-Bunny10":"Sweetie-Bunny/12311687.png","Sweetie-Bunny11":"Sweetie-Bunny/12311688.png","Sweetie-Bunny12":"Sweetie-Bunny/12311689.png","Sweetie-Bunny13":"Sweetie-Bunny/12311690.png","Sweetie-Bunny14":"Sweetie-Bunny/12311691.png","Sweetie-Bunny15":"Sweetie-Bunny/12311692.png","Sweetie-Bunny16":"Sweetie-Bunny/12311693.png","Sweetie-Bunny17":"Sweetie-Bunny/12311694.png","Sweetie-Bunny18":"Sweetie-Bunny/12311695.png","Sweetie-Bunny19":"Sweetie-Bunny/12311696.png","Sweetie-Bunny20":"Sweetie-Bunny/12311697.png","Sweetie-Bunny21":"Sweetie-Bunny/12311698.png","Sweetie-Bunny22":"Sweetie-Bunny/12311699.png","Sweetie-Bunny23":"Sweetie-Bunny/12311700.png","Sweetie-Bunny24":"Sweetie-Bunny/12311701.png","Sweetie-Bunny25":"Sweetie-Bunny/12311702.png","Sweetie-Bunny26":"Sweetie-Bunny/12311703.png","Sweetie-Bunny27":"Sweetie-Bunny/12311704.png","Sweetie-Bunny28":"Sweetie-Bunny/12311705.png","Sweetie-Bunny29":"Sweetie-Bunny/12311706.png","Sweetie-Bunny30":"Sweetie-Bunny/12311707.png","Sweetie-Bunny31":"Sweetie-Bunny/12311708.png","Sweetie-Bunny32":"Sweetie-Bunny/12311709.png","Sweetie-Bunny33":"Sweetie-Bunny/12311710.png","Sweetie-Bunny34":"Sweetie-Bunny/12311711.png","Sweetie-Bunny35":"Sweetie-Bunny/12311712.png","Sweetie-Bunny36":"Sweetie-Bunny/12311713.png","Sweetie-Bunny37":"Sweetie-Bunny/12311714.png","Sweetie-Bunny38":"Sweetie-Bunny/12311715.png","Sweetie-Bunny39":"Sweetie-Bunny/12311716.png","Sweetie-Bunny40":"Sweetie-Bunny/12311717.png","Snow-Miku1":"Snow-Miku/3583066@2x.png","Snow-Miku2":"Snow-Miku/3583067@2x.png","Snow-Miku3":"Snow-Miku/3583068@2x.png","Snow-Miku4":"Snow-Miku/3583069@2x.png","Snow-Miku5":"Snow-Miku/3583070@2x.png","Snow-Miku6":"Snow-Miku/3583071@2x.png","Snow-Miku7":"Snow-Miku/3583072@2x.png","Snow-Miku8":"Snow-Miku/3583073@2x.png","Snow-Miku9":"Snow-Miku/3583074@2x.png","Snow-Miku10":"Snow-Miku/3583075@2x.png","Snow-Miku11":"Snow-Miku/3583076@2x.png","Snow-Miku12":"Snow-Miku/3583077@2x.png","Snow-Miku13":"Snow-Miku/3583078@2x.png","Snow-Miku14":"Snow-Miku/3583079@2x.png","Snow-Miku15":"Snow-Miku/3583080@2x.png","Snow-Miku16":"Snow-Miku/3583081@2x.png","Snow-Miku17":"Snow-Miku/3583082@2x.png","Snow-Miku18":"Snow-Miku/3583083@2x.png","Snow-Miku19":"Snow-Miku/3583084@2x.png","Snow-Miku20":"Snow-Miku/3583085@2x.png","Snow-Miku21":"Snow-Miku/3583086@2x.png","Snow-Miku22":"Snow-Miku/3583087@2x.png","Snow-Miku23":"Snow-Miku/3583088@2x.png","Snow-Miku24":"Snow-Miku/3583089@2x.png","Snow-Miku25":"Snow-Miku/3583090@2x.png","Snow-Miku26":"Snow-Miku/3583091@2x.png","Snow-Miku27":"Snow-Miku/3583092@2x.png","Snow-Miku28":"Snow-Miku/3583093@2x.png","Snow-Miku29":"Snow-Miku/3583094@2x.png","Snow-Miku30":"Snow-Miku/3583095@2x.png","Snow-Miku31":"Snow-Miku/3583096@2x.png","Snow-Miku32":"Snow-Miku/3583097@2x.png","Snow-Miku33":"Snow-Miku/3583098@2x.png","Snow-Miku34":"Snow-Miku/3583099@2x.png","Snow-Miku35":"Snow-Miku/3583100@2x.png","Snow-Miku36":"Snow-Miku/3583101@2x.png","Snow-Miku37":"Snow-Miku/3583102@2x.png","Snow-Miku38":"Snow-Miku/3583103@2x.png","Snow-Miku39":"Snow-Miku/3583104@2x.png","Snow-Miku40":"Snow-Miku/3583105@2x.png","Mafumafu1":"Mafumafu/199749454.png","Mafumafu2":"Mafumafu/199749455.png","Mafumafu3":"Mafumafu/199749456.png","Mafumafu4":"Mafumafu/199749457.png","Mafumafu5":"Mafumafu/199749458.png","Mafumafu6":"Mafumafu/199749459.png","Mafumafu7":"Mafumafu/199749460.png","Mafumafu8":"Mafumafu/199749461.png","Mafumafu9":"Mafumafu/199749462.png","Mafumafu10":"Mafumafu/199749463.png","Mafumafu11":"Mafumafu/199749464.png","Mafumafu12":"Mafumafu/199749465.png","Mafumafu13":"Mafumafu/199749466.png","Mafumafu14":"Mafumafu/199749467.png","Mafumafu15":"Mafumafu/199749468.png","Mafumafu16":"Mafumafu/199749469.png","Mafumafu17":"Mafumafu/199749470.png","Mafumafu18":"Mafumafu/199749471.png","Mafumafu19":"Mafumafu/199749472.png","Mafumafu20":"Mafumafu/199749473.png","Mafumafu21":"Mafumafu/199749474.png","Mafumafu22":"Mafumafu/199749475.png","Mafumafu23":"Mafumafu/199749476.png","Mafumafu24":"Mafumafu/199749477.png"},
+      enableQQ: true,
+      path: window.location.pathname,
+    }
+
+    if (true) { 
+      initData.requiredFields= ('nick,mail'.split(','))
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign({}, initData, otherData)
+    }
+    
+    const valine = new Valine(initData)
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else $.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.querySelector('#vcomment'),loadValine)
+  else setTimeout(() => loadValine(), 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script></div></body></html>
