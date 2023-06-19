@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Redis入坑笔记 | Raykie’s blog</title><meta name="keywords" content="redis"><meta name="author" content="Raykie"><meta name="copyright" content="Raykie"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="Redis入坑笔记（道）  什么是Redis  Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, list">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Redis入坑笔记 | Raykie’s blog</title><meta name="author" content="Raykie"><meta name="copyright" content="Raykie"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Redis入坑笔记（道）  什么是Redis  Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, list">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis入坑笔记">
 <meta property="og:url" content="http://example.com/2020/11/23/Redis%E5%85%A5%E5%9D%91%E7%AC%94%E8%AE%B0/index.html">
@@ -11,24 +11,31 @@
 <meta property="article:author" content="Raykie">
 <meta property="article:tag" content="redis">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://download.logo.wine/logo/Redis/Redis-Logo.wine.png"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/GayHub1/images/img/favicon.png"><link rel="canonical" href="http://example.com/2020/11/23/Redis%E5%85%A5%E5%9D%91%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://download.logo.wine/logo/Redis/Redis-Logo.wine.png"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/GayHub1/images/img/favicon.png"><link rel="canonical" href="http://example.com/2020/11/23/Redis%E5%85%A5%E5%9D%91%E7%AC%94%E8%AE%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4bf55317870f35ca7fa52050e6e77f2c";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
   localSearch: undefined,
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
   copy: {
     success: '复制成功',
     error: '复制错误',
     noSupport: '浏览器不支持'
   },
   relativeDate: {
-    homepage: true,
+    homepage: false,
     post: true
   },
-  runtime: '',
-  date_suffix: {
+  runtime: '天',
+  dateSuffix: {
     just: '刚刚',
     min: '分钟前',
     hour: '小时前',
@@ -36,45 +43,24 @@
     month: '个月前'
   },
   copyright: undefined,
-  ClickShowText: undefined,
-  lightbox: 'fancybox',
+  lightbox: 'mediumZoom',
   Snackbar: undefined,
-  justifiedGallery: {
-    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
   },
   isPhotoFigcaption: false,
-  islazyload: true,
-  isanchor: false
-};
-
-var saveToLocal = {
-  set: function setWithExpiry(key, value, ttl) {
-    const now = new Date()
-    const expiryDay = ttl * 86400000
-    const item = {
-      value: value,
-      expiry: now.getTime() + expiryDay,
-    }
-    localStorage.setItem(key, JSON.stringify(item))
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
   },
-
-  get: function getWithExpiry(key) {
-    const itemStr = localStorage.getItem(key)
-
-    if (!itemStr) {
-      return undefined
-    }
-    const item = JSON.parse(itemStr)
-    const now = new Date()
-
-    if (now.getTime() > item.expiry) {
-      localStorage.removeItem(key)
-      return undefined
-    }
-    return item.value
-  }
-}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Redis入坑笔记',
   isPost: true,
   isHome: false,
   isHighlightShrink: false,
@@ -92,60 +78,99 @@ var saveToLocal = {
   #post-meta time {
     display: inline !important
   }
-</style></noscript><script>(function () {  window.activateDarkMode = function () {
-    document.documentElement.setAttribute('data-theme', 'dark')
-    if (document.querySelector('meta[name="theme-color"]') !== null) {
-      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-    }
-  }
-  window.activateLightMode = function () {
-    document.documentElement.setAttribute('data-theme', 'light')
-   if (document.querySelector('meta[name="theme-color"]') !== null) {
-      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-    }
-  }
-  const autoChangeMode = 'false'
-  const t = saveToLocal.get('theme')
-  if (autoChangeMode === '1') {
-    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
-    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
-    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-    if (t === undefined) {
-      if (isLightMode) activateLightMode()
-      else if (isDarkMode) activateDarkMode()
-      else if (isNotSpecified || hasNoSupport) {
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
         const now = new Date()
-        const hour = now.getHours()
-        const isNight = hour <= 6 || hour >= 18
-        isNight ? activateDarkMode() : activateLightMode()
-      }
-      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
-        if (saveToLocal.get('theme') === undefined) {
-          e.matches ? activateDarkMode() : activateLightMode()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
         }
-      })
-    } else if (t === 'light') activateLightMode()
-    else activateDarkMode()
-  } else if (autoChangeMode === '2') {
-    const now = new Date()
-    const hour = now.getHours()
-    const isNight = hour <= 6 || hour >= 18
-    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
-    else if (t === 'light') activateLightMode()
-    else activateDarkMode()
-  } else {
-    if (t === 'dark') activateDarkMode()
-    else if (t === 'light') activateLightMode()
-  }const asideStatus = saveToLocal.get('aside-status')
-if (asideStatus !== undefined) {
-   if (asideStatus === 'hide') {
-     document.documentElement.classList.add('hide-aside')
-   } else {
-     document.documentElement.classList.remove('hide-aside')
-   }
-}})()</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/GayHub1/images/flush.css"><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/qiandao/"><i class="fa-fw fas fa-calendar-check"></i><span> 签到</span></a></li><li><a class="site-page" href="/oneDrive"><i class="fa-fw fa fa-file"></i><span> 个人网盘</span></a></li><li><a class="site-page" href="/pyadmin"><i class="fa-fw fas fa-database"></i><span> MyAdmin</span></a></li><li><a class="site-page" href="/rsshub"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page" href="/ttrss"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li></ul></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://download.logo.wine/logo/Redis/Redis-Logo.wine.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Raykie’s blog</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/qiandao/"><i class="fa-fw fas fa-calendar-check"></i><span> 签到</span></a></li><li><a class="site-page" href="/oneDrive"><i class="fa-fw fa fa-file"></i><span> 个人网盘</span></a></li><li><a class="site-page" href="/pyadmin"><i class="fa-fw fas fa-database"></i><span> MyAdmin</span></a></li><li><a class="site-page" href="/rsshub"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page" href="/ttrss"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li></ul></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">Redis入坑笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-11-22T16:04:02.000Z" title="发表于 2020-11-23 00:04:02">2020-11-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-01-29T13:43:51.926Z" title="更新于 2021-01-29 21:43:51">2021-01-29</time></span></div><div class="meta-secondline"> </div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="redis入坑笔记道"><a class="markdownIt-Anchor" href="#redis入坑笔记道"></a> Redis入坑笔记（道）</h1>
-<h2 id="什么是redis查看源图像"><a class="markdownIt-Anchor" href="#什么是redis查看源图像"></a> 什么是Redis<img src= "/img/loading.gif" data-lazy-src="https://download.logo.wine/logo/Redis/Redis-Logo.wine.png" alt="查看源图像" /></h2>
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/rsshub"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page child" href="/ttrss"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://download.logo.wine/logo/Redis/Redis-Logo.wine.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Raykie’s blog"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg"/><span class="site-name">Raykie’s blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/rsshub"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page child" href="/ttrss"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Redis入坑笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-11-22T16:04:02.000Z" title="发表于 2020-11-23 00:04:02">2020-11-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-01-29T13:43:51.926Z" title="更新于 2021-01-29 21:43:51">2021-01-29</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2020/11/23/Redis%E5%85%A5%E5%9D%91%E7%AC%94%E8%AE%B0/" data-flag-title="Redis入坑笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="redis入坑笔记道"><a class="markdownIt-Anchor" href="#redis入坑笔记道"></a> Redis入坑笔记（道）</h1>
+<h2 id="什么是redis查看源图像"><a class="markdownIt-Anchor" href="#什么是redis查看源图像"></a> 什么是Redis<img src="https://download.logo.wine/logo/Redis/Redis-Logo.wine.png" alt="查看源图像" /></h2>
 <blockquote>
 <p>Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes with radius queries and streams. Redis has built-in replication, Lua scripting, LRU eviction, transactions and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster</p>
 </blockquote>
@@ -183,15 +208,15 @@ if (asideStatus !== undefined) {
 </ul>
 <h2 id="数据结构"><a class="markdownIt-Anchor" href="#数据结构"></a> 数据结构</h2>
 <p>Redis底层数据结构一共有 6 种，分别是简单动态字符串、双向链表、压缩列表、哈希表、跳表和整数数组。利用各个数据结构不同的特性，在不同的场景下，动态组成了了各种数据类型，对应关系如下图所示：</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210113220722832.png" alt="image-20210113220722832" /></p>
+<p><img src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210113220722832.png" alt="image-20210113220722832" /></p>
 <p>Redis作为一个典型的键值对数据库，我们先来看看它的键值对都是如何保存的。<br />
 首先Redis服务器中每个服务器都是存在RedisService中长度为dbnum（默认为16）的RedisDB数组中，所以redis默认拥有16个数据库的。<br />
 RedisDB数组中每个数据库使用Redisdb结构来表示，而RedisDB数据库结构下的dict字典就保存该数据库所有的键值对信息；</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210113223224391.png" alt="image-20210113223224391" /></p>
+<p><img src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210113223224391.png" alt="image-20210113223224391" /></p>
 <h3 id="dict-字典哈希表"><a class="markdownIt-Anchor" href="#dict-字典哈希表"></a> Dict 字典/哈希表</h3>
 <p>dict字典的底层是使用哈希表实现的，通过这哈希表可以高效的完成键值的关联与对键值对的管理。</p>
 <p>而哈希表就是多个哈希桶构成的数组。每个键值对根据键的哈希值存储在相应的哈希桶中，存储在相同哈希桶的键值对的哈希节点通过链地址法连接。因而每个键值对节点都有指向对应key，val，以及下一个节点的指针。</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210118105401587.png" alt="image-20210118105401587" /></p>
+<p><img src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210118105401587.png" alt="image-20210118105401587" /></p>
 <p>那么作为一个哈希表，重点往往在散列函数，哈希冲突，扩容机制这几个点。</p>
 <p><strong>散列函数</strong>的作用在于计算哈希key最终存储在哪个哈希槽上，因此散列函数的算法除了效率还需要尽可能的将每个节点均匀地分散到哈希槽上，让散列尽可能的均匀。</p>
 <p>redis在字典中具体使用散列的算法是 Murmurhash2。Murmurhash2是一种非加密hash算法，相对其他哈希散列算法。</p>
@@ -227,7 +252,7 @@ RedisDB数组中每个数据库使用Redisdb结构来表示，而RedisDB数据�
 <h3 id="skiplist-跳跃表"><a class="markdownIt-Anchor" href="#skiplist-跳跃表"></a> skiplist 跳跃表</h3>
 <p>​	Redis使用跳跃表(skiplist)作为有序集合键的底层实现之一。skiplist本质上也是一种查找结构，用于解决算法中的查找问题（Searching）。一般查找问题的解法分为两个大类：一个是基于各种平衡树，一个是基于哈希表。但skiplist却比较特殊，它没法归属到这两大类里面。因为他是基于链表实现的。算是分治查找使用链表，在牺牲空间复杂度情况下产生的结构。</p>
 <p>​	传统意义的单链表是一个线性结构。像有序的链表中大部分操作例如：插入，查找 都是需要一个O(n)的时间；</p>
-<p><img src= "/img/loading.gif" data-lazy-src="http://images.zhuoke.xyz/img/20150530162529554" alt="img" /></p>
+<p><img src="http://images.zhuoke.xyz/img/20150530162529554" alt="img" /></p>
 <p>​	先来看看skiplist比较基础的结构图，使用上图中所看到的的跳跃表。由于我们能够先通过每一个节点的最上层的指针先进行查找，将查找的值与目前节点的后继节点的值进行对比，如果大于则继续与后继指针对比，否则就下沉一层然后继续循环，直到找到该值在跳跃表的位置。（最后一定下沉到最下层）这样子就能跳过大部分的节点。然后再缩减范围，对以下一层的指针进行查找，若仍未找到，缩小范围继续查找。通过在每个节点增加多个后继指针就能够大大降低降低查找所需时间。原本O（n）也降低到O(logn);</p>
 <p>基于redis是一种内存数据库，所以像使用B+tree实现索引这一类的数据结构只使用于存储在磁盘的mysql之类的数据库。基于哈希表又不满足数据库多样的需求，Redis 中的有序集合支持的核心操作主要有下面这几个：</p>
 <ul>
@@ -342,7 +367,7 @@ redis则采用<strong>读写分离</strong>，主从同步的方式多个实例�
 而采用一写多从，读写分离的方式可以有效的避免了多个实例之间的分布式多个实例之间的数据一致性与事务的开销。那么具体又是如何实现主从直接的数据一致呢。</p>
 <h4 id="数据同步"><a class="markdownIt-Anchor" href="#数据同步"></a> 数据同步</h4>
 <p>主要分为三大阶段：</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210125230430426.png" alt="image-20210125230430426" /></p>
+<p><img src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210125230430426.png" alt="image-20210125230430426" /></p>
 <h5 id="全量同步"><a class="markdownIt-Anchor" href="#全量同步"></a> 全量同步</h5>
 <p>首先 由从库发送<strong>replicaof</strong>命令到主库，主库通过<strong>fullresync</strong>命令返回自己的<strong>runid</strong>与offset 偏移量的确认主从关系后开始全量同步；</p>
 <p>从库给主库发送<strong>psync</strong>命令，表示要进行数据同步，主库根据这个命令的参数来启动复制。psync命令包含了主库的runlD和复制进度offset两个参数。</p>
@@ -376,7 +401,7 @@ redis则采用<strong>读写分离</strong>，主从同步的方式多个实例�
 <li>
 <p>No 由操作系统控制缓冲区写回到磁盘文件</p>
 <p>三种策略对比优缺点</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210121235326332.png" alt="image-20210121235326332" /></p>
+<p><img src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210121235326332.png" alt="image-20210121235326332" /></p>
 </li>
 </ul>
 <p>三种策略由上到下性能递增，而可靠性却相反在递减。具体选择就根据应用场景了。redis默认选项是一个折中选择了Everysec。</p>
@@ -394,7 +419,7 @@ AOF具体的文件的载入的流程如下：</p>
 ​	AOF会保存redis执行成功的每一条写命令。当多条命令都是对同一个对象进行数据写操作时，往往这多条命令会存在大量冗余的数据；AOF重写是比较有意思的一个点，他重写并不是对原先aof文件内容使用压缩算法进行精简，而是<strong>直接根 据数据库中键值对的最新数据生成对应的写命令</strong>；使原本对应该键值对的多条写操作合并成一条；大大的压缩了aof文件的大小；<br />
 ​	但是aof重写机制与aof原本机制最大不同在于，它并没有相关的配置项来控制落盘频率，每一次重写所有数据都是直接写入硬盘因而存在大量的读写操作；因为aof重写只有在aof文件比较大的时候才会进行重写，重写的频率并不频繁，所以可以使用较大的开销，直接开启了新的<strong>子进程</strong>对<strong>数据副本</strong>进行重写；</p>
 <p>对数据副本进行重写却令重写期间的数据并没有拷贝到数据副本，导致数据库数据与aof文件数据不一致。因此redis在重写期间设置了aof重写的缓冲区，在重写期间，每一条写命令运行成功后除了需要加入原本的aof缓冲区外还需要追加到aof重写的缓冲区；那么整个aof重写的流程如下：</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210123203057130.png" alt="image-20210123203057130" /></p>
+<p><img src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210123203057130.png" alt="image-20210123203057130" /></p>
 <p>主进程</p>
 <ul>
 <li>
@@ -434,54 +459,100 @@ AOF具体的文件的载入的流程如下：</p>
 <p>最终配置文件中save的配置会被加载到redisServer中的 saveparams数组中；同时redisServer还保存了上次执行完rdb之后成功修改次数的计数器<strong>dirty</strong>与上次执行rdb的unix时间戳lastsave属性；</p>
 <p>​	周期性函数serverCron每一执行就会根据这三个值来判断是否执行bgsave函数；</p>
 <p>​	bgsave子进程与主进程之间共享所有内存数据；当主进程需要修改数据时就会使用操作系统提供COW(copy on write)写时复制技术；子进程读取复制出来的旧数据；主进程直接修改原来的数据；子进程与主进程之间数据避免影响；</p>
-<p>​	<img src= "/img/loading.gif" data-lazy-src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210124213009859.png" alt="image-20210124213009859" /></p>
+<p>​	<img src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210124213009859.png" alt="image-20210124213009859" /></p>
 <p>那么对于平时redis我们应该用哪种方式来持久化呢？</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://pic1.zhimg.com/80/v2-005677bf0c9c4937bddce3794f387a77_1440w.jpg?source=1940ef5c" alt="img" /></p>
+<p><img src="https://pic1.zhimg.com/80/v2-005677bf0c9c4937bddce3794f387a77_1440w.jpg?source=1940ef5c" alt="img" /></p>
 <p>小孩子才做选择题~</p>
 <p>平时日常可混合使用aof与rdb，使用rdb做全量备份，在两次rdb之间使用aof做增量备份；</p>
 <p>这样一来，快照不用很频繁地执行，这就避免了频繁fork对主线程的影响。而且，AOF日志也只用记录两次快照间的操作，也就是说，不需要记录所有操作了，因此就不会出现文件过<br />
 大的情况了，也可以避免重写开销。</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210124215636329.png" alt="image-20210124215636329" /></p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Raykie</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/11/23/Redis%E5%85%A5%E5%9D%91%E7%AC%94%E8%AE%B0/">http://example.com/2020/11/23/Redis%E5%85%A5%E5%9D%91%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Raykie’s blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/redis/">redis</a></div><div class="post_share"><div class="social-share" data-image="https://download.logo.wine/logo/Redis/Redis-Logo.wine.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/11/25/screw%E4%B8%80%E9%94%AE%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E6%A1%A3/"><img class="prev-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">screw一键自动生成数据库文档</div></div></a></div><div class="next-post pull-right"><a href="/2020/08/15/2020-08-15-Docker%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/"><img class="next-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Docker学习实践记录</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Raykie</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/GayHub1"><i class="fab fa-github"></i><span>Follow Me</span></a></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的个人博客</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#redis%E5%85%A5%E5%9D%91%E7%AC%94%E8%AE%B0%E9%81%93"><span class="toc-number">1.</span> <span class="toc-text"> Redis入坑笔记（道）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFredis%E6%9F%A5%E7%9C%8B%E6%BA%90%E5%9B%BE%E5%83%8F"><span class="toc-number">1.1.</span> <span class="toc-text"> 什么是Redis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text"> Redis安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#windows%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.1.</span> <span class="toc-text"> Windows安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linux%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.2.</span> <span class="toc-text"> Linux安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#docker%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.2.1.</span> <span class="toc-text"> docker安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.2.2.</span> <span class="toc-text"> 编译安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8redis%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 使用redis客户端连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.3.</span> <span class="toc-text"> 常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.</span> <span class="toc-text"> 数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dict-%E5%AD%97%E5%85%B8%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-number">1.4.1.</span> <span class="toc-text"> Dict 字典&#x2F;哈希表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E9%9B%86%E5%90%88"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 整数集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 双向链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8"><span class="toc-number">1.4.4.</span> <span class="toc-text"> 压缩列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#skiplist-%E8%B7%B3%E8%B7%83%E8%A1%A8"><span class="toc-number">1.4.5.</span> <span class="toc-text"> skiplist 跳跃表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sds-%E7%AE%80%E5%8D%95%E5%8A%A8%E6%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.4.6.</span> <span class="toc-text"> SDS 简单动态字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis-model"><span class="toc-number">1.4.7.</span> <span class="toc-text"> Redis Model</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.5.</span> <span class="toc-text"> 数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#string"><span class="toc-number">1.5.1.</span> <span class="toc-text"> String</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4"><span class="toc-number">1.5.1.1.</span> <span class="toc-text"> 命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hash"><span class="toc-number">1.5.2.</span> <span class="toc-text"> Hash</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4-2"><span class="toc-number">1.5.2.1.</span> <span class="toc-text"> 命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list"><span class="toc-number">1.5.3.</span> <span class="toc-text"> List</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4-3"><span class="toc-number">1.5.3.1.</span> <span class="toc-text"> 命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#brpop"><span class="toc-number">1.5.4.</span> <span class="toc-text"> BRPOP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-number">1.5.5.</span> <span class="toc-text"> Set</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4-4"><span class="toc-number">1.5.5.1.</span> <span class="toc-text"> 命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sorted-sets"><span class="toc-number">1.5.6.</span> <span class="toc-text"> Sorted Sets</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4-5"><span class="toc-number">1.5.6.1.</span> <span class="toc-text"> 命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hyperloglog"><span class="toc-number">1.5.7.</span> <span class="toc-text"> HyperLogLog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#geo"><span class="toc-number">1.5.8.</span> <span class="toc-text"> GEO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pubsub"><span class="toc-number">1.5.9.</span> <span class="toc-text"> Pub&#x2F;Sub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stream"><span class="toc-number">1.5.10.</span> <span class="toc-text"> Stream</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E5%8F%AF%E7%94%A8%E5%8F%AF%E9%9D%A0"><span class="toc-number">1.6.</span> <span class="toc-text"> 高可用，可靠</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 复制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5"><span class="toc-number">1.6.1.1.</span> <span class="toc-text"> 数据同步</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%A8%E9%87%8F%E5%90%8C%E6%AD%A5"><span class="toc-number">1.6.1.1.1.</span> <span class="toc-text"> 全量同步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E4%BC%A0%E6%92%AD"><span class="toc-number">1.6.1.1.2.</span> <span class="toc-text"> 命令传播</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E9%87%8D%E5%90%8C%E6%AD%A5"><span class="toc-number">1.6.1.1.3.</span> <span class="toc-text"> 部分重同步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%A8%E5%85%B5"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 哨兵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#aof%E6%97%A5%E5%BF%97"><span class="toc-number">1.6.4.1.</span> <span class="toc-text"> AOF日志</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%BF%BD%E5%8A%A0"><span class="toc-number">1.6.4.1.1.</span> <span class="toc-text"> 命令追加</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E5%86%99%E5%85%A5"><span class="toc-number">1.6.4.1.2.</span> <span class="toc-text"> 文件同步写入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#aof%E6%96%87%E4%BB%B6%E8%BD%BD%E5%85%A5"><span class="toc-number">1.6.4.1.3.</span> <span class="toc-text"> AOF文件载入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#aof%E9%87%8D%E5%86%99"><span class="toc-number">1.6.4.1.4.</span> <span class="toc-text"> AOF重写</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rdb%E5%BF%AB%E7%85%A7"><span class="toc-number">1.6.4.2.</span> <span class="toc-text"> RDB快照</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/05/29/Android%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/" title="Android杂记"><img data-lazy-src="https://developer.android.google.cn/courses/images/android-for-developers.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android杂记"/></a><div class="content"><a class="title" href="/2023/05/29/Android%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/" title="Android杂记">Android杂记</a><time datetime="2023-05-28T16:00:00.000Z" title="发表于 2023-05-29 00:00:00">2023-05-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/28/RocketMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="RocketMQ学习笔记"><img data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/20230529225317.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RocketMQ学习笔记"/></a><div class="content"><a class="title" href="/2023/05/28/RocketMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="RocketMQ学习笔记">RocketMQ学习笔记</a><time datetime="2023-05-27T16:00:00.000Z" title="发表于 2023-05-28 00:00:00">2023-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/13/2021/" title="2021"><img data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2021"/></a><div class="content"><a class="title" href="/2022/02/13/2021/" title="2021">2021</a><time datetime="2022-02-12T16:02:15.000Z" title="发表于 2022-02-13 00:02:15">2022-02-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/13/%E9%BB%91%E7%BE%A4%E6%99%96%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" title="黑群晖 折腾笔记"><img data-lazy-src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/product_h_2_advanced_data_management.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="黑群晖 折腾笔记"/></a><div class="content"><a class="title" href="/2022/02/13/%E9%BB%91%E7%BE%A4%E6%99%96%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" title="黑群晖 折腾笔记">黑群晖 折腾笔记</a><time datetime="2022-02-12T16:02:15.000Z" title="发表于 2022-02-13 00:02:15">2022-02-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/01/%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E7%AC%94%E8%AE%B0/" title="凤凰架构笔记摘要"><img data-lazy-src="https://icyfenix.cn/images//logo-color.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="凤凰架构笔记摘要"/></a><div class="content"><a class="title" href="/2021/12/01/%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E7%AC%94%E8%AE%B0/" title="凤凰架构笔记摘要">凤凰架构笔记摘要</a><time datetime="2021-11-30T16:02:15.000Z" title="发表于 2021-12-01 00:02:15">2021-12-01</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2023 By Raykie</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/state/outPortal/loginPortal.action"><img class="icp-icon" src="/img/icp.png" alt="ICP"/><span>粤ICP备20058715号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>function loadValine () {
+<p><img src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210124215636329.png" alt="image-20210124215636329" /></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Raykie</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/11/23/Redis%E5%85%A5%E5%9D%91%E7%AC%94%E8%AE%B0/">http://example.com/2020/11/23/Redis%E5%85%A5%E5%9D%91%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Raykie’s blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/redis/">redis</a></div><div class="post_share"><div class="social-share" data-image="https://download.logo.wine/logo/Redis/Redis-Logo.wine.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/11/25/screw%E4%B8%80%E9%94%AE%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E6%A1%A3/" title="screw一键自动生成数据库文档"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">screw一键自动生成数据库文档</div></div></a></div><div class="next-post pull-right"><a href="/2020/08/15/2020-08-15-Docker%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/" title="Docker学习实践记录"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Docker学习实践记录</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Raykie</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/GayHub1"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#redis%E5%85%A5%E5%9D%91%E7%AC%94%E8%AE%B0%E9%81%93"><span class="toc-number">1.</span> <span class="toc-text"> Redis入坑笔记（道）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFredis%E6%9F%A5%E7%9C%8B%E6%BA%90%E5%9B%BE%E5%83%8F"><span class="toc-number">1.1.</span> <span class="toc-text"> 什么是Redis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text"> Redis安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#windows%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.1.</span> <span class="toc-text"> Windows安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linux%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.2.</span> <span class="toc-text"> Linux安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#docker%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.2.1.</span> <span class="toc-text"> docker安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.2.2.</span> <span class="toc-text"> 编译安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8redis%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 使用redis客户端连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.3.</span> <span class="toc-text"> 常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.</span> <span class="toc-text"> 数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dict-%E5%AD%97%E5%85%B8%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-number">1.4.1.</span> <span class="toc-text"> Dict 字典&#x2F;哈希表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E9%9B%86%E5%90%88"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 整数集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 双向链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E5%88%97%E8%A1%A8"><span class="toc-number">1.4.4.</span> <span class="toc-text"> 压缩列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#skiplist-%E8%B7%B3%E8%B7%83%E8%A1%A8"><span class="toc-number">1.4.5.</span> <span class="toc-text"> skiplist 跳跃表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sds-%E7%AE%80%E5%8D%95%E5%8A%A8%E6%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.4.6.</span> <span class="toc-text"> SDS 简单动态字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis-model"><span class="toc-number">1.4.7.</span> <span class="toc-text"> Redis Model</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.5.</span> <span class="toc-text"> 数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#string"><span class="toc-number">1.5.1.</span> <span class="toc-text"> String</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4"><span class="toc-number">1.5.1.1.</span> <span class="toc-text"> 命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hash"><span class="toc-number">1.5.2.</span> <span class="toc-text"> Hash</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4-2"><span class="toc-number">1.5.2.1.</span> <span class="toc-text"> 命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list"><span class="toc-number">1.5.3.</span> <span class="toc-text"> List</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4-3"><span class="toc-number">1.5.3.1.</span> <span class="toc-text"> 命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#brpop"><span class="toc-number">1.5.4.</span> <span class="toc-text"> BRPOP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-number">1.5.5.</span> <span class="toc-text"> Set</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4-4"><span class="toc-number">1.5.5.1.</span> <span class="toc-text"> 命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sorted-sets"><span class="toc-number">1.5.6.</span> <span class="toc-text"> Sorted Sets</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4-5"><span class="toc-number">1.5.6.1.</span> <span class="toc-text"> 命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hyperloglog"><span class="toc-number">1.5.7.</span> <span class="toc-text"> HyperLogLog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#geo"><span class="toc-number">1.5.8.</span> <span class="toc-text"> GEO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pubsub"><span class="toc-number">1.5.9.</span> <span class="toc-text"> Pub&#x2F;Sub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stream"><span class="toc-number">1.5.10.</span> <span class="toc-text"> Stream</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E5%8F%AF%E7%94%A8%E5%8F%AF%E9%9D%A0"><span class="toc-number">1.6.</span> <span class="toc-text"> 高可用，可靠</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 复制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5"><span class="toc-number">1.6.1.1.</span> <span class="toc-text"> 数据同步</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%A8%E9%87%8F%E5%90%8C%E6%AD%A5"><span class="toc-number">1.6.1.1.1.</span> <span class="toc-text"> 全量同步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E4%BC%A0%E6%92%AD"><span class="toc-number">1.6.1.1.2.</span> <span class="toc-text"> 命令传播</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E9%87%8D%E5%90%8C%E6%AD%A5"><span class="toc-number">1.6.1.1.3.</span> <span class="toc-text"> 部分重同步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%A8%E5%85%B5"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 哨兵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#aof%E6%97%A5%E5%BF%97"><span class="toc-number">1.6.4.1.</span> <span class="toc-text"> AOF日志</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%BF%BD%E5%8A%A0"><span class="toc-number">1.6.4.1.1.</span> <span class="toc-text"> 命令追加</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E5%86%99%E5%85%A5"><span class="toc-number">1.6.4.1.2.</span> <span class="toc-text"> 文件同步写入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#aof%E6%96%87%E4%BB%B6%E8%BD%BD%E5%85%A5"><span class="toc-number">1.6.4.1.3.</span> <span class="toc-text"> AOF文件载入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#aof%E9%87%8D%E5%86%99"><span class="toc-number">1.6.4.1.4.</span> <span class="toc-text"> AOF重写</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rdb%E5%BF%AB%E7%85%A7"><span class="toc-number">1.6.4.2.</span> <span class="toc-text"> RDB快照</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/05/29/Android%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/" title="Android杂记"><img src="https://developer.android.google.cn/courses/images/android-for-developers.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android杂记"/></a><div class="content"><a class="title" href="/2023/05/29/Android%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/" title="Android杂记">Android杂记</a><time datetime="2023-05-28T16:00:00.000Z" title="发表于 2023-05-29 00:00:00">2023-05-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/28/RocketMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="RocketMQ学习笔记"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/20230529225317.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RocketMQ学习笔记"/></a><div class="content"><a class="title" href="/2023/05/28/RocketMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="RocketMQ学习笔记">RocketMQ学习笔记</a><time datetime="2023-05-27T16:00:00.000Z" title="发表于 2023-05-28 00:00:00">2023-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/13/2021/" title="2021"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2021"/></a><div class="content"><a class="title" href="/2022/02/13/2021/" title="2021">2021</a><time datetime="2022-02-12T16:02:15.000Z" title="发表于 2022-02-13 00:02:15">2022-02-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/13/%E9%BB%91%E7%BE%A4%E6%99%96%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" title="黑群晖 折腾笔记"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/product_h_2_advanced_data_management.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="黑群晖 折腾笔记"/></a><div class="content"><a class="title" href="/2022/02/13/%E9%BB%91%E7%BE%A4%E6%99%96%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" title="黑群晖 折腾笔记">黑群晖 折腾笔记</a><time datetime="2022-02-12T16:02:15.000Z" title="发表于 2022-02-13 00:02:15">2022-02-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/01/%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E7%AC%94%E8%AE%B0/" title="凤凰架构笔记摘要"><img src="https://icyfenix.cn/images//logo-color.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="凤凰架构笔记摘要"/></a><div class="content"><a class="title" href="/2021/12/01/%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E7%AC%94%E8%AE%B0/" title="凤凰架构笔记摘要">凤凰架构笔记摘要</a><time datetime="2021-11-30T16:02:15.000Z" title="发表于 2021-12-01 00:02:15">2021-12-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2023 By Raykie</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><img class="icp-icon" src="/img/icp.png"><span>粤ICP备2023064499号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>function loadValine () {
   function initValine () {
-    let initData = {
+    const valine = new Valine(Object.assign({
       el: '#vcomment',
       appId: 'hxN4EMnnWWFNeyk4xbNxQJT7-gzGzoHsz',
       appKey: 'lewYKS5k1rb7D5sVgI4QeTAx',
-      placeholder: 'Please leave your footprints',
       avatar: 'monsterid',
-      meta: 'nick,mail,link'.split(','),
-      pageSize: '10',
-      lang: 'zh-CN',
-      recordIP: false,
-      serverURLs: '',
-      emojiCDN: 'https://cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/',
-      emojiMaps: {"bilibilitv2":"bilibilitv/[tv_doge].png","bilibilitv3":"bilibilitv/[tv_亲亲].png","bilibilitv4":"bilibilitv/[tv_偷笑].png","bilibilitv5":"bilibilitv/[tv_再见].png","bilibilitv6":"bilibilitv/[tv_冷漠].png","bilibilitv7":"bilibilitv/[tv_发怒].png","bilibilitv8":"bilibilitv/[tv_发财].png","bilibilitv9":"bilibilitv/[tv_可爱].png","bilibilitv10":"bilibilitv/[tv_吐血].png","bilibilitv11":"bilibilitv/[tv_呆].png","bilibilitv12":"bilibilitv/[tv_呕吐].png","bilibilitv13":"bilibilitv/[tv_困].png","bilibilitv14":"bilibilitv/[tv_坏笑].png","bilibilitv15":"bilibilitv/[tv_大佬].png","bilibilitv16":"bilibilitv/[tv_大哭].png","bilibilitv17":"bilibilitv/[tv_委屈].png","bilibilitv18":"bilibilitv/[tv_害羞].png","bilibilitv19":"bilibilitv/[tv_尴尬].png","bilibilitv20":"bilibilitv/[tv_微笑].png","bilibilitv21":"bilibilitv/[tv_思考].png","bilibilitv22":"bilibilitv/[tv_惊吓].png","bilibilitv23":"bilibilitv/[tv_打脸].png","bilibilitv24":"bilibilitv/[tv_抓狂].png","bilibilitv25":"bilibilitv/[tv_抠鼻].png","bilibilitv26":"bilibilitv/[tv_斜眼笑].png","bilibilitv27":"bilibilitv/[tv_无奈].png","bilibilitv28":"bilibilitv/[tv_晕].png","bilibilitv29":"bilibilitv/[tv_流汗].png","bilibilitv30":"bilibilitv/[tv_流泪].png","bilibilitv31":"bilibilitv/[tv_流鼻血].png","bilibilitv32":"bilibilitv/[tv_点赞].png","bilibilitv33":"bilibilitv/[tv_生气].png","bilibilitv34":"bilibilitv/[tv_生病].png","bilibilitv35":"bilibilitv/[tv_疑问].png","bilibilitv36":"bilibilitv/[tv_白眼].png","bilibilitv37":"bilibilitv/[tv_皱眉].png","bilibilitv38":"bilibilitv/[tv_目瞪口呆].png","bilibilitv39":"bilibilitv/[tv_睡着].png","bilibilitv40":"bilibilitv/[tv_笑哭].png","bilibilitv41":"bilibilitv/[tv_腼腆].png","bilibilitv42":"bilibilitv/[tv_色].png","bilibilitv43":"bilibilitv/[tv_调侃].png","bilibilitv44":"bilibilitv/[tv_调皮].png","bilibilitv45":"bilibilitv/[tv_鄙视].png","bilibilitv46":"bilibilitv/[tv_闭嘴].png","bilibilitv47":"bilibilitv/[tv_难过].png","bilibilitv48":"bilibilitv/[tv_馋].png","bilibilitv49":"bilibilitv/[tv_鬼脸].png","bilibilitv50":"bilibilitv/[tv_黑人问号].png","bilibilitv51":"bilibilitv/[tv_鼓掌].png","bilibili22332":"bilibili2233/[2233娘_卖萌].png","bilibili22333":"bilibili2233/[2233娘_吃惊].png","bilibili22334":"bilibili2233/[2233娘_吐魂].png","bilibili22335":"bilibili2233/[2233娘_喝水].png","bilibili22336":"bilibili2233/[2233娘_困惑].png","bilibili22337":"bilibili2233/[2233娘_大哭].png","bilibili22338":"bilibili2233/[2233娘_大笑].png","bilibili22339":"bilibili2233/[2233娘_委屈].png","bilibili223310":"bilibili2233/[2233娘_怒].png","bilibili223311":"bilibili2233/[2233娘_无言].png","bilibili223312":"bilibili2233/[2233娘_汗].png","bilibili223313":"bilibili2233/[2233娘_疑问].png","bilibili223314":"bilibili2233/[2233娘_第一].png","bilibili223315":"bilibili2233/[2233娘_耶].png","bilibili223316":"bilibili2233/[2233娘_郁闷].png","Heybox1":"Heybox/expression_cube.png","Heybox2":"Heybox/expression_cube_bingbujiandan.png","Heybox3":"Heybox/expression_cube_bizui.png","Heybox4":"Heybox/expression_cube_cangsang.png","Heybox5":"Heybox/expression_cube_dalian.png","Heybox6":"Heybox/expression_cube_doge.png","Heybox7":"Heybox/expression_cube_gandong.png","Heybox8":"Heybox/expression_cube_guai.png","Heybox9":"Heybox/expression_cube_gugu.png","Heybox10":"Heybox/expression_cube_han.png","Heybox11":"Heybox/expression_cube_hbi.png","Heybox12":"Heybox/expression_cube_heirenwenhao.png","Heybox13":"Heybox/expression_cube_huaji.png","Heybox14":"Heybox/expression_cube_jiayou.png","Heybox15":"Heybox/expression_cube_jingya.png","Heybox16":"Heybox/expression_cube_kaixin.png","Heybox17":"Heybox/expression_cube_ku.png","Heybox18":"Heybox/expression_cube_kun.png","Heybox19":"Heybox/expression_cube_kuqi.png","Heybox20":"Heybox/expression_cube_nu.png","Heybox21":"Heybox/expression_cube_penshui.png","Heybox22":"Heybox/expression_cube_qiliang.png","Heybox23":"Heybox/expression_cube_shengqi.png","Heybox24":"Heybox/expression_cube_shuijiao.png","Heybox25":"Heybox/expression_cube_tanqi.png","Heybox26":"Heybox/expression_cube_tanshou.png","Heybox27":"Heybox/expression_cube_tu.png","Heybox28":"Heybox/expression_cube_wa.png","Heybox29":"Heybox/expression_cube_weiqu.png","Heybox30":"Heybox/expression_cube_weixiao.png","Heybox31":"Heybox/expression_cube_wulianku.png","Heybox32":"Heybox/expression_cube_xia.png","Heybox33":"Heybox/expression_cube_xiaocry.png","Heybox34":"Heybox/expression_cube_xihuan.png","Heybox35":"Heybox/expression_cube_xuexi.png","Heybox36":"Heybox/expression_cube_yun.png","Heybox37":"Heybox/expression_cube_zan.png","Heybox38":"Heybox/expression_heyboxgirl.png","Heybox39":"Heybox/expression_heyboxgirl_v2.png","Heybox40":"Heybox/expression_heygirl.png","Heybox41":"Heybox/expression_heygirl_aidao.png","Heybox42":"Heybox/expression_heygirl_baipiaoguai.png","Heybox43":"Heybox/expression_heygirl_chi.png","Heybox44":"Heybox/expression_heygirl_chigua.png","Heybox45":"Heybox/expression_heygirl_eihei.png","Heybox46":"Heybox/expression_heygirl_haha.png","Heybox47":"Heybox/expression_heygirl_haixiu.png","Heybox48":"Heybox/expression_heygirl_henaicha.png","Heybox49":"Heybox/expression_heygirl_huaji.png","Heybox50":"Heybox/expression_heygirl_jing.png","Heybox51":"Heybox/expression_heygirl_jixialai.png","Heybox52":"Heybox/expression_heygirl_kaikele.png","Heybox53":"Heybox/expression_heygirl_ku.png","Heybox54":"Heybox/expression_heygirl_kujiuruhou.png","Heybox55":"Heybox/expression_heygirl_nielian.png","Heybox56":"Heybox/expression_heygirl_qiaokaixin.png","Heybox57":"Heybox/expression_heygirl_qiehua.png","Heybox58":"Heybox/expression_heygirl_rua.png","Heybox59":"Heybox/expression_heygirl_toukan.png","Heybox60":"Heybox/expression_heygirl_tu.png","Heybox61":"Heybox/expression_heygirl_wuyu.png","Heybox62":"Heybox/expression_heygirl_xihuan.png","Heybox63":"Heybox/expression_heygirl_yiwen.png","Heybox64":"Heybox/expression_heygirl_zhe.png","Heybox65":"Heybox/expression_heziji_1.png","Heybox66":"Heybox/expression_heziji_10.png","Heybox67":"Heybox/expression_heziji_11.png","Heybox68":"Heybox/expression_heziji_12.png","Heybox69":"Heybox/expression_heziji_13.png","Heybox70":"Heybox/expression_heziji_14.png","Heybox71":"Heybox/expression_heziji_15.png","Heybox72":"Heybox/expression_heziji_16.png","Heybox73":"Heybox/expression_heziji_17.png","Heybox74":"Heybox/expression_heziji_18.png","Heybox75":"Heybox/expression_heziji_19.png","Heybox76":"Heybox/expression_heziji_2.png","Heybox77":"Heybox/expression_heziji_20.png","Heybox78":"Heybox/expression_heziji_21.png","Heybox79":"Heybox/expression_heziji_22.png","Heybox80":"Heybox/expression_heziji_23.png","Heybox81":"Heybox/expression_heziji_24.png","Heybox82":"Heybox/expression_heziji_25.png","Heybox83":"Heybox/expression_heziji_26.png","Heybox84":"Heybox/expression_heziji_27.png","Heybox85":"Heybox/expression_heziji_28.png","Heybox86":"Heybox/expression_heziji_29.png","Heybox87":"Heybox/expression_heziji_3.png","Heybox88":"Heybox/expression_heziji_30.png","Heybox89":"Heybox/expression_heziji_31.png","Heybox90":"Heybox/expression_heziji_32.png","Heybox91":"Heybox/expression_heziji_4.png","Heybox92":"Heybox/expression_heziji_5.png","Heybox93":"Heybox/expression_heziji_6.png","Heybox94":"Heybox/expression_heziji_7.png","Heybox95":"Heybox/expression_heziji_8.png","Heybox96":"Heybox/expression_heziji_9.png","Sweetie-Bunny1":"Sweetie-Bunny/12311678.png","Sweetie-Bunny2":"Sweetie-Bunny/12311679.png","Sweetie-Bunny3":"Sweetie-Bunny/12311680.png","Sweetie-Bunny4":"Sweetie-Bunny/12311681.png","Sweetie-Bunny5":"Sweetie-Bunny/12311682.png","Sweetie-Bunny6":"Sweetie-Bunny/12311683.png","Sweetie-Bunny7":"Sweetie-Bunny/12311684.png","Sweetie-Bunny8":"Sweetie-Bunny/12311685.png","Sweetie-Bunny9":"Sweetie-Bunny/12311686.png","Sweetie-Bunny10":"Sweetie-Bunny/12311687.png","Sweetie-Bunny11":"Sweetie-Bunny/12311688.png","Sweetie-Bunny12":"Sweetie-Bunny/12311689.png","Sweetie-Bunny13":"Sweetie-Bunny/12311690.png","Sweetie-Bunny14":"Sweetie-Bunny/12311691.png","Sweetie-Bunny15":"Sweetie-Bunny/12311692.png","Sweetie-Bunny16":"Sweetie-Bunny/12311693.png","Sweetie-Bunny17":"Sweetie-Bunny/12311694.png","Sweetie-Bunny18":"Sweetie-Bunny/12311695.png","Sweetie-Bunny19":"Sweetie-Bunny/12311696.png","Sweetie-Bunny20":"Sweetie-Bunny/12311697.png","Sweetie-Bunny21":"Sweetie-Bunny/12311698.png","Sweetie-Bunny22":"Sweetie-Bunny/12311699.png","Sweetie-Bunny23":"Sweetie-Bunny/12311700.png","Sweetie-Bunny24":"Sweetie-Bunny/12311701.png","Sweetie-Bunny25":"Sweetie-Bunny/12311702.png","Sweetie-Bunny26":"Sweetie-Bunny/12311703.png","Sweetie-Bunny27":"Sweetie-Bunny/12311704.png","Sweetie-Bunny28":"Sweetie-Bunny/12311705.png","Sweetie-Bunny29":"Sweetie-Bunny/12311706.png","Sweetie-Bunny30":"Sweetie-Bunny/12311707.png","Sweetie-Bunny31":"Sweetie-Bunny/12311708.png","Sweetie-Bunny32":"Sweetie-Bunny/12311709.png","Sweetie-Bunny33":"Sweetie-Bunny/12311710.png","Sweetie-Bunny34":"Sweetie-Bunny/12311711.png","Sweetie-Bunny35":"Sweetie-Bunny/12311712.png","Sweetie-Bunny36":"Sweetie-Bunny/12311713.png","Sweetie-Bunny37":"Sweetie-Bunny/12311714.png","Sweetie-Bunny38":"Sweetie-Bunny/12311715.png","Sweetie-Bunny39":"Sweetie-Bunny/12311716.png","Sweetie-Bunny40":"Sweetie-Bunny/12311717.png","Snow-Miku1":"Snow-Miku/3583066@2x.png","Snow-Miku2":"Snow-Miku/3583067@2x.png","Snow-Miku3":"Snow-Miku/3583068@2x.png","Snow-Miku4":"Snow-Miku/3583069@2x.png","Snow-Miku5":"Snow-Miku/3583070@2x.png","Snow-Miku6":"Snow-Miku/3583071@2x.png","Snow-Miku7":"Snow-Miku/3583072@2x.png","Snow-Miku8":"Snow-Miku/3583073@2x.png","Snow-Miku9":"Snow-Miku/3583074@2x.png","Snow-Miku10":"Snow-Miku/3583075@2x.png","Snow-Miku11":"Snow-Miku/3583076@2x.png","Snow-Miku12":"Snow-Miku/3583077@2x.png","Snow-Miku13":"Snow-Miku/3583078@2x.png","Snow-Miku14":"Snow-Miku/3583079@2x.png","Snow-Miku15":"Snow-Miku/3583080@2x.png","Snow-Miku16":"Snow-Miku/3583081@2x.png","Snow-Miku17":"Snow-Miku/3583082@2x.png","Snow-Miku18":"Snow-Miku/3583083@2x.png","Snow-Miku19":"Snow-Miku/3583084@2x.png","Snow-Miku20":"Snow-Miku/3583085@2x.png","Snow-Miku21":"Snow-Miku/3583086@2x.png","Snow-Miku22":"Snow-Miku/3583087@2x.png","Snow-Miku23":"Snow-Miku/3583088@2x.png","Snow-Miku24":"Snow-Miku/3583089@2x.png","Snow-Miku25":"Snow-Miku/3583090@2x.png","Snow-Miku26":"Snow-Miku/3583091@2x.png","Snow-Miku27":"Snow-Miku/3583092@2x.png","Snow-Miku28":"Snow-Miku/3583093@2x.png","Snow-Miku29":"Snow-Miku/3583094@2x.png","Snow-Miku30":"Snow-Miku/3583095@2x.png","Snow-Miku31":"Snow-Miku/3583096@2x.png","Snow-Miku32":"Snow-Miku/3583097@2x.png","Snow-Miku33":"Snow-Miku/3583098@2x.png","Snow-Miku34":"Snow-Miku/3583099@2x.png","Snow-Miku35":"Snow-Miku/3583100@2x.png","Snow-Miku36":"Snow-Miku/3583101@2x.png","Snow-Miku37":"Snow-Miku/3583102@2x.png","Snow-Miku38":"Snow-Miku/3583103@2x.png","Snow-Miku39":"Snow-Miku/3583104@2x.png","Snow-Miku40":"Snow-Miku/3583105@2x.png","Mafumafu1":"Mafumafu/199749454.png","Mafumafu2":"Mafumafu/199749455.png","Mafumafu3":"Mafumafu/199749456.png","Mafumafu4":"Mafumafu/199749457.png","Mafumafu5":"Mafumafu/199749458.png","Mafumafu6":"Mafumafu/199749459.png","Mafumafu7":"Mafumafu/199749460.png","Mafumafu8":"Mafumafu/199749461.png","Mafumafu9":"Mafumafu/199749462.png","Mafumafu10":"Mafumafu/199749463.png","Mafumafu11":"Mafumafu/199749464.png","Mafumafu12":"Mafumafu/199749465.png","Mafumafu13":"Mafumafu/199749466.png","Mafumafu14":"Mafumafu/199749467.png","Mafumafu15":"Mafumafu/199749468.png","Mafumafu16":"Mafumafu/199749469.png","Mafumafu17":"Mafumafu/199749470.png","Mafumafu18":"Mafumafu/199749471.png","Mafumafu19":"Mafumafu/199749472.png","Mafumafu20":"Mafumafu/199749473.png","Mafumafu21":"Mafumafu/199749474.png","Mafumafu22":"Mafumafu/199749475.png","Mafumafu23":"Mafumafu/199749476.png","Mafumafu24":"Mafumafu/199749477.png"},
-      enableQQ: true,
+      serverURLs: 'http://raykie.cn/',
+      emojiMaps: "",
       path: window.location.pathname,
-    }
-
-    if (true) { 
-      initData.requiredFields= ('nick,mail'.split(','))
-    }
-    
-    if (false) {
-      const otherData = false
-      initData = Object.assign({}, initData, otherData)
-    }
-    
-    const valine = new Valine(initData)
+      visitor: true
+    }, null))
   }
 
   if (typeof Valine === 'function') initValine() 
-  else $.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', initValine)
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
 }
 
 if ('Valine' === 'Valine' || !false) {
-  if (false) btf.loadComment(document.querySelector('#vcomment'),loadValine)
-  else setTimeout(() => loadValine(), 0)
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
 } else {
   function loadOtherComment () {
     loadValine()
   }
-}</script></div><script src="https://cdn.jsdelivr.net/gh/GayHub1/images/fishes.js"></script></div></body></html>
+}</script></div><script src="https://cdn.jsdelivr.net/gh/GayHub1/images/fishes.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = false
+
+  if (isChatBtn) {
+    const close = () => {
+      Chatra('minimizeWidget')
+      Chatra('hide')
+    }
+
+    const open = () => {
+      Chatra('openChat', true)
+      Chatra('show')
+    }
+
+    window.ChatraSetup = {
+      startHidden: true
+    }
+  
+    window.chatBtnFn = () => {
+      const isShow = document.getElementById('chatra').classList.contains('chatra--expanded')
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        Chatra('hide')
+      },
+      show: () => {
+        Chatra('show')
+      }
+    }
+  }
+
+  (function(d, w, c) {
+    w.ChatraID = 'buCYRDsQchrRDzTXZ'
+    var s = d.createElement('script')
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments)
+    }
+    s.async = true
+    s.src = 'https://call.chatra.io/chatra.js'
+    if (d.head) d.head.appendChild(s)
+  })(document, window, 'Chatra')
+
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
