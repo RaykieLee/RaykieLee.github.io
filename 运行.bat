@@ -1,0 +1,1 @@
+hexo clean&&hexo g&&start cmd /k "ping  127.0.0.1 -n 3&&start http://localhost:4000"&hexo s
