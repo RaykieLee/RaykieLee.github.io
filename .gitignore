@@ -3,4 +3,5 @@
 /.npm-cache
 /dependency-backup-*
 /source/_posts.backup-*
+/themes/butterfly-legacy-*
 .DS_Store
