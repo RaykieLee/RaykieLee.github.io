@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: Jenkins安装记录
 date: 2021-01-31 16:38:00
 ---

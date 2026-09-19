@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: Java 编程的逻辑笔记
 date: 2021-06-07
 tags: 读书笔记

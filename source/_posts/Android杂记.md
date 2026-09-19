@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: Android杂记
 date: 2022-05-29
 tags: 读书笔记

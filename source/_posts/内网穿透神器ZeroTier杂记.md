@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: 内网穿透神器ZeroTier杂记
 date: 2022-07-6 17:49:24
 tags: 内网穿透

@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: screw一键自动生成数据库文档
 date: 2020-11-25 22:49:35
 tags: [tool]

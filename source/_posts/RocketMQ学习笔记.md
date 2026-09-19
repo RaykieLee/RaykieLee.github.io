@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: RocketMQ学习笔记
 date: 2022-05-28
 tags: RocketMQ

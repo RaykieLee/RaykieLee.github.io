@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: SpringBoot小技巧
 date: 2020-06-03 15:21:18
 tags: SpringBoot
@@ -60,4 +60,3 @@ try {
 }
 System.out.println("do soming" + Calendar.getInstance().getTime());
 ```
-

@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: nginx代理
 date: 2020-04-17 17:02:51
 mathjax: true
@@ -66,4 +66,3 @@ http://172.16.33.25:8068/sc_internship/sc2020/scbe/service-app-sample
 ```lombok.config
 nginx -s reload
 ```
-

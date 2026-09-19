@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: Redis入坑笔记
 date: 2020-11-23 00:04:02
 tags: redis

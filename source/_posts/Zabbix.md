@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: Zabbix
 date: 2020-05-27 14:53:48
 tags: Zabbix 

@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: OppoA8搞机的一次记录
 date: 2022-06-22 00:09:24
 tags: 刷机
@@ -315,4 +315,3 @@ DA_handler - All partitions were dumped
 - 太极（包含太极阳的magisk模块）
 - colors 5.2 （可以关闭系统Root警告）
 - LSPosed
-

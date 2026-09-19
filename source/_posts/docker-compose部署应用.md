@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: docker-compose部署应用
 date: 2022-10-12 17:49:24
 tags: docker

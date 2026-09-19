@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: contos7部署运行jar包
 date: 2020-04-17 17:09:06
 tags: [Centos7]

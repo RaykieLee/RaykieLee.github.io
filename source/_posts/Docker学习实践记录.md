@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: 'Docker学习实践记录'
 date: 2020-08-15 23:01:58
 tags: [docker]

@@ -1,7 +1,7 @@
 title: 注解@Scheduled的定时任务配置
 date: 2020-07-01 23:25:48
 tags: [SpringBoot,定时任务]
-layout: butterfly
+layout: post
 
 ------------
 # 注解@Scheduled的定时任务配置

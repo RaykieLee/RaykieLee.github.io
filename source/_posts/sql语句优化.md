@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: sql语句优化
 date: 2020-06-27 17:42:43
 tags: [sql]

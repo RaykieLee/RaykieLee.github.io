@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: Centos7安装npm
 date: 2020-05-12 17:01:07
 tags: Centos7

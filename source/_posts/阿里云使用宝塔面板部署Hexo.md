@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: '阿里云使用宝塔面板部署Hexo'
 date: 2020-07-08 23:01:58
 tags: [hexo,宝塔,阿里云]

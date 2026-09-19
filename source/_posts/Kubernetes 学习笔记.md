@@ -1,5 +1,5 @@
 ---
-layout: butterfly
+layout: post
 title: Kubernetes 学习笔记
 date: 2022-09-29 14:57:18
 tags: [Kubernetes,学习笔记] 
@@ -4985,4 +4985,3 @@ Ingress 为外部访问集群提供了一个 **统一** 入口，避免了对�
 		  Minikube 中部署 Ingress Controller：[nginx](https://kubernetes.io/zh/docs/tasks/access-application-cluster/ingress-minikube/)  
 
 		  Helm 安装： [Nginx](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start)  
-
