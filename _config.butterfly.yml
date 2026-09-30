@@ -932,6 +932,7 @@ css_prefix: true
 inject:
   head:
     - <link rel="stylesheet" href="/css/raykie-modern.css">
+    - <link rel="stylesheet" href="/live2d/css/live2d.css">
   bottom:
     - <script defer src="/js/vendor/footer-fish/fish.js"></script>
 

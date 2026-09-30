@@ -17,6 +17,7 @@ var RENDERER = {
 	},
 	setParameters : function(){
 		this.container = document.getElementById('jsi-flying-fish-container');
+		this.footer = this.container.closest('footer');
 		this.canvas = document.createElement('canvas');
 		this.container.appendChild(this.canvas);
 		this.context = this.canvas.getContext('2d');
@@ -53,6 +54,8 @@ var RENDERER = {
 		this.intervalCount = this.MAX_INTERVAL_COUNT;
 		this.width = Math.max(10, this.container.clientWidth);
 		this.height = Math.max(10, this.container.clientHeight);
+		this.airHeight = parseFloat(getComputedStyle(this.footer).getPropertyValue('--raykie-fish-air')) || 120;
+		this.waterline = Math.min(this.height - 10, Math.max(10, this.airHeight));
 		this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500;
 		this.canvas.width = this.width;
 		this.canvas.height = this.height;
@@ -85,7 +88,6 @@ var RENDERER = {
 		}
 	},
 	bindEvent : function(){
-		this.footer = this.container.closest('footer');
 		this.footer.addEventListener('pointerenter', this.startEpicenter);
 		this.footer.addEventListener('pointermove', this.moveEpicenter);
 		this.resizeObserver = new ResizeObserver(() => this.setup());
@@ -171,13 +173,8 @@ var RENDERER = {
 		this.frame = requestAnimationFrame(this.render);
 		this.controlStatus();
 		this.context.clearRect(0, 0, this.width, this.height);
-		this.context.fillStyle = 'hsl(0, 0%, 95%)';
-		
-		for(var i = 0, count = this.fishes.length; i < count; i++){
-			this.fishes[i].render(this.context);
-		}
 		this.context.save();
-		this.context.globalCompositeOperation = 'xor';
+		this.context.fillStyle = 'rgba(73, 177, 245, 0.34)';
 		this.context.beginPath();
 		this.context.moveTo(0, this.reverse ? 0 : this.height);
 		
@@ -188,6 +185,10 @@ var RENDERER = {
 		this.context.closePath();
 		this.context.fill();
 		this.context.restore();
+		
+		for(var i = 0, count = this.fishes.length; i < count; i++){
+			this.fishes[i].render(this.context);
+		}
 	}
 };
 var SURFACE_POINT = function(renderer, x){
@@ -202,7 +203,7 @@ SURFACE_POINT.prototype = {
 	ACCELARATION_RATE : 0.01,
 	
 	init : function(){
-		this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE;
+		this.initHeight = this.renderer.height - this.renderer.waterline;
 		this.height = this.initHeight;
 		this.fy = 0;
 		this.force = {previous : 0, next : 0};
@@ -252,16 +253,16 @@ FISH.prototype = {
 		this.direction = Math.random() < 0.5;
 		this.x = this.direction ? (this.renderer.width + this.renderer.THRESHOLD) : -this.renderer.THRESHOLD;
 		this.previousY = this.y;
-		this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1);
+		this.vx = this.getRandomValue(2.6, 6.5) * (this.direction ? -1 : 1);
 		
 		if(this.renderer.reverse){
 			this.y = this.getRandomValue(this.renderer.height * 1 / 10, this.renderer.height * 4 / 10);
-			this.vy = this.getRandomValue(2, 5);
-			this.ay = this.getRandomValue(0.05, 0.2);
+			this.vy = this.getRandomValue(1.4, 3.5);
+			this.ay = this.getRandomValue(0.035, 0.14);
 		}else{
 			this.y = this.getRandomValue(this.renderer.height * 6 / 10, this.renderer.height * 9 / 10);
-			this.vy = this.getRandomValue(-5, -2);
-			this.ay = this.getRandomValue(-0.2, -0.05);
+			this.vy = this.getRandomValue(-3.5, -1.4);
+			this.ay = this.getRandomValue(-0.14, -0.035);
 		}
 		this.isOut = false;
 		this.theta = 0;
@@ -281,22 +282,22 @@ FISH.prototype = {
 		this.vy += this.ay;
 		
 		if(this.renderer.reverse){
-			if(this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE){
+			if(this.y > this.renderer.waterline){
 				this.vy -= this.GRAVITY;
 				this.isOut = true;
 			}else{
 				if(this.isOut){
-					this.ay = this.getRandomValue(0.05, 0.2);
+					this.ay = this.getRandomValue(0.035, 0.14);
 				}
 				this.isOut = false;
 			}
 		}else{
-			if(this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE){
+			if(this.y < this.renderer.waterline){
 				this.vy += this.GRAVITY;
 				this.isOut = true;
 			}else{
 				if(this.isOut){
-					this.ay = this.getRandomValue(-0.2, -0.05);
+					this.ay = this.getRandomValue(-0.14, -0.035);
 				}
 				this.isOut = false;
 			}
@@ -315,6 +316,7 @@ FISH.prototype = {
 	},
 	render : function(context){
 		context.save();
+		context.fillStyle = this.isOut ? 'rgba(73, 177, 245, 0.9)' : 'hsl(0, 0%, 96%)';
 		context.translate(this.x, this.y);
 		context.rotate(Math.PI + Math.atan2(this.vy, this.vx));
 		context.scale(1, this.direction ? 1 : -1);
