@@ -1,0 +1,376 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>网络技术 | Raykie’s blog</title><meta name="author" content="Raykie"><meta name="copyright" content="Raykie"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="网络技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络技术">
+<meta property="og:url" content="https://raykie.cn/2018/11/18/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/index.html">
+<meta property="og:site_name" content="Raykie’s blog">
+<meta property="og:description" content="网络技术">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg">
+<meta property="article:published_time" content="2018-11-18T06:31:14.000Z">
+<meta property="article:modified_time" content="2026-09-13T15:22:10.215Z">
+<meta property="article:author" content="Raykie">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="第一行代码笔记">
+<meta property="article:tag" content="网络技术">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "网络技术",
+  "url": "https://raykie.cn/2018/11/18/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/",
+  "image": "https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg",
+  "datePublished": "2018-11-18T06:31:14.000Z",
+  "dateModified": "2026-09-13T15:22:10.215Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Raykie",
+      "url": "https://raykie.cn"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/GayHub1/images/img/favicon.png"><link rel="canonical" href="https://raykie.cn/2018/11/18/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#111827')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4bf55317870f35ca7fa52050e6e77f2c";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":2,"unescape":true,"pagination":{"enable":true,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '网络技术',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/raykie-modern.css"><link rel="stylesheet" href="/live2d/css/live2d.css"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="http://raykie.cn:1200/"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page child" href="http://raykie.cn:5244/"><i class="fa-fw fas fa-folder-open"></i><span> AList</span></a></li><li><a class="site-page child" href="http://raykie.cn:4000/"><i class="fa-fw fas fa-server"></i><span> Ward</span></a></li><li><a class="site-page child" href="http://raykie.cn:181"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li><li><a class="site-page child" href="http://raykie.cn:8483/"><i class="fa-fw fas fa-book"></i><span> Docmost</span></a></li><li><a class="site-page child" href="http://raykie.cn:8618/"><i class="fa-fw fas fa-th-large"></i><span> Multica</span></a></li><li><a class="site-page child" href="http://raykie.cn:8480/"><i class="fa-fw fas fa-pen-nib"></i><span> Penpot</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/case/"><i class="fa-fw fas fa-images"></i><span> Case</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" alt="Logo"><span class="site-name">Raykie’s blog</span></a><a class="nav-page-title" href="/"><span class="site-name">网络技术</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="http://raykie.cn:1200/"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page child" href="http://raykie.cn:5244/"><i class="fa-fw fas fa-folder-open"></i><span> AList</span></a></li><li><a class="site-page child" href="http://raykie.cn:4000/"><i class="fa-fw fas fa-server"></i><span> Ward</span></a></li><li><a class="site-page child" href="http://raykie.cn:181"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li><li><a class="site-page child" href="http://raykie.cn:8483/"><i class="fa-fw fas fa-book"></i><span> Docmost</span></a></li><li><a class="site-page child" href="http://raykie.cn:8618/"><i class="fa-fw fas fa-th-large"></i><span> Multica</span></a></li><li><a class="site-page child" href="http://raykie.cn:8480/"><i class="fa-fw fas fa-pen-nib"></i><span> Penpot</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/case/"><i class="fa-fw fas fa-images"></i><span> Case</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">网络技术</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2018-11-18T06:31:14.000Z" title="发表于 2018-11-18 14:31:14">2018-11-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-13T15:22:10.215Z" title="更新于 2026-09-13 23:22:10">2026-09-13</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">662</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2018/11/18/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/" data-flag-title="网络技术"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="网络技术"><a class="markdownIt-Anchor" href="#网络技术"></a> 网络技术</h1>
+<span id="more"></span>
+<p>声明权限</p>
+<blockquote>
+   <uses-permission android:name="android.permission.INTERNET" />
+</blockquote>
+<h2 id="webview"><a class="markdownIt-Anchor" href="#webview"></a> WebView</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">WebView</span> <span class="variable">webView</span> <span class="operator">=</span> (WebView) findViewById(R.id.web_view);</span><br><span class="line">   webView.getSettings().setJavaScriptEnabled(<span class="literal">true</span>);  <span class="comment">//通过getSettings()设置浏览器属性  setJavaScriptEnabled(true)让Webview支持javaScript脚本</span></span><br><span class="line">   webView.loadUrl(<span class="string">&quot;https://www.baidu.com&quot;</span>); </span><br><span class="line">   webView.setWebViewClient(<span class="keyword">new</span> <span class="title class_">WebViewClient</span>() &#123;  </span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">shouldOverrideUrlLoading</span><span class="params">(WebView view, String url)</span> &#123;</span><br><span class="line">           <span class="keyword">if</span> (url == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">try</span>&#123;</span><br><span class="line">               <span class="keyword">if</span>(!url.startsWith(<span class="string">&quot;http://&quot;</span>) &amp;&amp; !url.startsWith(<span class="string">&quot;https://&quot;</span>))&#123;</span><br><span class="line">                   <span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>(Intent.ACTION_VIEW, Uri.parse(url));</span><br><span class="line">                   startActivity(intent);</span><br><span class="line">                   <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;<span class="keyword">catch</span> (Exception e)&#123;<span class="comment">//防止crash (如果手机上没有安装处理某个scheme开头的url的APP, 会导致crash)</span></span><br><span class="line">               <span class="keyword">return</span> <span class="literal">true</span>;<span class="comment">//没有安装该app时，返回true，表示拦截自定义链接，但不跳转，避免弹出上面的错误页面</span></span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">           <span class="comment">//返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器</span></span><br><span class="line">           view.loadUrl(url);</span><br><span class="line">           <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="解决err_unknown_url_scheme这个错误"><a class="markdownIt-Anchor" href="#解决err_unknown_url_scheme这个错误"></a> 解决ERR_UNKNOWN_URL_SCHEME这个错误</h5>
+<p>给WebView设置WebViewClient，并重写WebViewClient中的shouldOverrideUrlLoading方法.<br />
+首先我们来了解下shouldOverrideUrlLoading(WebView view, String url)方法，该方法会在加载超链接时回调过来，所以通过重写shouldOverrideUrlLoading，可以实现对网页中超链接的拦截；返回值为boolean型，是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器。默认false</p>
+<h2 id="http协议访问"><a class="markdownIt-Anchor" href="#http协议访问"></a> Http协议访问</h2>
+<h4 id="httpurlconnection"><a class="markdownIt-Anchor" href="#httpurlconnection"></a> HttpURLConnection</h4>
+<p>1.传入URL对象通过openConnection()获取HttpURLConnection对象</p>
+<blockquote>
+<pre><code>               URL url = new URL(&quot;http://www.baidu.com&quot;);
+               connection = (HttpURLConnection) url.openConnection();
+</code></pre>
+</blockquote>
+<p>2.设置HTTP属性 如 请求方法 get post  连接超时</p>
+<blockquote>
+<pre><code>               connection.setRequestMethod(&quot;GET&quot;);
+               connection.setConnectTimeout(8000);
+               connection.setReadTimeout(8000);
+</code></pre>
+</blockquote>
+<p>3.获取输入流并读取</p>
+<blockquote></blockquote>
+<pre><code>                InputStream in = connection.getInputStream();
+                // 下面对获取到的输入流进行读取
+                reader = new BufferedReader(new InputStreamReader(in));
+                StringBuilder response = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    response.append(line);
+                }
+                showResponse(response.toString());
+</code></pre>
+<blockquote></blockquote>
+<p>4.输出流</p>
+<blockquote></blockquote>
+<pre><code>                connection.setRequestMethod(&quot;GET&quot;);
+                DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
+                outputStream.writeBytes(&quot;xxxxxxx&quot;);
+</code></pre>
+<blockquote></blockquote>
+<p>5.关闭连接</p>
+<blockquote>
+<pre><code>                    connection.disconnect();
+</code></pre>
+</blockquote>
+<p>一般在应用中的 放在中多线程实例</p>
+<pre class="highlight"><code class="java">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sendHttpRequest</span><span class="hljs-params">(<span class="hljs-keyword">final</span> String address, <span class="hljs-keyword">final</span> HttpCallbackListener listener)</span> </span>{
+        <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+                HttpURLConnection connection = <span class="hljs-keyword">null</span>;
+                <span class="hljs-keyword">try</span> {
+                    URL url = <span class="hljs-keyword">new</span> URL(address);
+                    connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod(<span class="hljs-string">"GET"</span>);
+                    connection.setConnectTimeout(<span class="hljs-number">8000</span>);
+                    connection.setReadTimeout(<span class="hljs-number">8000</span>);
+                    connection.setDoInput(<span class="hljs-keyword">true</span>);
+                    connection.setDoOutput(<span class="hljs-keyword">true</span>);
+                    InputStream in = connection.getInputStream();
+                    BufferedReader reader = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(in));
+                    StringBuilder response = <span class="hljs-keyword">new</span> StringBuilder();
+                    String line;
+                    <span class="hljs-keyword">while</span> ((line = reader.readLine()) != <span class="hljs-keyword">null</span>) {
+                        response.append(line);
+                    }
+                    <span class="hljs-keyword">if</span> (listener != <span class="hljs-keyword">null</span>) {
+                        <span class="hljs-comment">// 回调onFinish()方法</span>
+                        listener.onFinish(response.toString());
+                    }
+                } <span class="hljs-keyword">catch</span> (Exception e) {
+                    <span class="hljs-keyword">if</span> (listener != <span class="hljs-keyword">null</span>) {
+                        <span class="hljs-comment">// 回调onError()方法</span>
+                        listener.onError(e);
+                    }
+                } <span class="hljs-keyword">finally</span> {
+                    <span class="hljs-keyword">if</span> (connection != <span class="hljs-keyword">null</span>) {
+                        connection.disconnect();
+                    }
+                }
+            }
+        }).start();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sendOkHttpRequest</span><span class="hljs-params">(<span class="hljs-keyword">final</span> String address, <span class="hljs-keyword">final</span> okhttp3.Callback callback)</span> </span>{
+        Request request = <span class="hljs-keyword">new</span> Request.Builder()
+                .url(address)
+                .build();
+        client.newCall(request).enqueue(callback);
+   }
+&lt;!--code￼<span class="hljs-number">1</span>--&gt;
+#### GSON
+自动将JSON格式映射成对象。
+<span class="hljs-number">1</span>.加库
+&gt;     implementation <span class="hljs-string">'com.google.code.gson:gson:2.7'</span>
+<span class="hljs-number">2</span>.解析
+&gt;        Gson gson = <span class="hljs-keyword">new</span> Gson();
+&gt;        JAVABean javabean = gson.fromJson(jsondata, Person<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+        
+当是Json数组时 借助TypeToken将期望解析成的数据类型（javabean）传入fromjson（）中。
+&lt;!--code￼<span class="hljs-number">2</span>--&gt;
+        
+</code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://raykie.cn">Raykie</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://raykie.cn/2018/11/18/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">https://raykie.cn/2018/11/18/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://raykie.cn" target="_blank">Raykie’s blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Android/">Android</a><a class="post-meta__tags" href="/tags/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">第一行代码笔记</a><a class="post-meta__tags" href="/tags/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a></div><div class="post-share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2018/11/28/%E8%8E%B7%E5%8F%96%E6%9D%83%E9%99%90/" title="获取权限"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">获取权限</div></div><div class="info-2"><div class="info-item-1"> 获取权限   权限类型   普通权限 在AndroidManifest中声明 例: AndroidManifest   危险权限 动态添加：必须由用户手动同意授权 危险权限列表：    特殊权限    动态申请权限  调用 ContextCompat 中 checkSelfPermission (Context context, String permission)方法 与  PackageManager.PERMISSION_...</div></div></div></a><a class="pagination-related" href="/2018/11/05/2018-%E7%9C%81%E8%B5%9B-Java%E8%AF%AD%E8%A8%80%E5%A4%A7%E5%AD%A6C%E7%BB%84/" title="2018-省赛-Java语言大学C组"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">2018-省赛-Java语言大学C组</div></div><div class="info-2"><div class="info-item-1">2018第九届蓝桥杯Java语言C组&amp;非官方答案   2018-省赛-Java语言大学C组  1:哪天返回 小明被不明势力劫持。后被扔到x星站再无问津。小明得知每天都有飞船飞往地球，但需要108元的船票，而他却身无分文。 他决定在x星战打工。好心的老板答应包食宿，第1天给他1元钱。 并且，以后的每一天都比前一天多2元钱，直到他有足够的钱买票。 请计算一下，小明在第几天就能凑够108元，返回地球。 要求提交的是一个整数，表示...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2018/10/30/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/" title="数据持久化"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2018-10-30</div><div class="info-item-2">数据持久化</div></div><div class="info-2"><div class="info-item-1">Android 数据持久化笔记   文件存储  写入文件 调用Context类中openFileOutput方法 返回一个FileOutputStream  openFileOutput（文件名（不允许包含路径，默认存储到/data/data//file/),操作模式：MODE_PRIVATE（方法默认的模式 覆盖） or MODE_APPEND（追加）. 1234567891011121314151617181920privat...</div></div></div></a><a class="pagination-related" href="/2018/11/28/%E8%8E%B7%E5%8F%96%E6%9D%83%E9%99%90/" title="获取权限"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2018-11-28</div><div class="info-item-2">获取权限</div></div><div class="info-2"><div class="info-item-1"> 获取权限   权限类型   普通权限 在AndroidManifest中声明 例: AndroidManifest   危险权限 动态添加：必须由用户手动同意授权 危险权限列表：    特殊权限    动态申请权限  调用 ContextCompat 中 checkSelfPermission (Context context, String permission)方法 与  PackageManager.PERMISSION_...</div></div></div></a><a class="pagination-related" href="/2019/12/12/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" title="毕业设计"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2019-12-12</div><div class="info-item-2">毕业设计</div></div><div class="info-2"><div class="info-item-1"> 引言    java后端 涉及技术及框架    技术 说明 官网     SpringBoot 容器+MVC框架 spring.io   MyBatis ORM框架 mybstis.org   MyBatisGenerator 数据层代码生成 mybstis.org   PageHelper	MyBatis 物理分页插件 oschina.net   Swagger-UI 文档生产工具 swagger-api   Redis 缓存...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Raykie</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/GayHub1"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF"><span class="toc-number">1.</span> <span class="toc-text"> 网络技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#webview"><span class="toc-number">1.1.</span> <span class="toc-text"> WebView</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3err_unknown_url_scheme%E8%BF%99%E4%B8%AA%E9%94%99%E8%AF%AF"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 解决ERR_UNKNOWN_URL_SCHEME这个错误</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#http%E5%8D%8F%E8%AE%AE%E8%AE%BF%E9%97%AE"><span class="toc-number">1.2.</span> <span class="toc-text"> Http协议访问</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#httpurlconnection"><span class="toc-number">1.2.1.</span> <span class="toc-text"> HttpURLConnection</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/18/%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B/" title="如何训练属于自己的目标检测模型"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/image-20230719160626724.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何训练属于自己的目标检测模型"/></a><div class="content"><a class="title" href="/2023/07/18/%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B/" title="如何训练属于自己的目标检测模型">如何训练属于自己的目标检测模型</a><time datetime="2023-07-18T09:49:24.000Z" title="发表于 2023-07-18 17:49:24">2023-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" title="docker-compose部署应用"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/%E4%B8%8B%E8%BD%BD.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker-compose部署应用"/></a><div class="content"><a class="title" href="/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" title="docker-compose部署应用">docker-compose部署应用</a><time datetime="2022-10-12T09:49:24.000Z" title="发表于 2022-10-12 17:49:24">2022-10-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/29/Kubernetes%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kubernetes 学习笔记"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/k8s-logo-ft-blog-image-768x432.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Kubernetes 学习笔记"/></a><div class="content"><a class="title" href="/2022/09/29/Kubernetes%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kubernetes 学习笔记">Kubernetes 学习笔记</a><time datetime="2022-09-29T06:57:18.000Z" title="发表于 2022-09-29 14:57:18">2022-09-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/30/RabbitMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="RabbitMQ学习笔记"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/logoimage.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RabbitMQ学习笔记"/></a><div class="content"><a class="title" href="/2022/07/30/RabbitMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="RabbitMQ学习笔记">RabbitMQ学习笔记</a><time datetime="2022-07-29T16:00:00.000Z" title="发表于 2022-07-30 00:00:00">2022-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/09/2023%E5%B9%B4%E6%9C%AB%E8%AE%A1%E5%88%92/" title="2023年末计划"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/20230709234428.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2023年末计划"/></a><div class="content"><a class="title" href="/2022/07/09/2023%E5%B9%B4%E6%9C%AB%E8%AE%A1%E5%88%92/" title="2023年末计划">2023年末计划</a><time datetime="2022-07-09T15:36:32.000Z" title="发表于 2022-07-09 23:36:32">2022-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2018 - 2026 By Raykie</span></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><img class="icp-icon" src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/icp.png"><span>粤ICP备2023064499号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'hxN4EMnnWWFNeyk4xbNxQJT7-gzGzoHsz',
+      appKey: 'lewYKS5k1rb7D5sVgI4QeTAx',
+      avatar: 'monsterid',
+      serverURLs: 'http://raykie.cn/',
+      emojiMaps: "",
+      visitor: true,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/vendor/footer-fish/fish.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search posts or keywords" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><div id="rembox">  <div id="landlord" style="display:block !important">    <div class="message" style="opacity:0"></div>    <canvas id="live2d" width="500" height="560" class="live2d"></canvas>    <input name="live_talk" id="live_talk" value="1" type="hidden">    <div class="live_ico_box"><div id="hideButton"></div></div>  </div>  <div id="open_live2d">召唤蕾姆</div></div><script>window.message_Path = "/live2d/"; window.talkAPI = "";</script><script src="/js/vendor/jquery.min.js"></script><script src="/live2d/js/live2d.js"></script><script src="/live2d/js/message.js"></script></body></html>

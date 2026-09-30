@@ -1,0 +1,474 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>毕业设计 | Raykie’s blog</title><meta name="author" content="Raykie"><meta name="copyright" content="Raykie"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="引言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="毕业设计">
+<meta property="og:url" content="https://raykie.cn/2019/12/12/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Raykie’s blog">
+<meta property="og:description" content="引言">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg">
+<meta property="article:published_time" content="2019-12-11T16:27:18.000Z">
+<meta property="article:modified_time" content="2026-09-13T15:22:10.214Z">
+<meta property="article:author" content="Raykie">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="SpringBoot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "毕业设计",
+  "url": "https://raykie.cn/2019/12/12/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/",
+  "image": "https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg",
+  "datePublished": "2019-12-11T16:27:18.000Z",
+  "dateModified": "2026-09-13T15:22:10.214Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Raykie",
+      "url": "https://raykie.cn"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/GayHub1/images/img/favicon.png"><link rel="canonical" href="https://raykie.cn/2019/12/12/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#111827')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4bf55317870f35ca7fa52050e6e77f2c";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":2,"unescape":true,"pagination":{"enable":true,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '毕业设计',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/raykie-modern.css"><link rel="stylesheet" href="/live2d/css/live2d.css"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="http://raykie.cn:1200/"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page child" href="http://raykie.cn:5244/"><i class="fa-fw fas fa-folder-open"></i><span> AList</span></a></li><li><a class="site-page child" href="http://raykie.cn:4000/"><i class="fa-fw fas fa-server"></i><span> Ward</span></a></li><li><a class="site-page child" href="http://raykie.cn:181"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li><li><a class="site-page child" href="http://raykie.cn:8483/"><i class="fa-fw fas fa-book"></i><span> Docmost</span></a></li><li><a class="site-page child" href="http://raykie.cn:8618/"><i class="fa-fw fas fa-th-large"></i><span> Multica</span></a></li><li><a class="site-page child" href="http://raykie.cn:8480/"><i class="fa-fw fas fa-pen-nib"></i><span> Penpot</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/case/"><i class="fa-fw fas fa-images"></i><span> Case</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" alt="Logo"><span class="site-name">Raykie’s blog</span></a><a class="nav-page-title" href="/"><span class="site-name">毕业设计</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="http://raykie.cn:1200/"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page child" href="http://raykie.cn:5244/"><i class="fa-fw fas fa-folder-open"></i><span> AList</span></a></li><li><a class="site-page child" href="http://raykie.cn:4000/"><i class="fa-fw fas fa-server"></i><span> Ward</span></a></li><li><a class="site-page child" href="http://raykie.cn:181"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li><li><a class="site-page child" href="http://raykie.cn:8483/"><i class="fa-fw fas fa-book"></i><span> Docmost</span></a></li><li><a class="site-page child" href="http://raykie.cn:8618/"><i class="fa-fw fas fa-th-large"></i><span> Multica</span></a></li><li><a class="site-page child" href="http://raykie.cn:8480/"><i class="fa-fw fas fa-pen-nib"></i><span> Penpot</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/case/"><i class="fa-fw fas fa-images"></i><span> Case</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">毕业设计</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-12-11T16:27:18.000Z" title="发表于 2019-12-12 00:27:18">2019-12-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-13T15:22:10.214Z" title="更新于 2026-09-13 23:22:10">2026-09-13</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2019/12/12/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" data-flag-title="毕业设计"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="引言"><a class="markdownIt-Anchor" href="#引言"></a> 引言</h2>
+<span id="more"></span>
+<!-- ### 项目背景与问题概述
+#### 项目背景 
+基于移动互联网这个全新的时代背景,甚至有业内人士预测随着无线互联蚕食有线联市场,未来可能70%都是无线互联市场,人们日常上网的主要通道将是手机。正是预见到手机用户的无线市场的巨大发展空间,各行各业纷纷加速无线战略布局以抢占先机。移动电子商务未来的巨大发展潜力是吸引京东、当当、卓越以及淘宝等电子商务企业进入这一领域的主要诱因。程善宝指出,淘宝、京东等传统电子商务进入移动电子商务,依附商品渠道、运营经验等方面的优势,在移动电子商务领域会比电信运营商software提供商以及新兴的移动电子商务企业具备更好远景随着移动通信的发展以及互联网向移动终端的普及,网络和用户对移动终端的要求越来越高,而 Symbian, Windows Mobile PalmOS等手机平台过于封闭,不能很好的满足用户的需求,因此市场迫切需要一个开放性很强的平台。经过多年的发展,第三代数字通信(3G技术获得了广泛的接受,它为移动终端用户带来了更快的薮据传输速率。随着3G网络的使用,移动终端不再仅是通讯网络的终端,还将成为互联网的终端。因此,移动终端的应用软件和需要的服务将会有很大的发展空间。           
+
+Google为此于2007年11月推出了一个专为移动设备设计的软件平台—一 Android。 Android是一套真正意义上的开放性的移动设备综合平台,它包括操作系统、中间件和一些关键的平台应用。 Android是由 Linux+Java构成的开源软件,允许所有厂商和个人在其基础上进行开发。 android平台的开放性等特点既能促进技术(包括平台自身)的创新,又有助于降低开发成本,还可以使运营商能非常方便地制定自己的特色化的产品。因此,它具有很大的市场发展潜力问题概述
+    
+随着网络技术的不断发展，网上购物已经成为消费者的一种消费习惯，不仅服装、日用品等在网上销售火热，还有许多其他行业也在网络销售火热。中国网购市场保持高速增长，网络用户以及电商数量不断增长，2013年网购交易规模超1.85万亿元，2017年将突破4万亿元；2013年网购占零售销售总额比列达8%，2014年预计达10%；2013年网购用户规模突破3亿人，在网民中的使用率接近一半；2013年电商企业数量接近3万家，行业竞争激烈，市场一片光明。
+#### 问题概述
+对用户提供的服务有：
+- 注册登录
+- 在主界面滚动推荐的商品以及在主界面的滚动推荐下面也有更多推荐的商品。
+-  搜索想要的商品，加入购物车。并且下订单
+- 搜索后再打开搜索有搜索历史。
+- 超时支付系统就会取消订单
+- 浏览以及修改个人资料主页  
+网上商城系统普遍存在着没有实际体验，买到假货，运送慢，库存等问题。
+### 研究的意义和重要性
+#### 研究的意义
+现在购物方式多种多样，有网上购物与线下购物，如何让用户在网上购物有更好的体验是我们研究的意义。
+#### 研究的重要性
+可以有效的售卖自己的库存，用户也能足不出户的购买好商品，是双赢的局面。本系统就是以这个为目的编写出来的。
+#### 研究的内容
+本系统主要分为前端与后端。前后端使用了统一的JAVA语言作为开发语言，均使用了mvp框架；前端为Android 端的App，后端为Spring boot与 Mybatis为框架组成了程序的大体框架；
+## 需求分析
+软件需求过程是整个软件开发初始阶段，对软件的品质具有决定性的作用。软件需求工程研究如何理解和说明用户对所开发软件的要求和期望。
+需求就是以一种清晰、简明、一致且无二义性的方式对一个待开发系统中的各个方面有意义的陈述的集合[4]。需求必须是完整的，足以使设计师和工程师来开发一个使客户满意的软件制品。
+IEEE软件工程标准词汇表(1997年)中定义需求为[5]：
+（1）	用户解决问题或达到目标所需的条件或能力(Capability)；
+（2）	系统或系统部件要满足合同、标准、规范或其它正式规定文档所需具有的条件或能力；
+（3）	一种反映上面(l)或(2)所描述的条件或能力的文档说明。
+软件需求包括三个不同的层次：业务需求、用户需求和功能需求（也包括非功能需求）[6]。
+### 	业务需求
+业务需求(business requirement)是客户对软件制品目标的高层次要求。
+### 业务描述
+-	能够实现注册登录、浏览以及修改个人资料、商品检索、商品选择并加入购物车、下订单和超时支付系统取消订单等功能，对网上购物的全过程进行管理
+-	实现对网上购物过程中产生的所有业务数据的管理，如订货单、支付记录、搜索记录和发货信息的管理与维护
+-	具有配套的系统后台管理维护功能，能够对商品信息、用户信息、系统日志等信息进行管理与维护，并能够进行对应的权限管理
+-	响应速度合理，安全性较高
+-	系统运行稳定，并且应易于维护
+### 	注册业务流程图
+```flow
+st=>start: 用户注册
+account=>operation: 输入用户名
+pass=>operation: 输入密码
+npass=>operation: 再次输入密码
+name=>operation: 输入真实姓名
+phone=>operation: 输入手机号码
+sex=>operation: 输入性别
+cond=>condition: 注册信息是否有误?
+e=>end: 进入商城t
+st->account->pass->npass->name->phone->sex->cond
+cond(yes)->e
+cond(no)->account
+```
+##  功能分析
+系统主要有注册登录、修改个人资料、浏览商品、搜索商品、下订单等功能
+### 角色分析
+以下从网上购物系统的实际需求分析，系统涉及到以下角色：
+
+|角色	|职责或功能|
+|:-: | :-: |
+|客户(买家)|	系统主要参与者，进行用户注册与登录、修改个人资料、搜索商品以及加入购物车、下订单等功能|
+|系统管理员	|管理和维护整个系统的用户组织结构，负责对用户、角色、用户级别的增、删、改、查等管理。|
+###  功能描述
+1. 用户注册与登录
+用户进行输入账户的帐号密码性别等各种信息来进行注册，并且登录。来实现下一层功能。
+2. 用户通过该网上商城系统用来浏览以及搜索商品
+3. 通过浏览商品来加入购物车或者下订单。
+3. 超时购买将取消订单。
+4.修改个人信息
+可以通过个人主页来修改个人信息。
+5.管理员功能
+管理员可以增删查改用户的各种信息。
+
+##	系统设计
+网上购物系统最主要的就是针对广大用户在互联网上购物的需求和特点进行系统总体结构设计。而在购物过程中，主要是为了应对商品的选购，购物订单的下达，货款的支付，用户信息的处理和查询等操作，以便于整个购物系统的有序的进行和管理，规范化和统一化，对不同模块进行分工管理，最后由系统统一实施。
+
+ 系统一共分为商品选购、货款支付、订单管理、发货信息管理共4个模块。其中商品选购主要满足买家通过系统购买商品的功能需求；货款支付主要为了满足买家购买商品时进行付款的功能需；订单管理主要满足买家对自己的订单进行维护的功能需求；发货信息管理主要为了满足买家进行发货信息维护的功能需求；
+### 功能结构设计
+![1.png](https://i.loli.net/2019/12/30/VgANxafsubHoze7.png)
+“商品选购”功能主要目的是为买家提供购买卖家提供的商品的功能；此外，该功能还负责将用户选中的商品放入购物车，对购物车进行管理。因此，商品选购模块主要涉及商品信息的查询获取以及购物车管理两个子模块。其中商品信息获取模块主要分为检索商品和查看商品详细信息两个组成部分.购物车管理又分为将商品放入购物车和将商品从购物车移除和购买数量设置三个部分。 -->
+<h3 id="java后端-涉及技术及框架"><a class="markdownIt-Anchor" href="#java后端-涉及技术及框架"></a> java后端 涉及技术及框架</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">技术</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">官网</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">SpringBoot</td>
+<td style="text-align:center">容器+MVC框架</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-boot">spring.io</a></td>
+</tr>
+<tr>
+<td style="text-align:center">MyBatis</td>
+<td style="text-align:center">ORM框架</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="http://www.mybatis.org/mybatis-3/zh/index.html">mybstis.org</a></td>
+</tr>
+<tr>
+<td style="text-align:center">MyBatisGenerator</td>
+<td style="text-align:center">数据层代码生成</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="http://www.mybatis.org/generator/index.html">mybstis.org</a></td>
+</tr>
+<tr>
+<td style="text-align:center">PageHelper	MyBatis</td>
+<td style="text-align:center">物理分页插件</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="http://git.oschina.net/free/Mybatis_PageHelper">oschina.net</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Swagger-UI</td>
+<td style="text-align:center">文档生产工具</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://github.com/swagger-api/swagger-ui">swagger-api</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Redis</td>
+<td style="text-align:center">缓存</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://redis.io/">redis.io</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="android-端-涉及技术及框架"><a class="markdownIt-Anchor" href="#android-端-涉及技术及框架"></a> Android 端 涉及技术及框架</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">技术</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">官网或github地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">rxjava3</td>
+<td style="text-align:center">异步框架</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="http://reactivex.io/">reactivex.io</a></td>
+</tr>
+<tr>
+<td style="text-align:center">retrofit2</td>
+<td style="text-align:center">网络框架</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://square.github.io/retrofit/">square.github.io</a></td>
+</tr>
+<tr>
+<td style="text-align:center">XUI</td>
+<td style="text-align:center">UI框架</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://github.com/xuexiangjys/XUI">xuexiangjys</a></td>
+</tr>
+<tr>
+<td style="text-align:center">glide</td>
+<td style="text-align:center">图片加载框架</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://muyangmin.github.io/glide-docs-cn/">muyangmin</a></td>
+</tr>
+<tr>
+<td style="text-align:center">gson</td>
+<td style="text-align:center">json解析工具</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://github.com/google/gson">gson</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="数据库"><a class="markdownIt-Anchor" href="#数据库"></a> 数据库</h3>
+<p><img src="https://i.loli.net/2019/12/12/g2Qot58ZM19iJpw.png" alt="UTOOLS1576138436432.png" /></p>
+<h3 id="接口"><a class="markdownIt-Anchor" href="#接口"></a> 接口</h3>
+<p><img src="https://i.loli.net/2019/12/12/sm8QBcZLhneJw6W.png" alt="UTOOLS1576138522209.png" /></p>
+<h3 id="mybatis-generator插件"><a class="markdownIt-Anchor" href="#mybatis-generator插件"></a> Mybatis Generator插件</h3>
+<h4 id="生成代码"><a class="markdownIt-Anchor" href="#生成代码"></a> 生成代码</h4>
+<ul>
+<li>引入 MyBatis Generator 依赖</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mybatis-generator-core&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;1.3.7&lt;/version&gt;</span><br><span class="line">	&lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>引入 MyBatis Generator Maven 插件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">	&lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mybatis-generator-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;1.3.7&lt;/version&gt;</span><br><span class="line"></span><br><span class="line">	&lt;configuration&gt;</span><br><span class="line">		&lt;configurationFile&gt;src/main/resources/mybatis-generator.xml&lt;/configurationFile&gt;</span><br><span class="line">		&lt;overwrite&gt;true&lt;/overwrite&gt;</span><br><span class="line">	&lt;/configuration&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">			&lt;version&gt;8.0.12&lt;/version&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>准备 MyBatis Generator 配置文件<br />
+MyBatis Generator 需要一个 xml格式的配置文件，该文件的位置配在了引入 MyBatis Generator Maven 插件的 xml配置里，即src/main/resources/mybatis-generator.xml</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE generatorConfiguration</span><br><span class="line">        PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;</span><br><span class="line">        &quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;generatorConfiguration&gt;</span><br><span class="line"></span><br><span class="line">    &lt;context id=&quot;MySql&quot; defaultModelType=&quot;flat&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;plugin type=&quot;org.mybatis.generator.plugins.SerializablePlugin&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;jdbcConnection</span><br><span class="line">                driverClass=&quot;com.mysql.cj.jdbc.Driver&quot;</span><br><span class="line">                connectionURL=&quot;jdbc:mysql://localhost:3306/shopping?serverTimezone=UTC&amp;amp;useSSL=false&amp;amp;allowPublicKeyRetrieval=true&amp;amp;nullCatalogMeansCurrent=true&quot;</span><br><span class="line">                userId=&quot;root&quot;</span><br><span class="line">                password=&quot;密码&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;javaModelGenerator targetPackage=&quot;com.example.mall.entity&quot; targetProject=&quot;src/main/java&quot;&gt;&lt;/javaModelGenerator&gt;</span><br><span class="line"></span><br><span class="line">        &lt;sqlMapGenerator targetPackage=&quot;mapper&quot;  targetProject=&quot;src/main/resources&quot;&gt;&lt;/sqlMapGenerator&gt;</span><br><span class="line"></span><br><span class="line">        &lt;javaClientGenerator targetPackage=&quot;com.example.mall.mapper&quot; targetProject=&quot;src/main/java&quot; type=&quot;ANNOTATEDMAPPER&quot;&gt;&lt;/javaClientGenerator&gt;</span><br><span class="line"></span><br><span class="line">        &lt;table tableName=&quot;user&quot;&gt;</span><br><span class="line">            &lt;property name=&quot;modelOnly&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">        &lt;/table&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/context&gt;</span><br><span class="line"></span><br><span class="line">&lt;/generatorConfiguration&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>直接生成简单crud</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">tableName</span>=<span class="string">&quot;user&quot;</span> <span class="attr">enableCountByExample</span>=<span class="string">&quot;false&quot;</span> <span class="attr">enableUpdateByExample</span>=<span class="string">&quot;false&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;modelOnly&quot;</span> <span class="attr">value</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>connectionUrl中含有&amp;符号问题<br />
+在&amp;字符后添加 amp; 即改为 '&amp;'即可。</li>
+<li>&lt; jdbcConnection /&gt; 数据库连接配置，至关重要</li>
+<li><javaModelGenerator /> 指定自动生成的 POJO置于哪个包下</li>
+<li><sqlMapGenerator /> 指定自动生成的 mapper.xml置于哪个包下</li>
+<li><javaClientGenerator /> 指定自动生成的 DAO接口置于哪个包下</li>
+<li>
+<table /> 指定数据表名，可以使用_和%通配符
+</li>
+</ul>
+<h3 id="rxjava3与retrofit2配合使用模板"><a class="markdownIt-Anchor" href="#rxjava3与retrofit2配合使用模板"></a> rxjava3与retrofit2配合使用模板</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">   Retrofit retrofit = new Retrofit.Builder()</span><br><span class="line">           //这里建议：- Base URL: 总是以/结尾；- @Url: 不要以/开头</span><br><span class="line">           .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">           .addCallAdapterFactory(RxJavaCallAdapterFactory.create())//新的配置</span><br><span class="line">           .baseUrl(&quot;http://mymall.free.idcfengye.com&quot;)</span><br><span class="line">           .build();</span><br><span class="line">   MyApi apiStores = retrofit.create(MyApi.class);</span><br><span class="line">                   apiStores.login(accounttext, passwordtext)        //获取Observable对象</span><br><span class="line">                           .subscribeOn(Schedulers.newThread())//请求在新的线程中执行</span><br><span class="line">                           .observeOn(AndroidSchedulers.mainThread())//最后在主线程中执行</span><br><span class="line">                           .subscribe(new Subscriber&lt;CommonResult&lt;User&gt;&gt;() &#123;</span><br><span class="line">                               @Override</span><br><span class="line">                               public void onCompleted() &#123;</span><br><span class="line">                                   mMiniLoadingDialog.dismiss();</span><br><span class="line"></span><br><span class="line">                               &#125;</span><br><span class="line"></span><br><span class="line">                               @Override</span><br><span class="line">                               public void onError(Throwable e) &#123;</span><br><span class="line">                                   Log.i(&quot;wxl&quot;, &quot;response=&quot; + e.getMessage());</span><br><span class="line">                                 //  mMiniLoadingDialog.dismiss();</span><br><span class="line">                                   //请求失败</span><br><span class="line">                               &#125;</span><br><span class="line"></span><br><span class="line">                               @Override</span><br><span class="line">                               public void onNext(CommonResult&lt;User&gt; commonResult) &#123;</span><br><span class="line">                                   Log.i(&quot;wxl&quot;, &quot;response=&quot; + commonResult.getMessage());</span><br><span class="line"></span><br><span class="line">                                   if(commonResult.getCode()==200)&#123;</span><br><span class="line">                                       SnackbarUtils.Short(view, commonResult.getMessage())</span><br><span class="line">                                               .confirm()</span><br><span class="line">                                               .radius(30, 0, Color.GREEN)</span><br><span class="line">                                               .show();</span><br><span class="line">                                       PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString(&quot;name&quot;, accounttext).apply();</span><br><span class="line">                                       PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString(&quot;pass&quot;, passwordtext).apply();</span><br><span class="line">                                       startActivity(new Intent(LoginActivity.this,MainActivity.class));</span><br><span class="line"></span><br><span class="line">                                   &#125;else&#123;</span><br><span class="line">                                       SnackbarUtils.Short(view, commonResult.getMessage())</span><br><span class="line">                                               .danger()</span><br><span class="line">                                               .radius(30, 1, Color.GRAY)</span><br><span class="line">                                               .show();</span><br><span class="line">                                   &#125;</span><br><span class="line">                                   Log.i(&quot;wxl&quot;, &quot;response=&quot; );</span><br><span class="line">                                   //请求成功</span><br><span class="line">                               &#125;</span><br><span class="line">                           &#125;);</span><br><span class="line">						</span><br><span class="line">@FormUrlEncoded</span><br><span class="line">   @POST(&quot;/user/login&quot;)</span><br><span class="line">   Observable&lt;CommonResult&lt;User&gt;&gt; login(@Field(&quot;account&quot;) String  account,</span><br><span class="line">                                        @Field(&quot;password&quot;) String  password);</span><br><span class="line">						</span><br></pre></td></tr></table></figure>
+<h2 id="git"><a class="markdownIt-Anchor" href="#git"></a> git</h2>
+<h3 id="git-更新出现stderr-error-bad-signature-fatal-index-file-corrupt"><a class="markdownIt-Anchor" href="#git-更新出现stderr-error-bad-signature-fatal-index-file-corrupt"></a> git 更新出现stderr: error: bad signature fatal: index file corrupt</h3>
+<p>因为git在更新操作的时候会更新.git文件夹下的index文件，方便下一次更新的时候会找到更新的节点，而现在电脑突然崩溃，这个文件可能只更新了一部分，甚至直接导致这个文件破坏，所以再次更新的时候，发现这个index文件信息不全或者文件无法读取，这样就会出现上面的提示</p>
+<blockquote>
+<p>到.git平行目录下依次执行以下命令<br />
+$ rm -f .git/index     删除文件index，也可以手动删除<br />
+$ git reset       这个是git命名可以恢复指定的版本号，这里没有就默认恢复上一次正确的文件<br />
+重启即可<br />
+然后发现自己本地的代码都丢完了。。。。。</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://raykie.cn">Raykie</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://raykie.cn/2019/12/12/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/">https://raykie.cn/2019/12/12/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://raykie.cn" target="_blank">Raykie’s blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SpringBoot/">SpringBoot</a><a class="post-meta__tags" href="/tags/Android/">Android</a></div><div class="post-share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2020/02/03/butterfly/" title="butterfly "><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">butterfly </div></div><div class="info-2"><div class="info-item-1">一个安装butterfly主题过程记录   主題安裝和升級 安裝 查看 npm 安装的模块 查看当前项目的依赖模块如下： npm ls --depth 0 查看全局依赖模块命令如下： npm ls -g --depth 0 在你的博客根目录 git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/Butterfly 修改站點配...</div></div></div></a><a class="pagination-related" href="/2019/10/03/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0/" title="软考笔记"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">软考笔记</div></div><div class="info-2"><div class="info-item-1"> 软考笔记   计算机组成原理与体系结构  数据的表示  进制转换 符号数（原码反码补码移码） 原码   正数的原码等于自身的二进制数，负数的原码第一位为1(符号位，表示负数)，后面为自身的二进制数   反码   正数的反码等于自身的二进制数，负数的反码符号位不动，其余各位按位取反   补码   正数的补码等于自身的二进制数，负数的补码是在反码的基础上+1   移码(增码)   无论正负数，只要将其补码的符号位取反即可   符号数...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2018/11/28/%E8%8E%B7%E5%8F%96%E6%9D%83%E9%99%90/" title="获取权限"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2018-11-28</div><div class="info-item-2">获取权限</div></div><div class="info-2"><div class="info-item-1"> 获取权限   权限类型   普通权限 在AndroidManifest中声明 例: AndroidManifest   危险权限 动态添加：必须由用户手动同意授权 危险权限列表：    特殊权限    动态申请权限  调用 ContextCompat 中 checkSelfPermission (Context context, String permission)方法 与  PackageManager.PERMISSION_...</div></div></div></a><a class="pagination-related" href="/2018/11/18/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/" title="网络技术"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2018-11-18</div><div class="info-item-2">网络技术</div></div><div class="info-2"><div class="info-item-1"> 网络技术  声明权限        WebView 123456789101112131415161718192021222324WebView webView = (WebView) findViewById(R.id.web_view);   webView.getSettings().setJavaScriptEnabled(true);  //通过getSettings()设置浏览器属性  setJavaScriptEn...</div></div></div></a><a class="pagination-related" href="/2020/06/03/SpringBoot%E5%B0%8F%E6%8A%80%E5%B7%A7/" title="SpringBoot小技巧"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-06-03</div><div class="info-item-2">SpringBoot小技巧</div></div><div class="info-2"><div class="info-item-1"> Controller 接收时间 1@RequestParam(value = &quot;date&quot;, required = false)@DateTimeFormat(pattern=&quot;yyyy-MM-dd&quot;) LocalDate date; @DateTimeFormat来控制入参，@JsonFormat来控制出参 @DateTimeFormat(pattern=“yyyy-MM-dd HH:m...</div></div></div></a><a class="pagination-related" href="/2018/10/30/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/" title="数据持久化"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2018-10-30</div><div class="info-item-2">数据持久化</div></div><div class="info-2"><div class="info-item-1">Android 数据持久化笔记   文件存储  写入文件 调用Context类中openFileOutput方法 返回一个FileOutputStream  openFileOutput（文件名（不允许包含路径，默认存储到/data/data//file/),操作模式：MODE_PRIVATE（方法默认的模式 覆盖） or MODE_APPEND（追加）. 1234567891011121314151617181920privat...</div></div></div></a><a class="pagination-related" href="/2020/07/01/%E6%B3%A8%E8%A7%A3@Scheduled%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E9%85%8D%E7%BD%AE/" title="注解@Scheduled的定时任务配置"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-01</div><div class="info-item-2">注解@Scheduled的定时任务配置</div></div><div class="info-2"><div class="info-item-1"> 注解@Scheduled的定时任务配置 在SpringBoot为我们内置了@Scheduled定时任务，添加相应的注解即可开启定时任务。  在入口程序类添加注解@EnableScheduling开启功能自动扫描   新建一个任务类  要在任务的类上写@Component 要在任务方法上写@Scheduled  1234567891011121314151617181920212223242526import org.spring...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Raykie</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/GayHub1"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 引言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java%E5%90%8E%E7%AB%AF-%E6%B6%89%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%8F%8A%E6%A1%86%E6%9E%B6"><span class="toc-number">1.1.</span> <span class="toc-text"> java后端 涉及技术及框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#android-%E7%AB%AF-%E6%B6%89%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%8F%8A%E6%A1%86%E6%9E%B6"><span class="toc-number">1.2.</span> <span class="toc-text"> Android 端 涉及技术及框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.3.</span> <span class="toc-text"> 数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.4.</span> <span class="toc-text"> 接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mybatis-generator%E6%8F%92%E4%BB%B6"><span class="toc-number">1.5.</span> <span class="toc-text"> Mybatis Generator插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 生成代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rxjava3%E4%B8%8Eretrofit2%E9%85%8D%E5%90%88%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.6.</span> <span class="toc-text"> rxjava3与retrofit2配合使用模板</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git"><span class="toc-number">2.</span> <span class="toc-text"> git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-%E6%9B%B4%E6%96%B0%E5%87%BA%E7%8E%B0stderr-error-bad-signature-fatal-index-file-corrupt"><span class="toc-number">2.1.</span> <span class="toc-text"> git 更新出现stderr: error: bad signature fatal: index file corrupt</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/18/%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B/" title="如何训练属于自己的目标检测模型"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/image-20230719160626724.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何训练属于自己的目标检测模型"/></a><div class="content"><a class="title" href="/2023/07/18/%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B/" title="如何训练属于自己的目标检测模型">如何训练属于自己的目标检测模型</a><time datetime="2023-07-18T09:49:24.000Z" title="发表于 2023-07-18 17:49:24">2023-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" title="docker-compose部署应用"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/%E4%B8%8B%E8%BD%BD.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker-compose部署应用"/></a><div class="content"><a class="title" href="/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" title="docker-compose部署应用">docker-compose部署应用</a><time datetime="2022-10-12T09:49:24.000Z" title="发表于 2022-10-12 17:49:24">2022-10-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/29/Kubernetes%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kubernetes 学习笔记"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/k8s-logo-ft-blog-image-768x432.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Kubernetes 学习笔记"/></a><div class="content"><a class="title" href="/2022/09/29/Kubernetes%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kubernetes 学习笔记">Kubernetes 学习笔记</a><time datetime="2022-09-29T06:57:18.000Z" title="发表于 2022-09-29 14:57:18">2022-09-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/30/RabbitMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="RabbitMQ学习笔记"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/logoimage.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RabbitMQ学习笔记"/></a><div class="content"><a class="title" href="/2022/07/30/RabbitMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="RabbitMQ学习笔记">RabbitMQ学习笔记</a><time datetime="2022-07-29T16:00:00.000Z" title="发表于 2022-07-30 00:00:00">2022-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/09/2023%E5%B9%B4%E6%9C%AB%E8%AE%A1%E5%88%92/" title="2023年末计划"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/20230709234428.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2023年末计划"/></a><div class="content"><a class="title" href="/2022/07/09/2023%E5%B9%B4%E6%9C%AB%E8%AE%A1%E5%88%92/" title="2023年末计划">2023年末计划</a><time datetime="2022-07-09T15:36:32.000Z" title="发表于 2022-07-09 23:36:32">2022-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2018 - 2026 By Raykie</span></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><img class="icp-icon" src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/icp.png"><span>粤ICP备2023064499号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'hxN4EMnnWWFNeyk4xbNxQJT7-gzGzoHsz',
+      appKey: 'lewYKS5k1rb7D5sVgI4QeTAx',
+      avatar: 'monsterid',
+      serverURLs: 'http://raykie.cn/',
+      emojiMaps: "",
+      visitor: true,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/vendor/footer-fish/fish.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search posts or keywords" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><div id="rembox">  <div id="landlord" style="display:block !important">    <div class="message" style="opacity:0"></div>    <canvas id="live2d" width="500" height="560" class="live2d"></canvas>    <input name="live_talk" id="live_talk" value="1" type="hidden">    <div class="live_ico_box"><div id="hideButton"></div></div>  </div>  <div id="open_live2d">召唤蕾姆</div></div><script>window.message_Path = "/live2d/"; window.talkAPI = "";</script><script src="/js/vendor/jquery.min.js"></script><script src="/live2d/js/live2d.js"></script><script src="/live2d/js/message.js"></script></body></html>

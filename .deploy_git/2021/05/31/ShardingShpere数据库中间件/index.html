@@ -1,0 +1,350 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ShardingShpere数据库中间件 | Raykie’s blog</title><meta name="author" content="Raykie"><meta name="copyright" content="Raykie"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ShardingShpere数据库中间件 周末无聊，刚好看见狂神新出的ShardingShpere，以前看过他Redis的一个系列视频，几点还不错，就学习了一波并做了个笔记。（还氪了kuangstudy一个月会员，心疼）。   Apache ShardingSphere概述 关于这种概述一般官网的介绍是最为准确与到位的。这里就贴上官网的概述。  Apache ShardingSphere 是一套">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ShardingShpere数据库中间件">
+<meta property="og:url" content="https://raykie.cn/2021/05/31/ShardingShpere%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6/index.html">
+<meta property="og:site_name" content="Raykie’s blog">
+<meta property="og:description" content="ShardingShpere数据库中间件 周末无聊，刚好看见狂神新出的ShardingShpere，以前看过他Redis的一个系列视频，几点还不错，就学习了一波并做了个笔记。（还氪了kuangstudy一个月会员，心疼）。   Apache ShardingSphere概述 关于这种概述一般官网的介绍是最为准确与到位的。这里就贴上官网的概述。  Apache ShardingSphere 是一套">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/GayHub1/images/img/1630253147433.png">
+<meta property="article:published_time" content="2021-05-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-09-19T15:08:36.204Z">
+<meta property="article:author" content="Raykie">
+<meta property="article:tag" content="零零散散">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/GayHub1/images/img/1630253147433.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ShardingShpere数据库中间件",
+  "url": "https://raykie.cn/2021/05/31/ShardingShpere%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6/",
+  "image": "https://cdn.jsdelivr.net/gh/GayHub1/images/img/1630253147433.png",
+  "datePublished": "2021-05-30T16:00:00.000Z",
+  "dateModified": "2026-09-19T15:08:36.204Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Raykie",
+      "url": "https://raykie.cn"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/GayHub1/images/img/favicon.png"><link rel="canonical" href="https://raykie.cn/2021/05/31/ShardingShpere%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#111827')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4bf55317870f35ca7fa52050e6e77f2c";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":2,"unescape":true,"pagination":{"enable":true,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ShardingShpere数据库中间件',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/raykie-modern.css"><link rel="stylesheet" href="/live2d/css/live2d.css"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="http://raykie.cn:1200/"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page child" href="http://raykie.cn:5244/"><i class="fa-fw fas fa-folder-open"></i><span> AList</span></a></li><li><a class="site-page child" href="http://raykie.cn:4000/"><i class="fa-fw fas fa-server"></i><span> Ward</span></a></li><li><a class="site-page child" href="http://raykie.cn:181"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li><li><a class="site-page child" href="http://raykie.cn:8483/"><i class="fa-fw fas fa-book"></i><span> Docmost</span></a></li><li><a class="site-page child" href="http://raykie.cn:8618/"><i class="fa-fw fas fa-th-large"></i><span> Multica</span></a></li><li><a class="site-page child" href="http://raykie.cn:8480/"><i class="fa-fw fas fa-pen-nib"></i><span> Penpot</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/case/"><i class="fa-fw fas fa-images"></i><span> Case</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/GayHub1/images/img/1630253147433.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" alt="Logo"><span class="site-name">Raykie’s blog</span></a><a class="nav-page-title" href="/"><span class="site-name">ShardingShpere数据库中间件</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="http://raykie.cn:1200/"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page child" href="http://raykie.cn:5244/"><i class="fa-fw fas fa-folder-open"></i><span> AList</span></a></li><li><a class="site-page child" href="http://raykie.cn:4000/"><i class="fa-fw fas fa-server"></i><span> Ward</span></a></li><li><a class="site-page child" href="http://raykie.cn:181"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li><li><a class="site-page child" href="http://raykie.cn:8483/"><i class="fa-fw fas fa-book"></i><span> Docmost</span></a></li><li><a class="site-page child" href="http://raykie.cn:8618/"><i class="fa-fw fas fa-th-large"></i><span> Multica</span></a></li><li><a class="site-page child" href="http://raykie.cn:8480/"><i class="fa-fw fas fa-pen-nib"></i><span> Penpot</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/case/"><i class="fa-fw fas fa-images"></i><span> Case</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">ShardingShpere数据库中间件</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-30T16:00:00.000Z" title="发表于 2021-05-31 00:00:00">2021-05-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-19T15:08:36.204Z" title="更新于 2026-09-19 23:08:36">2026-09-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2021/05/31/ShardingShpere%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6/" data-flag-title="ShardingShpere数据库中间件"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="shardingshpere数据库中间件"><a class="markdownIt-Anchor" href="#shardingshpere数据库中间件"></a> ShardingShpere数据库中间件</h1>
+<p>周末无聊，刚好看见狂神新出的ShardingShpere，以前看过他Redis的一个系列视频，几点还不错，就学习了一波并做了个笔记。（还氪了kuangstudy一个月会员，心疼）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/1630253147433.png" alt="image-20210608001754863" /></p>
+<h2 id="apache-shardingsphere概述"><a class="markdownIt-Anchor" href="#apache-shardingsphere概述"></a> Apache ShardingSphere概述</h2>
+<p>关于这种概述一般<a target="_blank" rel="noopener" href="http://shardingsphere.apache.org/index_zh.html">官网</a>的介绍是最为准确与到位的。这里就贴上官网的概述。</p>
+<blockquote>
+<p>Apache ShardingSphere 是一套开源的分布式数据库解决方案组成的生态圈，它由 JDBC、Proxy 和 Sidecar（规划中）这 3 款既能够独立部署，又支持混合部署配合使用的产品组成。 它们均提供标准化的数据水平扩展、分布式事务和分布式治理等功能，可适用于如 Java 同构、异构语言、云原生等各种多样化的应用场景。</p>
+<p>Apache ShardingSphere 旨在充分合理地在分布式的场景下利用关系型数据库的计算和存储能力，而并非实现一个全新的关系型数据库。 关系型数据库当今依然占有巨大市场份额，是企业核心系统的基石，未来也难于撼动，我们更加注重在原有基础上提供增量，而非颠覆。</p>
+<p>Apache ShardingSphere 5.x 版本开始致力于可插拔架构，项目的功能组件能够灵活的以可插拔的方式进行扩展。 目前，数据分片、读写分离、数据加密、影子库压测等功能，以及 MySQL、PostgreSQL、SQLServer、Oracle 等 SQL 与协议的支持，均通过插件的方式织入项目。 开发者能够像使用积木一样定制属于自己的独特系统。Apache ShardingSphere 目前已提供数十个 SPI 作为系统的扩展点，仍在不断增加中。</p>
+<p>ShardingSphere 已于2020年4月16日成为 Apache 软件基金会的顶级项目。</p>
+</blockquote>
+<h2 id="mysql主从集群环境搭建"><a class="markdownIt-Anchor" href="#mysql主从集群环境搭建"></a> Mysql主从集群环境搭建</h2>
+<p>关于Mysql的话视频是使用 mysql rpm 安装搭建，而我本地是使用docker进行搭建的。这方面是存在一些出入的。</p>
+<p>创建docker-compose文件夹以及文件；</p>
+<p><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/image-20210321204144844.png" alt="image-20210321204144844" /></p>
+<h3 id="配置docker-composeyml"><a class="markdownIt-Anchor" href="#配置docker-composeyml"></a> 配置docker-compose.yml</h3>
+<p>docker-compose.yml</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">version: &#x27;2&#x27;</span><br><span class="line">services:</span><br><span class="line">  mysql-master:</span><br><span class="line">    build:</span><br><span class="line">      context: ./</span><br><span class="line">      dockerfile: master/Dockerfile</span><br><span class="line">    environment:</span><br><span class="line">      - &quot;MYSQL_ROOT_PASSWORD=root&quot;</span><br><span class="line">      - &quot;MYSQL_DATABASE=replicas_db&quot;</span><br><span class="line">    links:</span><br><span class="line">      - mysql-slave</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;33065:3306&quot;</span><br><span class="line">    restart: always</span><br><span class="line">    hostname: mysql-master</span><br><span class="line">  mysql-slave:</span><br><span class="line">    build:</span><br><span class="line">      context: ./</span><br><span class="line">      dockerfile: slave/Dockerfile</span><br><span class="line">    environment:</span><br><span class="line">      - &quot;MYSQL_ROOT_PASSWORD=root&quot;</span><br><span class="line">      - &quot;MYSQL_DATABASE=replicas_db&quot;</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;33066:3306&quot;</span><br><span class="line">    restart: always</span><br><span class="line">    hostname: mysql-slave</span><br></pre></td></tr></table></figure>
+<h3 id="主数据库配置"><a class="markdownIt-Anchor" href="#主数据库配置"></a> 主数据库配置</h3>
+<h4 id="配置dockerfile"><a class="markdownIt-Anchor" href="#配置dockerfile"></a> 配置Dockerfile</h4>
+<p>Dockerfile</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FROM mysql:5.7.17</span><br><span class="line">MAINTAINER harrison</span><br><span class="line">ADD ./master/my.cnf /etc/mysql/my.cnf</span><br></pre></td></tr></table></figure>
+<h4 id="配置mycnf文件"><a class="markdownIt-Anchor" href="#配置mycnf文件"></a> 配置my.cnf文件</h4>
+<p>my.cnf</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"><span class="comment">## 设置server_id，一般设置为IP，注意要唯一</span></span><br><span class="line">server_id=100  </span><br><span class="line"><span class="comment">## 复制过滤：也就是指定哪个数据库不用同步（mysql库一般不同步）</span></span><br><span class="line">binlog-ignore-db=mysql  </span><br><span class="line"><span class="comment">## 开启二进制日志功能，可以随便取，最好有含义（关键就是这里了）</span></span><br><span class="line">log-bin=replicas-mysql-bin  </span><br><span class="line"><span class="comment">## 为每个session分配的内存，在事务过程中用来存储二进制日志的缓存</span></span><br><span class="line">binlog_cache_size=1M  </span><br><span class="line"><span class="comment">## 主从复制的格式（mixed,statement,row，默认格式是statement）</span></span><br><span class="line">binlog_format=mixed  </span><br><span class="line"><span class="comment">## 二进制日志自动删除/过期的天数。默认值为0，表示不自动删除。</span></span><br><span class="line">expire_logs_days=7  </span><br><span class="line"><span class="comment">## 跳过主从复制中遇到的所有错误或指定类型的错误，避免slave端复制中断。</span></span><br><span class="line"><span class="comment">## 如：1062错误是指一些主键重复，1032错误是因为主从数据库数据不一致</span></span><br><span class="line">slave_skip_errors=1062</span><br></pre></td></tr></table></figure>
+<h3 id="从数据库配置"><a class="markdownIt-Anchor" href="#从数据库配置"></a> 从数据库配置</h3>
+<h4 id="配置dockerfile-2"><a class="markdownIt-Anchor" href="#配置dockerfile-2"></a> 配置Dockerfile</h4>
+<p>Dockerfile</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FROM mysql:5.7.17</span><br><span class="line">MAINTAINER harrison</span><br><span class="line">ADD ./slave/my.cnf /etc/mysql/my.cnf</span><br></pre></td></tr></table></figure>
+<h4 id="配置mycnf文件-2"><a class="markdownIt-Anchor" href="#配置mycnf文件-2"></a> 配置my.cnf文件</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"><span class="comment">## 设置server_id，一般设置为IP，注意要唯一</span></span><br><span class="line">server_id=101  </span><br><span class="line"><span class="comment">## 复制过滤：也就是指定哪个数据库不用同步（mysql库一般不同步）</span></span><br><span class="line">binlog-ignore-db=mysql  </span><br><span class="line"><span class="comment">## 开启二进制日志功能，以备Slave作为其它Slave的Master时使用</span></span><br><span class="line">log-bin=replicas-mysql-slave1-bin  </span><br><span class="line"><span class="comment">## 为每个session 分配的内存，在事务过程中用来存储二进制日志的缓存</span></span><br><span class="line">binlog_cache_size=1M  </span><br><span class="line"><span class="comment">## 主从复制的格式（mixed,statement,row，默认格式是statement）</span></span><br><span class="line">binlog_format=mixed  </span><br><span class="line"><span class="comment">## 二进制日志自动删除/过期的天数。默认值为0，表示不自动删除。</span></span><br><span class="line">expire_logs_days=7  </span><br><span class="line"><span class="comment">## 跳过主从复制中遇到的所有错误或指定类型的错误，避免slave端复制中断。</span></span><br><span class="line"><span class="comment">## 如：1062错误是指一些主键重复，1032错误是因为主从数据库数据不一致</span></span><br><span class="line">slave_skip_errors=1062  </span><br><span class="line"><span class="comment">## relay_log配置中继日志</span></span><br><span class="line">relay_log=replicas-mysql-relay-bin  </span><br><span class="line"><span class="comment">## log_slave_updates表示slave将复制事件写进自己的二进制日志</span></span><br><span class="line">log_slave_updates=1  </span><br><span class="line"><span class="comment">## 防止改变数据(除了特殊的线程)</span></span><br><span class="line">read_only=1</span><br></pre></td></tr></table></figure>
+<h3 id="创建容器"><a class="markdownIt-Anchor" href="#创建容器"></a> 创建容器</h3>
+<p>进入 <code>docker-compose</code>目录，运行 <code>docker-compose</code> 启动命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<h3 id="配置从数据库"><a class="markdownIt-Anchor" href="#配置从数据库"></a> 配置从数据库</h3>
+<h4 id="检查主库的状态"><a class="markdownIt-Anchor" href="#检查主库的状态"></a> 检查主库的状态</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ show master status;</span><br></pre></td></tr></table></figure>
+<p>记录 <strong>主数据库</strong> <code>binary-log</code> 的 <strong>文件名称</strong> 和 <strong>数据同步起始位置</strong>。</p>
+<ul>
+<li>File: replicas-mysql-bin.000003</li>
+<li>Position: 154</li>
+</ul>
+<p><img src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210321200215772.png" alt="image-20210321200215772" /></p>
+<h4 id="从库配置主库信息"><a class="markdownIt-Anchor" href="#从库配置主库信息"></a> 从库配置主库信息</h4>
+<p>在 <strong>从数据库</strong> 上运行 <strong>主数据库</strong> 的相关配置 <code>sql</code> 进行主从关联</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CHANGE MASTER <span class="keyword">TO</span></span><br><span class="line">    MASTER_HOST<span class="operator">=</span><span class="string">&#x27;mysql-master&#x27;</span>,</span><br><span class="line">    MASTER_USER<span class="operator">=</span><span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    MASTER_PASSWORD<span class="operator">=</span><span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    MASTER_LOG_FILE<span class="operator">=</span><span class="string">&#x27;replicas-mysql-bin.000003&#x27;</span>,</span><br><span class="line">    MASTER_LOG_POS<span class="operator">=</span><span class="number">154</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/image-20210321203202554.png" alt="image-20210321203202554" /></p>
+<p>重启从库~ 两个Yes ，配置成功</p>
+<h4 id="3021错误"><a class="markdownIt-Anchor" href="#3021错误"></a> 3021错误</h4>
+<blockquote>
+<p>3021 - This operation cannot be performed with a running slave io thread; run STOP SLAVE IO_THREAD FOR CHANNEL ‘’ first.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">stop slave;</span><br><span class="line"></span><br><span class="line">SET GLOBAL SQL_SLAVE_SKIP_COUNTER = 1; </span><br><span class="line"></span><br><span class="line">START SLAVE;</span><br></pre></td></tr></table></figure>
+<p>status中依旧出现错误</p>
+<blockquote>
+<p>Last_IO_Error: Got fatal error 1236 from master when reading data from binary log: ‘Could not find first log file name in binary log index file’</p>
+</blockquote>
+<p>最后看着这个MASTER_LOG_FILE文件前缀不对劲…发现设置了从库的bin日志文件~怪不得提示找不到文件 重新设置为Master的日志文件即可</p>
+<h2 id="项目配置"><a class="markdownIt-Anchor" href="#项目配置"></a> 项目配置</h2>
+<p><a target="_blank" rel="noopener" href="https://github.com/GayHub1/sharding_jdbc">Demo地址</a></p>
+<h3 id="创建项目引入依赖"><a class="markdownIt-Anchor" href="#创建项目引入依赖"></a> 创建项目引入依赖</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"> &lt;properties&gt;</span><br><span class="line">     &lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">     &lt;sharding-sphere.version&gt;4.0.0-RC1&lt;/sharding-sphere.version&gt;</span><br><span class="line"> &lt;/properties&gt;</span><br><span class="line"> &lt;!-- 依赖web --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!-- 依赖mybatis和mysql驱动 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.1.4&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">    &lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!--依赖lombok--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">    &lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">    &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!--依赖sharding--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.shardingsphere&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;sharding-jdbc-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;$&#123;sharding-sphere.version&#125;&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.shardingsphere&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;sharding-core-common&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;$&#123;sharding-sphere.version&#125;&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!--依赖数据源druid--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;druid-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.1.21&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="读写分离"><a class="markdownIt-Anchor" href="#读写分离"></a> 读写分离</h3>
+<h4 id="yaml配置"><a class="markdownIt-Anchor" href="#yaml配置"></a> Yaml配置</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 8085</span><br><span class="line">spring:</span><br><span class="line">  main:</span><br><span class="line">    allow-bean-definition-overriding: true</span><br><span class="line">  shardingsphere:</span><br><span class="line">    # 参数配置，显示sql</span><br><span class="line">    props:</span><br><span class="line">      sql:</span><br><span class="line">        show: true</span><br><span class="line">    # 配置数据源</span><br><span class="line">    datasource:</span><br><span class="line">      # 给每个数据源取别名，下面的ds1,ds2,ds3任意取名字</span><br><span class="line">      names: ds1,ds2,ds3</span><br><span class="line">      # 给master-ds1每个数据源配置数据库连接信息</span><br><span class="line">      ds1:</span><br><span class="line">        # 配置druid数据源</span><br><span class="line">        type: com.alibaba.druid.pool.DruidDataSource</span><br><span class="line">        driver-class-name: com.mysql.cj.jdbc.Driver</span><br><span class="line">        url: jdbc:mysql://47.115.94.78:3306/ksd-sharding-db?useUnicode=true&amp;characterEncoding=utf8&amp;tinyInt1isBit=false&amp;useSSL=false&amp;serverTimezone=GMT</span><br><span class="line">        username: root</span><br><span class="line">        password: mkxiaoer1986.</span><br><span class="line">        maxPoolSize: 100</span><br><span class="line">        minPoolSize: 5</span><br><span class="line">      # 配置ds2-slave</span><br><span class="line">      ds2:</span><br><span class="line">        type: com.alibaba.druid.pool.DruidDataSource</span><br><span class="line">        driver-class-name: com.mysql.cj.jdbc.Driver</span><br><span class="line">        url: jdbc:mysql://114.215.145.201:3306/ksd-sharding-db?useUnicode=true&amp;characterEncoding=utf8&amp;tinyInt1isBit=false&amp;useSSL=false&amp;serverTimezone=GMT</span><br><span class="line">        username: root</span><br><span class="line">        password: mkxiaoer1986.</span><br><span class="line">        maxPoolSize: 100</span><br><span class="line">        minPoolSize: 5</span><br><span class="line">      # 配置ds3-slave</span><br><span class="line">      ds3:</span><br><span class="line">        type: com.alibaba.druid.pool.DruidDataSource</span><br><span class="line">        driver-class-name: com.mysql.cj.jdbc.Driver</span><br><span class="line">        url: jdbc:mysql://114.215.145.201:3306/ksd-sharding-db?useUnicode=true&amp;characterEncoding=utf8&amp;tinyInt1isBit=false&amp;useSSL=false&amp;serverTimezone=GMT</span><br><span class="line">        username: root</span><br><span class="line">        password: mkxiaoer1986.</span><br><span class="line">        maxPoolSize: 100</span><br><span class="line">        minPoolSize: 5</span><br><span class="line">    # 配置默认数据源ds1</span><br><span class="line">    sharding:</span><br><span class="line">     # 默认数据源，主要用于写，注意一定要配置读写分离 ,注意：如果不配置，那么就会把三个节点都当做从slave节点，新增，修改和删除会出错。</span><br><span class="line">      default-data-source-name: ds1</span><br><span class="line">    # 配置数据源的读写分离，但是数据库一定要做主从复制</span><br><span class="line">    masterslave:</span><br><span class="line">      # 配置主从名称，可以任意取名字</span><br><span class="line">      name: ms</span><br><span class="line">      # 配置主库master，负责数据的写入</span><br><span class="line">      master-data-source-name: ds1</span><br><span class="line">      # 配置从库slave节点</span><br><span class="line">      slave-data-source-names: ds2,ds3</span><br><span class="line">      # 配置slave节点的负载均衡均衡策略，采用轮询机制</span><br><span class="line">      load-balance-algorithm-type: round_robin</span><br><span class="line"># 整合mybatis的配置XXXXX</span><br><span class="line">mybatis:</span><br><span class="line">  mapper-locations: classpath:mapper/*.xml</span><br><span class="line">  type-aliases-package: com.xuexiangban.shardingjdbc.entity</span><br></pre></td></tr></table></figure>
+<p>接下来就是正常的Mybatis增删查改代码与启动</p>
+<p><img src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210321222317413.png" alt="image-20210321222317413" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/image-20211124214817213.png" alt="image-20211124214817213" /></p>
+<p>可以看见写入走的是 ds1 数据库 而读取是走的 ds2</p>
+<p>已经完成读写分离配置</p>
+<h3 id="分库分表"><a class="markdownIt-Anchor" href="#分库分表"></a> 分库分表</h3>
+<p>库表的水平与垂直拆分</p>
+<h4 id="垂直拆分"><a class="markdownIt-Anchor" href="#垂直拆分"></a> 垂直拆分</h4>
+<p>对库： 业务模块拆分、商品库，用户库，订单库</p>
+<p>对表：表的字段过多，字段使用的频率不一。（可以拆分两个表建立1:1关系）</p>
+<h4 id="水平拆分"><a class="markdownIt-Anchor" href="#水平拆分"></a> 水平拆分</h4>
+<p>对表进行水平拆分（也就是我们说的：分表）</p>
+<h4 id="数据迁移"><a class="markdownIt-Anchor" href="#数据迁移"></a> 数据迁移</h4>
+<blockquote>
+<p>一般数据库的拆分也是有一个过程的，一开始是单表，后面慢慢拆成多表。那么我们就看下如何平滑的从MySQL单表过度到MySQL的分库分表架构。<br />
+1、利用mysql+canal做增量数据同步，利用分库分表中间件，将数据路由到对应的新表中。<br />
+2、利用分库分表中间件，全量数据导入到对应的新表中。<br />
+3、通过单表数据和分库分表数据两两比较，更新不匹配的数据到新表中。<br />
+4、数据稳定后，将单表的配置切换到分库分表配置上。</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://raykie.cn">Raykie</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://raykie.cn/2021/05/31/ShardingShpere%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6/">https://raykie.cn/2021/05/31/ShardingShpere%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://raykie.cn" target="_blank">Raykie’s blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9B%B6%E9%9B%B6%E6%95%A3%E6%95%A3/">零零散散</a></div><div class="post-share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/GayHub1/images/img/1630253147433.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2021/05/31/%E5%B7%A6%E8%80%B3%E5%90%AC%E9%A3%8E%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/" title="左耳听风专栏笔记"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/1630253207490.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">左耳听风专栏笔记</div></div><div class="info-2"><div class="info-item-1"> 左耳听风专栏笔记  技术变现  程序员用手艺、技术养活自己，不依靠公司； 提高工作效率，去研究那些难的，公司内外的核心技术； 注重输出，输出技术、价值观，帮助更多的人，提高影响力。 去高速发展的公司，而不是初创业务未稳定或项目维护期的。 提升业务代码编写效率，争取时间学习。 关注技术的本质，新技术的出现解决了什么问题和不可替代性 技术付费点，挣钱和省钱。 找到有价值的信息源。（西方美国） 朋友圈   技术领导力   扎实的基础技...</div></div></div></a><a class="pagination-related" href="/2021/04/27/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/" title="搭建本地自动化部署环境"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">搭建本地自动化部署环境</div></div><div class="info-2"><div class="info-item-1"> 搭建本地自动化部署环境  Docker开启远程访问 1234567891011vim /lib/systemd/system/docker.service#修改ExecStart这行ExecStart=/usr/bin/dockerd  -H tcp://0.0.0.0:2375  -H unix:///var/run/docker.sock# 重新加载配置文件systemctl daemon-reload #重启服务syste...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2021/05/31/%E5%B7%A6%E8%80%B3%E5%90%AC%E9%A3%8E%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/" title="左耳听风专栏笔记"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/1630253207490.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-31</div><div class="info-item-2">左耳听风专栏笔记</div></div><div class="info-2"><div class="info-item-1"> 左耳听风专栏笔记  技术变现  程序员用手艺、技术养活自己，不依靠公司； 提高工作效率，去研究那些难的，公司内外的核心技术； 注重输出，输出技术、价值观，帮助更多的人，提高影响力。 去高速发展的公司，而不是初创业务未稳定或项目维护期的。 提升业务代码编写效率，争取时间学习。 关注技术的本质，新技术的出现解决了什么问题和不可替代性 技术付费点，挣钱和省钱。 找到有价值的信息源。（西方美国） 朋友圈   技术领导力   扎实的基础技...</div></div></div></a><a class="pagination-related" href="/2021/09/01/%E6%9E%B6%E6%9E%84%E5%B8%88%E7%AC%94%E8%AE%B0/" title="架构师笔记"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/image-20210905234112916.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-01</div><div class="info-item-2">架构师笔记</div></div><div class="info-2"><div class="info-item-1"> 架构师笔记  综合知识 先做容易的，清晰的题，模棱两可的放后面 案例分析：提高分析能力 论文：组织内容能力，主观性较强， 知识点表   计算机组成与体系结构  计算机结构分类： Flynm  CISC与RISC  CISC:计算机早期使用指令类型多且复杂 RISC：计算机开始通用开始要求简洁，精简。  层次化存储   Cache   内存   地址单元数量=结束地址−开始地址+1=C7FFFH−AC000H+1=C8000H−A...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Raykie</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/GayHub1"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#shardingshpere%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text"> ShardingShpere数据库中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#apache-shardingsphere%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> Apache ShardingSphere概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql%E4%B8%BB%E4%BB%8E%E9%9B%86%E7%BE%A4%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">1.2.</span> <span class="toc-text"> Mysql主从集群环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdocker-composeyml"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 配置docker-compose.yml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 主数据库配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdockerfile"><span class="toc-number">1.2.2.1.</span> <span class="toc-text"> 配置Dockerfile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEmycnf%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.2.2.</span> <span class="toc-text"> 配置my.cnf文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 从数据库配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdockerfile-2"><span class="toc-number">1.2.3.1.</span> <span class="toc-text"> 配置Dockerfile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEmycnf%E6%96%87%E4%BB%B6-2"><span class="toc-number">1.2.3.2.</span> <span class="toc-text"> 配置my.cnf文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AE%B9%E5%99%A8"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 创建容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%BB%8E%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.2.5.</span> <span class="toc-text"> 配置从数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E4%B8%BB%E5%BA%93%E7%9A%84%E7%8A%B6%E6%80%81"><span class="toc-number">1.2.5.1.</span> <span class="toc-text"> 检查主库的状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E5%BA%93%E9%85%8D%E7%BD%AE%E4%B8%BB%E5%BA%93%E4%BF%A1%E6%81%AF"><span class="toc-number">1.2.5.2.</span> <span class="toc-text"> 从库配置主库信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3021%E9%94%99%E8%AF%AF"><span class="toc-number">1.2.5.3.</span> <span class="toc-text"> 3021错误</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.</span> <span class="toc-text"> 项目配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 创建项目引入依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 读写分离</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#yaml%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.2.1.</span> <span class="toc-text"> Yaml配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 分库分表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9E%82%E7%9B%B4%E6%8B%86%E5%88%86"><span class="toc-number">1.3.3.1.</span> <span class="toc-text"> 垂直拆分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B0%B4%E5%B9%B3%E6%8B%86%E5%88%86"><span class="toc-number">1.3.3.2.</span> <span class="toc-text"> 水平拆分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB"><span class="toc-number">1.3.3.3.</span> <span class="toc-text"> 数据迁移</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/18/%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B/" title="如何训练属于自己的目标检测模型"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/image-20230719160626724.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何训练属于自己的目标检测模型"/></a><div class="content"><a class="title" href="/2023/07/18/%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B/" title="如何训练属于自己的目标检测模型">如何训练属于自己的目标检测模型</a><time datetime="2023-07-18T09:49:24.000Z" title="发表于 2023-07-18 17:49:24">2023-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" title="docker-compose部署应用"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/%E4%B8%8B%E8%BD%BD.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker-compose部署应用"/></a><div class="content"><a class="title" href="/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" title="docker-compose部署应用">docker-compose部署应用</a><time datetime="2022-10-12T09:49:24.000Z" title="发表于 2022-10-12 17:49:24">2022-10-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/29/Kubernetes%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kubernetes 学习笔记"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/k8s-logo-ft-blog-image-768x432.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Kubernetes 学习笔记"/></a><div class="content"><a class="title" href="/2022/09/29/Kubernetes%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kubernetes 学习笔记">Kubernetes 学习笔记</a><time datetime="2022-09-29T06:57:18.000Z" title="发表于 2022-09-29 14:57:18">2022-09-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/30/RabbitMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="RabbitMQ学习笔记"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/logoimage.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RabbitMQ学习笔记"/></a><div class="content"><a class="title" href="/2022/07/30/RabbitMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="RabbitMQ学习笔记">RabbitMQ学习笔记</a><time datetime="2022-07-29T16:00:00.000Z" title="发表于 2022-07-30 00:00:00">2022-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/09/2023%E5%B9%B4%E6%9C%AB%E8%AE%A1%E5%88%92/" title="2023年末计划"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/20230709234428.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2023年末计划"/></a><div class="content"><a class="title" href="/2022/07/09/2023%E5%B9%B4%E6%9C%AB%E8%AE%A1%E5%88%92/" title="2023年末计划">2023年末计划</a><time datetime="2022-07-09T15:36:32.000Z" title="发表于 2022-07-09 23:36:32">2022-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2018 - 2026 By Raykie</span></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><img class="icp-icon" src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/icp.png"><span>粤ICP备2023064499号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'hxN4EMnnWWFNeyk4xbNxQJT7-gzGzoHsz',
+      appKey: 'lewYKS5k1rb7D5sVgI4QeTAx',
+      avatar: 'monsterid',
+      serverURLs: 'http://raykie.cn/',
+      emojiMaps: "",
+      visitor: true,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/vendor/footer-fish/fish.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search posts or keywords" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><div id="rembox">  <div id="landlord" style="display:block !important">    <div class="message" style="opacity:0"></div>    <canvas id="live2d" width="500" height="560" class="live2d"></canvas>    <input name="live_talk" id="live_talk" value="1" type="hidden">    <div class="live_ico_box"><div id="hideButton"></div></div>  </div>  <div id="open_live2d">召唤蕾姆</div></div><script>window.message_Path = "/live2d/"; window.talkAPI = "";</script><script src="/js/vendor/jquery.min.js"></script><script src="/live2d/js/live2d.js"></script><script src="/live2d/js/message.js"></script></body></html>

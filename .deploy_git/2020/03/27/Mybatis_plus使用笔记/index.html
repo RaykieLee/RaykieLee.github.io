@@ -1,0 +1,458 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Mybatis_plus使用笔记 | Raykie’s blog</title><meta name="author" content="Raykie"><meta name="copyright" content="Raykie"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="#使用Mybatis——plus  使用通用模板  使用流程  实现层也要继承对应的实现类 service层需要继承IService&lt;实体类&gt; mapper层继承对应的BaseMapper&lt;实体类&gt; ServiceImpl层继承ServiceImpl&lt;对应的Mapper类, 实体类&gt;   实体类中 ID属性加注解 @TableId(value &#x3D; “spe_id">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mybatis_plus使用笔记">
+<meta property="og:url" content="https://raykie.cn/2020/03/27/Mybatis_plus%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Raykie’s blog">
+<meta property="og:description" content="#使用Mybatis——plus  使用通用模板  使用流程  实现层也要继承对应的实现类 service层需要继承IService&lt;实体类&gt; mapper层继承对应的BaseMapper&lt;实体类&gt; ServiceImpl层继承ServiceImpl&lt;对应的Mapper类, 实体类&gt;   实体类中 ID属性加注解 @TableId(value &#x3D; “spe_id">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg">
+<meta property="article:published_time" content="2020-03-27T06:54:35.000Z">
+<meta property="article:modified_time" content="2026-09-13T15:22:10.203Z">
+<meta property="article:author" content="Raykie">
+<meta property="article:tag" content="MybatisPlus">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/GayHub1/images/img/favicon.png"><link rel="canonical" href="https://raykie.cn/2020/03/27/Mybatis_plus%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#111827')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4bf55317870f35ca7fa52050e6e77f2c";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":2,"unescape":true,"pagination":{"enable":true,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Mybatis_plus使用笔记',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'mybatis-plus'
+}</script><link rel="stylesheet" href="/css/raykie-modern.css"><link rel="stylesheet" href="/live2d/css/live2d.css"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="http://raykie.cn:1200/"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page child" href="http://raykie.cn:5244/"><i class="fa-fw fas fa-folder-open"></i><span> AList</span></a></li><li><a class="site-page child" href="http://raykie.cn:4000/"><i class="fa-fw fas fa-server"></i><span> Ward</span></a></li><li><a class="site-page child" href="http://raykie.cn:181"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li><li><a class="site-page child" href="http://raykie.cn:8483/"><i class="fa-fw fas fa-book"></i><span> Docmost</span></a></li><li><a class="site-page child" href="http://raykie.cn:8618/"><i class="fa-fw fas fa-th-large"></i><span> Multica</span></a></li><li><a class="site-page child" href="http://raykie.cn:8480/"><i class="fa-fw fas fa-pen-nib"></i><span> Penpot</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/case/"><i class="fa-fw fas fa-images"></i><span> Case</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page fixed" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" alt="Logo"><span class="site-name">Raykie’s blog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="http://raykie.cn:1200/"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page child" href="http://raykie.cn:5244/"><i class="fa-fw fas fa-folder-open"></i><span> AList</span></a></li><li><a class="site-page child" href="http://raykie.cn:4000/"><i class="fa-fw fas fa-server"></i><span> Ward</span></a></li><li><a class="site-page child" href="http://raykie.cn:181"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li><li><a class="site-page child" href="http://raykie.cn:8483/"><i class="fa-fw fas fa-book"></i><span> Docmost</span></a></li><li><a class="site-page child" href="http://raykie.cn:8618/"><i class="fa-fw fas fa-th-large"></i><span> Multica</span></a></li><li><a class="site-page child" href="http://raykie.cn:8480/"><i class="fa-fw fas fa-pen-nib"></i><span> Penpot</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/case/"><i class="fa-fw fas fa-images"></i><span> Case</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">Mybatis_plus使用笔记</h1></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>#使用Mybatis——plus</p>
+<h2 id="使用通用模板"><a class="markdownIt-Anchor" href="#使用通用模板"></a> 使用通用模板</h2>
+<h3 id="使用流程"><a class="markdownIt-Anchor" href="#使用流程"></a> 使用流程</h3>
+<ul>
+<li>实现层也要继承对应的实现类</li>
+<li>service层需要继承IService&lt;实体类&gt;</li>
+<li>mapper层继承对应的BaseMapper&lt;实体类&gt;</li>
+<li>ServiceImpl层继承ServiceImpl&lt;对应的Mapper类, 实体类&gt;</li>
+</ul>
+<h4 id="实体类中-id属性加注解"><a class="markdownIt-Anchor" href="#实体类中-id属性加注解"></a> 实体类中 ID属性加注解</h4>
+<p>@TableId(value = “spe_id”, type = IdType.Auto)</p>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AUTO</td>
+<td>主键自增（数据库中需要设置主键自增）</td>
+</tr>
+<tr>
+<td>NONE</td>
+<td>默认 （跟随全局策略走）</td>
+</tr>
+<tr>
+<td>UUID</td>
+<td>UUID类型主键</td>
+</tr>
+<tr>
+<td>ID_WORKER</td>
+<td>数值类型 （数据库中也必须是数值类型 否则会报错）</td>
+</tr>
+<tr>
+<td>ID_WORKER_STR</td>
+<td>字符串类型 （数据库也要保证一样字符类型）</td>
+</tr>
+<tr>
+<td>INPUT</td>
+<td>用户自定义了  （数据类型和数据库保持一致就行）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="全局主键策略实现"><a class="markdownIt-Anchor" href="#全局主键策略实现"></a> 全局主键策略实现</h4>
+<p>需要在application.yml文件中添加</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mybatis-plus:</span></span><br><span class="line">  <span class="attr">mapper-locations:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">com/mp/mapper/*</span></span><br><span class="line">  <span class="attr">global-config:</span></span><br><span class="line">    <span class="attr">db-config:</span></span><br><span class="line">      <span class="attr">id-type:</span> <span class="string">uuid/none/input/id_worker/id_worker_str/auto</span>   <span class="string">表示全局主键都采用该策略（如果全局策略和局部策略都有设置，局部策略优先级高）</span></span><br></pre></td></tr></table></figure>
+<p>注意： 当设为自增时 saveOrUpdate时无法查重（每次id不一样 会自动自增）</p>
+<h2 id="使用-lambda-表达式-查询"><a class="markdownIt-Anchor" href="#使用-lambda-表达式-查询"></a> 使用 lambda 表达式 查询</h2>
+<h3 id="条件构造器关系介绍"><a class="markdownIt-Anchor" href="#条件构造器关系介绍"></a> 条件构造器关系介绍</h3>
+<p><img src="https://img-blog.csdn.net/20181001173726837?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3MDM0Mjk0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="" /><br />
+QueryWrapper  与 UpdateWrapper  都是Entity 对象封装操作类<br />
+LambdaQueryWrapper 与 LambdaUpdateWrapper 是实现抽象类AbstractLambdaWrapper的子类 ： 用于Lambda语法使用的查询Wrapper</p>
+<h3 id="条件构造器使用中的各个方法格式和说明"><a class="markdownIt-Anchor" href="#条件构造器使用中的各个方法格式和说明"></a> 条件构造器使用中的各个方法格式和说明</h3>
+<p><img src="https://img-blog.csdn.net/20181001202710403?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3MDM0Mjk0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="" /></p>
+<h3 id="crud-例子"><a class="markdownIt-Anchor" href="#crud-例子"></a> CRUD 例子</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">void</span> <span class="title function_">delete</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">QueryWrapper</span>&lt;User&gt; <span class="variable">queryWrapper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">QueryWrapper</span>&lt;&gt;();</span><br><span class="line">    queryWrapper</span><br><span class="line">            .isNull(<span class="string">&quot;name&quot;</span>)</span><br><span class="line">            .ge(<span class="string">&quot;age&quot;</span>, <span class="number">12</span>)</span><br><span class="line">            .isNotNull(<span class="string">&quot;email&quot;</span>);</span><br><span class="line">    <span class="type">int</span> <span class="variable">delete</span> <span class="operator">=</span> mapper.delete(queryWrapper);</span><br><span class="line">    System.out.println(<span class="string">&quot;delete return count = &quot;</span> + delete);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>删除的查询条件为name字段为null的and年龄大于等于12的and email字段不为null的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">void</span> <span class="title function_">selectMaps</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">QueryWrapper</span>&lt;User&gt; <span class="variable">queryWrapper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">QueryWrapper</span>&lt;&gt;();</span><br><span class="line">    queryWrapper.isNotNull(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">    <span class="type">List</span>&lt;Map&lt;String, Object&gt;&gt; <span class="variable">maps</span> <span class="operator">=</span> mapper.selectMaps(queryWrapper);</span><br><span class="line">    <span class="keyword">for</span> (Map&lt;String, Object&gt; map : maps) &#123;</span><br><span class="line">        System.out.println(map);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 打印结果</span></span><br><span class="line"><span class="comment"> * &#123;name=lqf, id=1046282328366391406, age=12, email=lqf@163.com, status=false&#125;</span></span><br><span class="line"><span class="comment"> * &#123;name=lqf, id=1046282328366391407, age=12, email=lqf@163.com, status=false&#125;</span></span><br><span class="line"><span class="comment"> * &#123;name=lqf, id=1046282328366391408, age=12, email=lqf@163.com, status=false&#125;</span></span><br><span class="line"><span class="comment"> * &#123;name=lqf, id=1046282328366391409, age=12, email=lqf@163.com, status=false&#125;</span></span><br><span class="line"><span class="comment"> * &#123;name=lqf, id=1046282328366391410, age=12, email=lqf@163.com, status=false&#125;</span></span><br><span class="line"><span class="comment"> * &#123;name=lqf, id=1046282328366391411, age=12, email=lqf@163.com, status=false&#125;</span></span><br><span class="line"><span class="comment"> * &#123;name=lqf, id=1046282328366391412, age=12, email=lqf@163.com, status=false&#125;</span></span><br><span class="line"><span class="comment"> * &#123;name=lqf, id=1046282328366391413, age=12, email=lqf@163.com, status=false&#125;</span></span><br><span class="line"><span class="comment"> * &#123;name=lqf, id=1046282328366391414, age=12, email=lqf@163.com, status=false&#125;</span></span><br><span class="line"><span class="comment"> * &#123;name=lqf, id=1046282328366391415, age=12, email=lqf@163.com, status=false&#125;</span></span><br><span class="line"><span class="comment"> * &#123;name=lqf, id=1046282328366391416, age=12, email=lqf@163.com, status=false&#125;</span></span><br><span class="line"><span class="comment"> * &#123;name=lqf, id=1046282328366391417, age=12, email=lqf@163.com, status=false&#125;</span></span><br><span class="line"><span class="comment"> * &#123;name=lqf, id=1046282328366391418, age=12, email=lqf@163.com, status=false&#125;</span></span><br><span class="line"><span class="comment"> * json类型的键值对模式</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<p>queryWrapper 实体对象封装操作类（为 null时查询所有信息）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> page         分页查询条件（可以为 RowBounds.DEFAULT）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> queryWrapper 实体对象封装操作类（可以为 null）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">void</span> <span class="title function_">selectPage</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">Page</span>&lt;User&gt; <span class="variable">page</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Page</span>&lt;&gt;(<span class="number">1</span>, <span class="number">5</span>);</span><br><span class="line">    <span class="type">QueryWrapper</span>&lt;User&gt; <span class="variable">queryWrapper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">QueryWrapper</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="type">IPage</span>&lt;User&gt; <span class="variable">userIPage</span> <span class="operator">=</span> mapper.selectPage(page, queryWrapper);</span><br><span class="line">    System.out.println(userIPage);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据 entity 条件，查询全部记录（并翻页）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> entity        实体对象 (set 条件值,不能为 null)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> updateWrapper 实体对象封装操作类（可以为 null,里面的 entity 用于生成 where 语句）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">void</span> <span class="title function_">update</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//修改值</span></span><br><span class="line">    <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">    user.setStatus(<span class="literal">true</span>);</span><br><span class="line">    user.setName(<span class="string">&quot;zhangsan&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//修改条件s</span></span><br><span class="line">    <span class="type">UpdateWrapper</span>&lt;User&gt; <span class="variable">userUpdateWrapper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UpdateWrapper</span>&lt;&gt;();</span><br><span class="line">    userUpdateWrapper.eq(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;lqf&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="variable">update</span> <span class="operator">=</span> mapper.update(user, userUpdateWrapper);</span><br><span class="line"></span><br><span class="line">    System.out.println(update);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据 whereEntity 条件，更新记录</p>
+<h2 id="使用-mybatis-plus-自动生成实体类"><a class="markdownIt-Anchor" href="#使用-mybatis-plus-自动生成实体类"></a> 使用 Mybatis-plus 自动生成实体类</h2>
+<h3 id="简单使用"><a class="markdownIt-Anchor" href="#简单使用"></a> 简单使用</h3>
+<h4 id="导入maven依赖"><a class="markdownIt-Anchor" href="#导入maven依赖"></a> 导入Maven依赖</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.baomidou&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis-plus-generator&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;$&#123;mybatis-plus.version&#125;&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.freemarker&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;freemarker&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="编写测试类"><a class="markdownIt-Anchor" href="#编写测试类"></a> 编写测试类</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.DbType;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.IdType;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.toolkit.StringPool;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.AutoGenerator;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.InjectionConfig;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.*;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.builder.ConfigBuilder;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.po.TableInfo;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.querys.MySqlQuery;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.rules.DateType;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.rules.FileType;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.rules.IColumnType;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.toolkit.StringPool;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.toolkit.StringUtils;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.AutoGenerator;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.InjectionConfig;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.*;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.po.TableInfo;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * mybatis代码生成器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 演示例子，执行 main 方法控制台输入模块表名回车自动生成对应项目目录中</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CodeGenerator</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;</span></span><br><span class="line"><span class="comment">     * 读取控制台内容</span></span><br><span class="line"><span class="comment">     * &lt;/p&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">String</span> <span class="title function_">scanner</span><span class="params">(String tip)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">help</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        help.append(<span class="string">&quot;请输入&quot;</span> + tip + <span class="string">&quot;：&quot;</span>);</span><br><span class="line">        System.out.println(help.toString());</span><br><span class="line">        <span class="keyword">if</span> (scanner.hasNext()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">ipt</span> <span class="operator">=</span> scanner.next();</span><br><span class="line">            <span class="keyword">if</span> (StringUtils.isNotEmpty(ipt)) &#123;</span><br><span class="line">                <span class="keyword">return</span> ipt;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">MybatisPlusException</span>(<span class="string">&quot;请输入正确的&quot;</span> + tip + <span class="string">&quot;！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 代码生成器</span></span><br><span class="line">        <span class="type">AutoGenerator</span> <span class="variable">mpg</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AutoGenerator</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 全局配置</span></span><br><span class="line">        <span class="type">GlobalConfig</span> <span class="variable">gc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">GlobalConfig</span>();</span><br><span class="line">        <span class="type">String</span> <span class="variable">projectPath</span> <span class="operator">=</span> System.getProperty(<span class="string">&quot;user.dir&quot;</span>);</span><br><span class="line">        gc.setOutputDir(projectPath + <span class="string">&quot;/src/main/java&quot;</span>);</span><br><span class="line">        gc.setServiceName(<span class="string">&quot;%sService&quot;</span>);<span class="comment">//service 命名方式</span></span><br><span class="line">        gc.setServiceImplName(<span class="string">&quot;%sServiceImpl&quot;</span>);<span class="comment">//service impl 命名方式</span></span><br><span class="line">        <span class="comment">// 自定义文件命名，注意 %s 会自动填充表实体属性！</span></span><br><span class="line">        gc.setMapperName(<span class="string">&quot;%sMapper&quot;</span>);</span><br><span class="line">        gc.setXmlName(<span class="string">&quot;%sMapper&quot;</span>);</span><br><span class="line">        gc.setAuthor(<span class="string">&quot;cmx&quot;</span>);</span><br><span class="line">        gc.setOpen(<span class="literal">false</span>);</span><br><span class="line">        <span class="comment">// gc.setSwagger2(true); 实体属性 Swagger2 注解</span></span><br><span class="line">        mpg.setGlobalConfig(gc);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 数据源配置</span></span><br><span class="line">        <span class="type">DataSourceConfig</span> <span class="variable">dsc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DataSourceConfig</span>();</span><br><span class="line">        dsc.setUrl(<span class="string">&quot;jdbc:oracle:thin:@xxx:xxx&quot;</span>);</span><br><span class="line">        <span class="comment">// dsc.setSchemaName(&quot;public&quot;);</span></span><br><span class="line">        dsc.setDriverName(<span class="string">&quot;oracle.jdbc.OracleDriver&quot;</span>);</span><br><span class="line">        dsc.setUsername(<span class="string">&quot;xxx&quot;</span>);dsc.setPassword(<span class="string">&quot;xxx&quot;</span>);</span><br><span class="line">        mpg.setDataSource(dsc);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 包配置</span></span><br><span class="line">        <span class="type">PackageConfig</span> <span class="variable">pc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PackageConfig</span>();</span><br><span class="line">        pc.setModuleName(scanner(<span class="string">&quot;模块名&quot;</span>));</span><br><span class="line">        pc.setParent(<span class="string">&quot;com.cmx.tcn&quot;</span>);</span><br><span class="line">        mpg.setPackageInfo(pc);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 自定义配置</span></span><br><span class="line">        <span class="type">InjectionConfig</span> <span class="variable">cfg</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InjectionConfig</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="type">void</span> <span class="title function_">initMap</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="comment">// to do nothing</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果模板引擎是 freemarker</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">templatePath</span> <span class="operator">=</span> <span class="string">&quot;/templates/mapper.xml.ftl&quot;</span>;</span><br><span class="line">        <span class="comment">// 如果模板引擎是 velocity</span></span><br><span class="line">        <span class="comment">// String templatePath = &quot;/templates/mapper.xml.vm&quot;;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 自定义输出配置</span></span><br><span class="line">        <span class="type">List</span>&lt;FileOutConfig&gt; <span class="variable">focList</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 自定义配置会被优先输出</span></span><br><span class="line">        focList.add(<span class="keyword">new</span> <span class="title class_">FileOutConfig</span>(templatePath) &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="type">String</span> <span class="title function_">outputFile</span><span class="params">(TableInfo tableInfo)</span> &#123;</span><br><span class="line">                <span class="comment">// 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！</span></span><br><span class="line">                <span class="keyword">return</span> projectPath + <span class="string">&quot;/src/main/resources/mapper/&quot;</span> + pc.getModuleName()</span><br><span class="line">                        + <span class="string">&quot;/&quot;</span> + tableInfo.getEntityName() + <span class="string">&quot;Mapper&quot;</span> + StringPool.DOT_XML;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        cfg.setFileCreate(new IFileCreate() &#123;</span></span><br><span class="line"><span class="comment">            @Override</span></span><br><span class="line"><span class="comment">            public boolean isCreate(ConfigBuilder configBuilder, FileType fileType, String filePath) &#123;</span></span><br><span class="line"><span class="comment">                // 判断自定义文件夹是否需要创建</span></span><br><span class="line"><span class="comment">                checkDir(&quot;调用默认方法创建的目录&quot;);</span></span><br><span class="line"><span class="comment">                return false;</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;);</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        cfg.setFileOutConfigList(focList);</span><br><span class="line">        mpg.setCfg(cfg);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 配置模板</span></span><br><span class="line">        <span class="type">TemplateConfig</span> <span class="variable">templateConfig</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TemplateConfig</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 配置自定义输出模板</span></span><br><span class="line">        <span class="comment">//指定自定义模板路径，注意不要带上.ftl/.vm, 会根据使用的模板引擎自动识别</span></span><br><span class="line">        <span class="comment">// templateConfig.setEntity(&quot;templates/entity2.java&quot;);</span></span><br><span class="line">        <span class="comment">// templateConfig.setService();</span></span><br><span class="line">        <span class="comment">// templateConfig.setController();</span></span><br><span class="line"></span><br><span class="line">        templateConfig.setXml(<span class="literal">null</span>);</span><br><span class="line">        mpg.setTemplate(templateConfig);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 策略配置</span></span><br><span class="line">        <span class="type">StrategyConfig</span> <span class="variable">strategy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StrategyConfig</span>();</span><br><span class="line">        strategy.setNaming(NamingStrategy.underline_to_camel);</span><br><span class="line">        strategy.setColumnNaming(NamingStrategy.underline_to_camel);</span><br><span class="line"><span class="comment">//        strategy.setSuperEntityClass(&quot;com.baomidou.ant.common.BaseEntity&quot;);</span></span><br><span class="line">        strategy.setEntityLombokModel(<span class="literal">true</span>);</span><br><span class="line">        strategy.setRestControllerStyle(<span class="literal">true</span>);</span><br><span class="line"><span class="comment">//        strategy.setSuperControllerClass(&quot;com.baomidou.ant.common.BaseController&quot;);</span></span><br><span class="line">        strategy.setInclude(scanner(<span class="string">&quot;表名，多个英文逗号分割&quot;</span>).split(<span class="string">&quot;,&quot;</span>));</span><br><span class="line"><span class="comment">//        strategy.setSuperEntityColumns(&quot;id&quot;);</span></span><br><span class="line">        strategy.setControllerMappingHyphenStyle(<span class="literal">true</span>);</span><br><span class="line">        strategy.setTablePrefix(pc.getModuleName() + <span class="string">&quot;_&quot;</span>);</span><br><span class="line">        mpg.setStrategy(strategy);</span><br><span class="line">        mpg.setTemplateEngine(<span class="keyword">new</span> <span class="title class_">FreemarkerTemplateEngine</span>());</span><br><span class="line">        mpg.execute();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>使用快捷键（ctrl+shift+F10）或者右键该类点击Run 运行代码 即可生成对应代码</p>
+<h3 id="常用参数"><a class="markdownIt-Anchor" href="#常用参数"></a> 常用参数</h3>
+<h4 id="设置date策略"><a class="markdownIt-Anchor" href="#设置date策略"></a> 设置Date策略</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  	<span class="type">AutoGenerator</span> <span class="variable">generator</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AutoGenerator</span>();</span><br><span class="line">gc.setDateType(DateType.ONLY_DATE); <span class="comment">// 时间策略 默认TIME_PACK</span></span><br></pre></td></tr></table></figure>
+<p>setDateType()可设置三种策略分别如下表：(数据库类型为datetime)</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ONLY_DATE</th>
+<th>SQL_PACK</th>
+<th>TIME_PACK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体类对应数据类型</td>
+<td>Date</td>
+<td>Timestamp</td>
+<td>Date</td>
+</tr>
+</tbody>
+</table>
+<h4 id="自定义转换模板"><a class="markdownIt-Anchor" href="#自定义转换模板"></a> 自定义转换模板</h4>
+<p>模板语法官网:<br />
+<a target="_blank" rel="noopener" href="http://freemaer.foofun.cn/dgui_quickstart_basics.html">freemarker中文官方文档</a></p>
+<ul>
+<li>复制源码中默认的模板到entity.java.ftl文件至/main/resources/templates文件下方，重命名为entity2.java.ftl（ftl文件为freemarker模板）<br />
+<img src="https://upload-images.jianshu.io/upload_images/8190955-061902949c8ba968.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="查找源码模板" /></li>
+<li>根据freemaeker语法修改模板<br />
+导入Date包并修改为Date数据类型</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;#list table.fields as field&gt;</span><br><span class="line">    &lt;#if (field.propertyType) ==&quot;LocalDateTime&quot;&gt;</span><br><span class="line">import java.util.Date;</span><br><span class="line">    &lt;#break&gt;</span><br><span class="line">    &lt;/#if&gt;</span><br><span class="line">&lt;/#list&gt;</span><br><span class="line">    &lt;#if (field.propertyType) ==&quot;LocalDateTime&quot;&gt;</span><br><span class="line">    private Date $&#123;field.propertyName&#125;;</span><br><span class="line">    &lt;#else&gt;</span><br><span class="line">    private $&#123;field.propertyType&#125; $&#123;field.propertyName&#125;;</span><br><span class="line">    &lt;/#if&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Generator中设置模板路径</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置模板</span></span><br><span class="line"><span class="type">TemplateConfig</span> <span class="variable">templateConfig</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TemplateConfig</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置自定义输出模板</span></span><br><span class="line"><span class="comment">//指定自定义模板路径，注意不要带上.ftl/.vm, 会根据使用的模板引擎自动识别</span></span><br><span class="line"> templateConfig.setEntity(<span class="string">&quot;templates/entity.java&quot;</span>);</span><br><span class="line"><span class="comment">// templateConfig.setService();</span></span><br><span class="line"><span class="comment">// templateConfig.setController();</span></span><br><span class="line"></span><br><span class="line">templateConfig.setXml(<span class="literal">null</span>);</span><br><span class="line">generator.setTemplate(templateConfig);</span><br><span class="line"></span><br><span class="line">cfg.setFileOutConfigList(focList);</span><br><span class="line">generator.setCfg(cfg);</span><br></pre></td></tr></table></figure>
+<h2 id="mybatis-plus日志控制"><a class="markdownIt-Anchor" href="#mybatis-plus日志控制"></a> mybatis-plus日志控制</h2>
+<h2 id="开启日志"><a class="markdownIt-Anchor" href="#开启日志"></a> 开启日志</h2>
+<p>yml中配置中添加打印SQL配置：</p>
+<p>在 <strong>application.yml</strong> 中 <strong>mybatis-plus</strong>下的 ** configuration:**下添加一行打印sql配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">log-impl: org.apache.ibatis.logging.stdout.StdOutImpl</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>添加mybatis-plus后整体配置为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mybatis-plus:</span><br><span class="line">  type-aliases-package: com.sc.iot</span><br><span class="line">  type-aliases-super-type: java.lang.Object</span><br><span class="line">  configuration:</span><br><span class="line">    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl</span><br><span class="line">    map-underscore-to-camel-case: true</span><br><span class="line">    cache-enabled: true</span><br><span class="line">    lazy-loading-enabled: true</span><br><span class="line">    multiple-result-sets-enabled: true</span><br><span class="line">    use-generated-keys: true</span><br><span class="line">    default-statement-timeout: 60</span><br><span class="line">    default-fetch-size: 100</span><br></pre></td></tr></table></figure>
+<h3 id="日志生成路径"><a class="markdownIt-Anchor" href="#日志生成路径"></a> 日志生成路径</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">logging.path=/Users/jackie/workspace/rome/ </span><br><span class="line">logging.file=springbootdemo.log</span><br></pre></td></tr></table></figure>
+<ul>
+<li>logging.path</li>
+</ul>
+<p>该属性用来配置日志文件的路径</p>
+<ul>
+<li>logging.file</li>
+</ul>
+<p>该属性用来配置日志文件名，如果该属性不配置，默认文件名为spring.log<br />
+重启项目后可以就可以看见 log文件了<br />
+<img src="http://images.zhuoke.xyz/5f042b8a3ca27.png" alt="" /></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://raykie.cn">Raykie</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://raykie.cn/2020/03/27/Mybatis_plus%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">https://raykie.cn/2020/03/27/Mybatis_plus%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://raykie.cn" target="_blank">Raykie’s blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/MybatisPlus/">MybatisPlus</a></div><div class="post-share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav id="pagination"><div class="pagination"></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Raykie</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/GayHub1"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/18/%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B/" title="如何训练属于自己的目标检测模型"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/image-20230719160626724.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何训练属于自己的目标检测模型"/></a><div class="content"><a class="title" href="/2023/07/18/%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B/" title="如何训练属于自己的目标检测模型">如何训练属于自己的目标检测模型</a><time datetime="2023-07-18T09:49:24.000Z" title="发表于 2023-07-18 17:49:24">2023-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" title="docker-compose部署应用"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/%E4%B8%8B%E8%BD%BD.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker-compose部署应用"/></a><div class="content"><a class="title" href="/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" title="docker-compose部署应用">docker-compose部署应用</a><time datetime="2022-10-12T09:49:24.000Z" title="发表于 2022-10-12 17:49:24">2022-10-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/29/Kubernetes%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kubernetes 学习笔记"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/k8s-logo-ft-blog-image-768x432.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Kubernetes 学习笔记"/></a><div class="content"><a class="title" href="/2022/09/29/Kubernetes%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kubernetes 学习笔记">Kubernetes 学习笔记</a><time datetime="2022-09-29T06:57:18.000Z" title="发表于 2022-09-29 14:57:18">2022-09-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/30/RabbitMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="RabbitMQ学习笔记"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/logoimage.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RabbitMQ学习笔记"/></a><div class="content"><a class="title" href="/2022/07/30/RabbitMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="RabbitMQ学习笔记">RabbitMQ学习笔记</a><time datetime="2022-07-29T16:00:00.000Z" title="发表于 2022-07-30 00:00:00">2022-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/09/2023%E5%B9%B4%E6%9C%AB%E8%AE%A1%E5%88%92/" title="2023年末计划"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/20230709234428.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2023年末计划"/></a><div class="content"><a class="title" href="/2022/07/09/2023%E5%B9%B4%E6%9C%AB%E8%AE%A1%E5%88%92/" title="2023年末计划">2023年末计划</a><time datetime="2022-07-09T15:36:32.000Z" title="发表于 2022-07-09 23:36:32">2022-07-09</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 1.15em; color: rgb(117, 50, 50);">蓝桥杯</a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.15em; color: rgb(129, 191, 109);">算法</a><a href="/tags/docker/" style="font-size: 1.35em; color: rgb(87, 119, 126);">docker</a><a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.25em; color: rgb(65, 184, 106);">读书笔记</a><a href="/tags/MybatisPlus/" style="font-size: 1.15em; color: rgb(50, 112, 50);">MybatisPlus</a><a href="/tags/%E5%88%B7%E6%9C%BA/" style="font-size: 1.15em; color: rgb(71, 159, 105);">刷机</a><a href="/tags/Centos7/" style="font-size: 1.25em; color: rgb(50, 76, 104);">Centos7</a><a href="/tags/RocketMQ/" style="font-size: 1.25em; color: rgb(50, 50, 195);">RocketMQ</a><a href="/tags/Zabbix/" style="font-size: 1.15em; color: rgb(129, 94, 144);">Zabbix</a><a href="/tags/Kubernetes/" style="font-size: 1.15em; color: rgb(141, 147, 117);">Kubernetes</a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 1.15em; color: rgb(117, 197, 161);">学习笔记</a><a href="/tags/%E9%9B%B6%E9%9B%B6%E6%95%A3%E6%95%A3/" style="font-size: 1.35em; color: rgb(142, 165, 183);">零零散散</a><a href="/tags/redis/" style="font-size: 1.15em; color: rgb(50, 72, 152);">redis</a><a href="/tags/hexo/" style="font-size: 1.25em; color: rgb(112, 99, 142);">hexo</a><a href="/tags/SpringBoot/" style="font-size: 1.35em; color: rgb(50, 140, 50);">SpringBoot</a><a href="/tags/nginx/" style="font-size: 1.15em; color: rgb(50, 74, 98);">nginx</a><a href="/tags/tool/" style="font-size: 1.25em; color: rgb(190, 145, 198);">tool</a><a href="/tags/sql/" style="font-size: 1.15em; color: rgb(156, 68, 191);">sql</a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 1.15em; color: rgb(50, 101, 89);">内网穿透</a><a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" style="font-size: 1.15em; color: rgb(73, 128, 89);">目标检测</a><a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 1.15em; color: rgb(50, 96, 149);">动态规划</a><a href="/tags/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/" style="font-size: 1.15em; color: rgb(126, 104, 50);">数据持久化</a><a href="/tags/Android/" style="font-size: 1.45em; color: rgb(76, 83, 88);">Android</a><a href="/tags/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/" style="font-size: 1.35em; color: rgb(123, 111, 91);">第一行代码笔记</a><a href="/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" style="font-size: 1.15em; color: rgb(50, 50, 130);">定时任务</a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.15em; color: rgb(50, 50, 194);">数据结构</a><a href="/tags/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/" style="font-size: 1.15em; color: rgb(191, 84, 128);">网络技术</a><a href="/tags/%E6%9D%83%E9%99%90/" style="font-size: 1.15em; color: rgb(90, 50, 50);">权限</a><a href="/tags/%E8%BD%AF%E8%80%83%E7%AC%94%E8%AE%B0/" style="font-size: 1.15em; color: rgb(194, 143, 66);">软考笔记</a><a href="/tags/%E5%AE%9D%E5%A1%94/" style="font-size: 1.15em; color: rgb(129, 50, 50);">宝塔</a><a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 1.15em; color: rgb(162, 171, 113);">阿里云</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a></div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/07/">
+            <span class="card-archive-list-date">
+              七月 2023
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2022/10/">
+            <span class="card-archive-list-date">
+              十月 2022
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2022/09/">
+            <span class="card-archive-list-date">
+              九月 2022
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2022/07/">
+            <span class="card-archive-list-date">
+              七月 2022
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2022/06/">
+            <span class="card-archive-list-date">
+              六月 2022
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2022/05/">
+            <span class="card-archive-list-date">
+              五月 2022
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2022/02/">
+            <span class="card-archive-list-date">
+              二月 2022
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2021/12/">
+            <span class="card-archive-list-date">
+              十二月 2021
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">42</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">112.4k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-09-30T16:03:21.791Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2018 - 2026 By Raykie</span></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><img class="icp-icon" src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/icp.png"><span>粤ICP备2023064499号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'hxN4EMnnWWFNeyk4xbNxQJT7-gzGzoHsz',
+      appKey: 'lewYKS5k1rb7D5sVgI4QeTAx',
+      avatar: 'monsterid',
+      serverURLs: 'http://raykie.cn/',
+      emojiMaps: "",
+      visitor: true,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/vendor/footer-fish/fish.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search posts or keywords" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><div id="rembox">  <div id="landlord" style="display:block !important">    <div class="message" style="opacity:0"></div>    <canvas id="live2d" width="500" height="560" class="live2d"></canvas>    <input name="live_talk" id="live_talk" value="1" type="hidden">    <div class="live_ico_box"><div id="hideButton"></div></div>  </div>  <div id="open_live2d">召唤蕾姆</div></div><script>window.message_Path = "/live2d/"; window.talkAPI = "";</script><script src="/js/vendor/jquery.min.js"></script><script src="/live2d/js/live2d.js"></script><script src="/live2d/js/message.js"></script></body></html>

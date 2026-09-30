@@ -1,0 +1,399 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Java 编程的逻辑笔记 | Raykie’s blog</title><meta name="author" content="Raykie"><meta name="copyright" content="Raykie"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Java 编程的逻辑  编程基础 程序：基本上就是告诉计算机要操作的数据和执行的指令序列，即对什么数据做什么操作  数据类型和变量  整数类型：byte&#x2F;short&#x2F;int&#x2F;long（取值范围1&#x2F;2&#x2F;4&#x2F;8） 小数类型：float&#x2F;double（不同的取值范围和精度） -字符类型：char（单个字符） 真假类型：boolean（真假）  变量：给数据起名字，方便找不同的数据，它的值可以变，但含义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 编程的逻辑笔记">
+<meta property="og:url" content="https://raykie.cn/2021/06/07/Java%20%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Raykie’s blog">
+<meta property="og:description" content="Java 编程的逻辑  编程基础 程序：基本上就是告诉计算机要操作的数据和执行的指令序列，即对什么数据做什么操作  数据类型和变量  整数类型：byte&#x2F;short&#x2F;int&#x2F;long（取值范围1&#x2F;2&#x2F;4&#x2F;8） 小数类型：float&#x2F;double（不同的取值范围和精度） -字符类型：char（单个字符） 真假类型：boolean（真假）  变量：给数据起名字，方便找不同的数据，它的值可以变，但含义">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/s29680277.jpg">
+<meta property="article:published_time" content="2021-06-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-09-19T15:08:36.202Z">
+<meta property="article:author" content="Raykie">
+<meta property="article:tag" content="读书笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/s29680277.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Java 编程的逻辑笔记",
+  "url": "https://raykie.cn/2021/06/07/Java%20%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E7%AC%94%E8%AE%B0/",
+  "image": "https://gitee.com/xiaozhuo_Q/images/raw/master/blog/s29680277.jpg",
+  "datePublished": "2021-06-06T16:00:00.000Z",
+  "dateModified": "2026-09-19T15:08:36.202Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Raykie",
+      "url": "https://raykie.cn"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/GayHub1/images/img/favicon.png"><link rel="canonical" href="https://raykie.cn/2021/06/07/Java%20%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E7%AC%94%E8%AE%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#111827')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4bf55317870f35ca7fa52050e6e77f2c";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":2,"unescape":true,"pagination":{"enable":true,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java 编程的逻辑笔记',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/raykie-modern.css"><link rel="stylesheet" href="/live2d/css/live2d.css"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="http://raykie.cn:1200/"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page child" href="http://raykie.cn:5244/"><i class="fa-fw fas fa-folder-open"></i><span> AList</span></a></li><li><a class="site-page child" href="http://raykie.cn:4000/"><i class="fa-fw fas fa-server"></i><span> Ward</span></a></li><li><a class="site-page child" href="http://raykie.cn:181"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li><li><a class="site-page child" href="http://raykie.cn:8483/"><i class="fa-fw fas fa-book"></i><span> Docmost</span></a></li><li><a class="site-page child" href="http://raykie.cn:8618/"><i class="fa-fw fas fa-th-large"></i><span> Multica</span></a></li><li><a class="site-page child" href="http://raykie.cn:8480/"><i class="fa-fw fas fa-pen-nib"></i><span> Penpot</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/case/"><i class="fa-fw fas fa-images"></i><span> Case</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(https://gitee.com/xiaozhuo_Q/images/raw/master/blog/s29680277.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" alt="Logo"><span class="site-name">Raykie’s blog</span></a><a class="nav-page-title" href="/"><span class="site-name">Java 编程的逻辑笔记</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="http://raykie.cn:1200/"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page child" href="http://raykie.cn:5244/"><i class="fa-fw fas fa-folder-open"></i><span> AList</span></a></li><li><a class="site-page child" href="http://raykie.cn:4000/"><i class="fa-fw fas fa-server"></i><span> Ward</span></a></li><li><a class="site-page child" href="http://raykie.cn:181"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li><li><a class="site-page child" href="http://raykie.cn:8483/"><i class="fa-fw fas fa-book"></i><span> Docmost</span></a></li><li><a class="site-page child" href="http://raykie.cn:8618/"><i class="fa-fw fas fa-th-large"></i><span> Multica</span></a></li><li><a class="site-page child" href="http://raykie.cn:8480/"><i class="fa-fw fas fa-pen-nib"></i><span> Penpot</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/case/"><i class="fa-fw fas fa-images"></i><span> Case</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Java 编程的逻辑笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-06-06T16:00:00.000Z" title="发表于 2021-06-07 00:00:00">2021-06-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-19T15:08:36.202Z" title="更新于 2026-09-19 23:08:36">2026-09-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2021/06/07/Java%20%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E7%AC%94%E8%AE%B0/" data-flag-title="Java 编程的逻辑笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="java-编程的逻辑"><a class="markdownIt-Anchor" href="#java-编程的逻辑"></a> Java 编程的逻辑</h1>
+<h2 id="编程基础"><a class="markdownIt-Anchor" href="#编程基础"></a> 编程基础</h2>
+<p><strong>程序</strong>：基本上就是告诉计算机要操作的数据和执行的指令序列，即对什么数据做什么操作</p>
+<h3 id="数据类型和变量"><a class="markdownIt-Anchor" href="#数据类型和变量"></a> 数据类型和变量</h3>
+<ul>
+<li>整数类型：byte/short/int/long（取值范围1/2/4/8）</li>
+<li>小数类型：float/double（不同的取值范围和精度）</li>
+<li>-字符类型：char（单个字符）</li>
+<li>真假类型：boolean（真假）</li>
+</ul>
+<p><strong>变量</strong>：给数据起名字，方便找不同的数据，它的值可以变，但含义不应变。</p>
+<h3 id="数组类型"><a class="markdownIt-Anchor" href="#数组类型"></a> 数组类型</h3>
+<p><strong>三种赋值形式</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int[] arr = &#123;1,2,3&#125;;</span><br><span class="line">int[] arr = new int[]&#123;1,2,3&#125;;</span><br><span class="line">int[] arr = new int[3]; //3可以为变量，生成动态的长度的数组</span><br></pre></td></tr></table></figure>
+<p><strong>数组长度确定后不可变</strong></p>
+<p><strong>默认值</strong>：数值类型的值为0, boolean为false, char为空字符</p>
+<p><strong>数组内存空间</strong>：一个基本类型变量，内存中只会有一块对应的内存空间。但数组有两块：一块用于存储数组内容本身，另一块用于存储内容的位置。</p>
+<h3 id="基本运算"><a class="markdownIt-Anchor" href="#基本运算"></a> 基本运算</h3>
+<p><strong>算术运算</strong></p>
+<ol>
+<li>运算时要注意结果的范围，使用恰当的数据类型</li>
+<li>小数计算结果不精确</li>
+</ol>
+<p><strong>比较运算</strong></p>
+<ol>
+<li>（a++）是先用原来的值进行其他操作，然后再对自己做修改</li>
+<li>（++a）是先对自己做修改，再用修改后的值进行其他操作。</li>
+</ol>
+<p><strong>逻辑运算</strong></p>
+<ul>
+<li>
+<p>与（&amp;）：两个都为true才是true，只要有一个是false就是false；</p>
+</li>
+<li>
+<p>或（|）：只要有一个为true就是true，都是false才是false；</p>
+</li>
+<li>
+<p>非（!）：针对一个变量，true会变成false,false会变成true；</p>
+</li>
+<li>
+<p>异或（^）：两个相同为false，两个不相同为true；</p>
+</li>
+</ul>
+<h3 id="条件执行"><a class="markdownIt-Anchor" href="#条件执行"></a> 条件执行</h3>
+<p><strong>if语句</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if(判断条件)&#123;</span><br><span class="line">	代码块1</span><br><span class="line">else&#123;</span><br><span class="line">	代码块2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在if/else if/else中，判断的顺序是很重要的，后面的判断只有在前面的条件为<strong>false</strong>的时候才会执行</p>
+<p><strong>三元运算符</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">判断条件?表达式1:表达式2</span><br></pre></td></tr></table></figure>
+<p><strong>switch</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">switch(表达式)&#123;</span><br><span class="line">	case 值1:</span><br><span class="line">    	break;</span><br><span class="line">    case 值2:</span><br><span class="line">    	break;</span><br><span class="line">    default:代码n+1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>表达式值的数据类型只能是byte、short、int、char、枚举和String（Java 7以后 ) break是指跳出switch语句</p>
+<p><strong>实现原理</strong></p>
+<p>程序最终都是一条条的指令，CPU有一个指令指示器，指向下一条要执行的指令.有一些特殊的指令，称为跳转指令，这些指令会修改指令指示器的值，让CPU跳到一个指定的地方执行。跳转有两种：一种是条件跳转；另一种是无条件跳转。条件跳转检查某个条件，满足则进行跳转，无条件跳转则是直接进行跳转。</p>
+<p>if、if/else、if/else if/else、三元运算符都会转换为条件跳转和无条件跳转，</p>
+<p>switch的转换和具体系统实现有关。</p>
+<ul>
+<li>分支比较少:跳转指令</li>
+<li>分支比较多：跳转表（ key为条件值（编译器会自动排序，方便二分查找），value 为跳转地址）</li>
+</ul>
+<p>跳转表中如果值是连续的，则优化为一个数组，连找都不用找了</p>
+<p>因为需要排序所以switch类型需要支持排序(byte/short/int/string(通过hashCode))</p>
+<p><strong>不支持Long</strong>（跳转表值的存储空间一般为32位，容纳不下long）</p>
+<p><strong>条件执行的本质依赖于条件跳转、无条件跳转和跳转表。</strong></p>
+<h3 id="循环"><a class="markdownIt-Anchor" href="#循环"></a> 循环</h3>
+<p>多次重复执行某些类似的操作</p>
+<p><strong>while</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while（条件语句）&#123;</span><br><span class="line">	代码块</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>do/while</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">do&#123;</span><br><span class="line">	代码块;</span><br><span class="line">&#125;while(条件语句)</span><br></pre></td></tr></table></figure>
+<p>条件语句是什么，代码块都会至少执行一次</p>
+<p><strong>for</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(初始化语句;循环条件;步进操作)&#123;</span><br><span class="line">	循环体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>循环条件必须返回一个boolean类型外，其他语句没有什么要求(甚至可以为空 for（；；）)</p>
+<p>执行的流程:</p>
+<ol>
+<li>执行初始化指令；</li>
+<li>检查循环条件是否为true，如果为false，则跳转到第6步；</li>
+<li>循环条件为真，执行循环体；</li>
+<li>执行步进操作；</li>
+<li>步进操作执行完后，跳转到第2步，即继续检查循环条件；</li>
+<li>for循环后面的语句。</li>
+</ol>
+<p><strong>foreach</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(int element :arr)&#123;</span><br><span class="line">	System.out.println (element);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>循环控制</strong></p>
+<p><strong>break</strong>：提前结束循环</p>
+<p>continue：跳过循环体中剩下的代码，然后执行步进操作</p>
+<p><strong>实现原理</strong></p>
+<p>和if一样，循环内部也是靠条件转移和无条件转移指令实现的，在if中，跳转只会往后面跳，而for会往前面跳，第6行就是无条件跳转指令。break/continue语句也都会转换为跳转指令。</p>
+<p><img src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210607224455526.png" alt="image-20210607224455526" /></p>
+<p>解决复杂问题的基本策略是<strong>分而治之</strong>，将复杂问题分解为若干相对简单的子问题，然后子问题再分解为更小的子问题……</p>
+<h3 id="函数的用法"><a class="markdownIt-Anchor" href="#函数的用法"></a> 函数的用法</h3>
+<p>使用函数来减少重复代码和分解复杂操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">修饰符 返回值类型 函数名字(参数类型 参数名字,...)&#123;</span><br><span class="line">    操作</span><br><span class="line">    return 返回值;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>返回值：函数可以没有返回值，如果没有返回值则类型写成void，如果有则在函数代码中必须使用return语句返回一个值，这个值的类型需要和声明的返回值类型一致。</p>
+<p>Main函数表示程序的入口；</p>
+<p>在函数中修改数组元素内容和在调用者中修改是完全一样的。</p>
+<p>return可以用于函数内的任意地方</p>
+<p>需要的返回值是一种复合结果时可以使用对象；</p>
+<p>同一个类里，函数可以重名,但参数不同(重载).Java编译器会<strong>自动进行类型转换</strong>，并寻找最匹配的函数</p>
+<p>调用自己的函数就叫<strong>递归函数</strong>(递归层数过多会爆栈，<strong>栈溢出</strong>错误)</p>
+<p>递归其实是有开销的，而且使用不当，可能会出现意外的结果，可以通过循环实现</p>
+<p>通过函数来减少重复代码、分解复杂操作是计算机程序的一种重要思维方式。</p>
+<p><strong>基本原理</strong></p>
+<ol>
+<li>从main函数开始顺序执行</li>
+<li>函数调用可以看作一个无条件跳转</li>
+<li>跳转到<strong>对应函数的指令处</strong>开始执行</li>
+<li>碰到return语句或者函数结尾的时候，再执行一次无条件跳转</li>
+<li>跳转回调用方，执行<strong>调用函数后的下一条指令</strong>。</li>
+</ol>
+<p>计算机系统主要使用内存中的<strong>栈</strong>来存放函数调用过程中需要的数据，包括<strong>参数</strong>、<strong>返回地址</strong>，以及<strong>函数内定义的局部变量</strong>。</p>
+<p>使用CPU内的一个<strong>存储器</strong>存储返回值</p>
+<p>代码及对于栈执行情况</p>
+<p><img src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210607235453570.png" alt="image-20210607235453570" /></p>
+<p><img src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210607234315250.png" alt="image-20210607234315250" /></p>
+<p><strong>数组和对象类型</strong>，实际的内容空间一般不是分配在栈上的，而是分配在堆。</p>
+<p><img src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210607234331934.png" alt="image-20210607234331934" /></p>
+<p><strong>递归调用</strong></p>
+<p><img src="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/image-20210607234340878.png" alt="image-20210607234340878" /></p>
+<p>递归函数的执行过程，函数代码虽然只有一份，但在执行的过程中，每调用一次，就会有一次入栈，生成一份不同的参数、局部变量和返回地址。</p>
+<p>每一次调用都需要分配额外的栈空间用于存储参数、局部变量以及返回地址，需要进行额外的入栈和出栈操作。</p>
+<p>递归的次数比较多时，应该考虑其他方式。</p>
+<h3 id="个人思考"><a class="markdownIt-Anchor" href="#个人思考"></a> 个人思考</h3>
+<p>第一章整体看下来发现还是有一些比较基础的东西都遗忘了，比如说居然都忘记还有short这个数据类型，主要是平时用的比较少，像循环基本都是用for，其他两种真的很少用。蛮喜欢基本原理这一部分，即使是最基础的，一章看下来也能学到东西。</p>
+<h2 id="理解数据背后的二进制"><a class="markdownIt-Anchor" href="#理解数据背后的二进制"></a> 理解数据背后的二进制</h2>
+<h3 id="字符的编码与乱码"><a class="markdownIt-Anchor" href="#字符的编码与乱码"></a> 字符的编码与乱码</h3>
+<p>常见非Unicode编码</p>
+<p><strong>ASCII</strong>:美国大概只需要128个字符，所以就规定了128个字符的二进制表示方法。这个方法是一个标准，称为ASCII编码</p>
+<p><strong>ISO 8859-1</strong>:它也是使用一个字节表示一个字符，其中0～127与ASCII一样，128～255规定了不同的含义。在128～255中，128～159<strong>表示一些控制字符</strong>，以及被<strong>Windows-1252</strong>取代。</p>
+<p><strong>Windows-1252</strong>:与ISO 8859-1基本是一样的，区别只在于数字128～159.</p>
+<p><strong>GB2312</strong>：GB2312标准主要针对的是简体中文常见字符，包括约7000个汉字和一些罕用词和繁体字。</p>
+<p><strong>GBK</strong>：在GB2312的基础上，向下兼容GB2312。GBK增加了14 000多个汉字。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://raykie.cn">Raykie</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://raykie.cn/2021/06/07/Java%20%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E7%AC%94%E8%AE%B0/">https://raykie.cn/2021/06/07/Java%20%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://raykie.cn" target="_blank">Raykie’s blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a></div><div class="post-share"><div class="social-share" data-image="https://gitee.com/xiaozhuo_Q/images/raw/master/blog/s29680277.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2021/09/01/%E6%9E%B6%E6%9E%84%E5%B8%88%E7%AC%94%E8%AE%B0/" title="架构师笔记"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/image-20210905234112916.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">架构师笔记</div></div><div class="info-2"><div class="info-item-1"> 架构师笔记  综合知识 先做容易的，清晰的题，模棱两可的放后面 案例分析：提高分析能力 论文：组织内容能力，主观性较强， 知识点表   计算机组成与体系结构  计算机结构分类： Flynm  CISC与RISC  CISC:计算机早期使用指令类型多且复杂 RISC：计算机开始通用开始要求简洁，精简。  层次化存储   Cache   内存   地址单元数量=结束地址−开始地址+1=C7FFFH−AC000H+1=C8000H−A...</div></div></div></a><a class="pagination-related" href="/2021/05/31/%E5%B7%A6%E8%80%B3%E5%90%AC%E9%A3%8E%E4%B8%93%E6%A0%8F%E7%AC%94%E8%AE%B0/" title="左耳听风专栏笔记"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/1630253207490.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">左耳听风专栏笔记</div></div><div class="info-2"><div class="info-item-1"> 左耳听风专栏笔记  技术变现  程序员用手艺、技术养活自己，不依靠公司； 提高工作效率，去研究那些难的，公司内外的核心技术； 注重输出，输出技术、价值观，帮助更多的人，提高影响力。 去高速发展的公司，而不是初创业务未稳定或项目维护期的。 提升业务代码编写效率，争取时间学习。 关注技术的本质，新技术的出现解决了什么问题和不可替代性 技术付费点，挣钱和省钱。 找到有价值的信息源。（西方美国） 朋友圈   技术领导力   扎实的基础技...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2022/05/29/Android%E6%9D%82%E8%AE%B0/" title="Android杂记"><img class="cover" src="https://developer.android.google.cn/courses/images/android-for-developers.svg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-29</div><div class="info-item-2">Android杂记</div></div><div class="info-2"><div class="info-item-1">最近一年在工作上除了后端开发之余还因为大学专业是Android开发，还被安排了开发了两个APP,算是重操旧业了。更新了一波Android的一些技术栈也将一些开发遇到的零零碎碎小问题记录了下来。  获取主题的颜色 1android:background=&quot;?attr/colorPrimary&quot;  PagerView 嵌套Fragment 中RecyclerView失效的问题  重写了主页面  原本布局   修改后...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Raykie</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/GayHub1"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java-%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91"><span class="toc-number">1.</span> <span class="toc-text"> Java 编程的逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.</span> <span class="toc-text"> 编程基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 数据类型和变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 数组类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 基本运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E6%89%A7%E8%A1%8C"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 条件执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.1.6.</span> <span class="toc-text"> 函数的用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E6%80%9D%E8%80%83"><span class="toc-number">1.1.7.</span> <span class="toc-text"> 个人思考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%A7%A3%E6%95%B0%E6%8D%AE%E8%83%8C%E5%90%8E%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-number">1.2.</span> <span class="toc-text"> 理解数据背后的二进制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E7%9A%84%E7%BC%96%E7%A0%81%E4%B8%8E%E4%B9%B1%E7%A0%81"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 字符的编码与乱码</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/18/%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B/" title="如何训练属于自己的目标检测模型"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/image-20230719160626724.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何训练属于自己的目标检测模型"/></a><div class="content"><a class="title" href="/2023/07/18/%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B/" title="如何训练属于自己的目标检测模型">如何训练属于自己的目标检测模型</a><time datetime="2023-07-18T09:49:24.000Z" title="发表于 2023-07-18 17:49:24">2023-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" title="docker-compose部署应用"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/%E4%B8%8B%E8%BD%BD.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker-compose部署应用"/></a><div class="content"><a class="title" href="/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" title="docker-compose部署应用">docker-compose部署应用</a><time datetime="2022-10-12T09:49:24.000Z" title="发表于 2022-10-12 17:49:24">2022-10-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/29/Kubernetes%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kubernetes 学习笔记"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/k8s-logo-ft-blog-image-768x432.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Kubernetes 学习笔记"/></a><div class="content"><a class="title" href="/2022/09/29/Kubernetes%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kubernetes 学习笔记">Kubernetes 学习笔记</a><time datetime="2022-09-29T06:57:18.000Z" title="发表于 2022-09-29 14:57:18">2022-09-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/30/RabbitMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="RabbitMQ学习笔记"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/logoimage.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RabbitMQ学习笔记"/></a><div class="content"><a class="title" href="/2022/07/30/RabbitMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="RabbitMQ学习笔记">RabbitMQ学习笔记</a><time datetime="2022-07-29T16:00:00.000Z" title="发表于 2022-07-30 00:00:00">2022-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/09/2023%E5%B9%B4%E6%9C%AB%E8%AE%A1%E5%88%92/" title="2023年末计划"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/20230709234428.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2023年末计划"/></a><div class="content"><a class="title" href="/2022/07/09/2023%E5%B9%B4%E6%9C%AB%E8%AE%A1%E5%88%92/" title="2023年末计划">2023年末计划</a><time datetime="2022-07-09T15:36:32.000Z" title="发表于 2022-07-09 23:36:32">2022-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2018 - 2026 By Raykie</span></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><img class="icp-icon" src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/icp.png"><span>粤ICP备2023064499号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'hxN4EMnnWWFNeyk4xbNxQJT7-gzGzoHsz',
+      appKey: 'lewYKS5k1rb7D5sVgI4QeTAx',
+      avatar: 'monsterid',
+      serverURLs: 'http://raykie.cn/',
+      emojiMaps: "",
+      visitor: true,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/vendor/footer-fish/fish.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search posts or keywords" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><div id="rembox">  <div id="landlord" style="display:block !important">    <div class="message" style="opacity:0"></div>    <canvas id="live2d" width="500" height="560" class="live2d"></canvas>    <input name="live_talk" id="live_talk" value="1" type="hidden">    <div class="live_ico_box"><div id="hideButton"></div></div>  </div>  <div id="open_live2d">召唤蕾姆</div></div><script>window.message_Path = "/live2d/"; window.talkAPI = "";</script><script src="/js/vendor/jquery.min.js"></script><script src="/live2d/js/live2d.js"></script><script src="/live2d/js/message.js"></script></body></html>

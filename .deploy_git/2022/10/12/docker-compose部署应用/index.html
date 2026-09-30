@@ -1,0 +1,394 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>docker-compose部署应用 | Raykie’s blog</title><meta name="author" content="Raykie"><meta name="copyright" content="Raykie"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="最近用docker-compose部署了一个小应用，包括了JeecgBoot中springboot与vue，python以及一些中间件，挺全的，于是记录一下过程。 后续其他的中间件都会逐步补充，算是一个docker部署各种项目及中间件的一个汇总  基础环境搭建 既然是用docker-compose部署就逃不开安装docker与docker-compose的啦  Docker安装   安装依赖包 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker-compose部署应用">
+<meta property="og:url" content="https://raykie.cn/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="Raykie’s blog">
+<meta property="og:description" content="最近用docker-compose部署了一个小应用，包括了JeecgBoot中springboot与vue，python以及一些中间件，挺全的，于是记录一下过程。 后续其他的中间件都会逐步补充，算是一个docker部署各种项目及中间件的一个汇总  基础环境搭建 既然是用docker-compose部署就逃不开安装docker与docker-compose的啦  Docker安装   安装依赖包 1">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/%E4%B8%8B%E8%BD%BD.webp">
+<meta property="article:published_time" content="2022-10-12T09:49:24.000Z">
+<meta property="article:modified_time" content="2026-09-19T15:08:36.205Z">
+<meta property="article:author" content="Raykie">
+<meta property="article:tag" content="docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/%E4%B8%8B%E8%BD%BD.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "docker-compose部署应用",
+  "url": "https://raykie.cn/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/",
+  "image": "https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/%E4%B8%8B%E8%BD%BD.webp",
+  "datePublished": "2022-10-12T09:49:24.000Z",
+  "dateModified": "2026-09-19T15:08:36.205Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Raykie",
+      "url": "https://raykie.cn"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/GayHub1/images/img/favicon.png"><link rel="canonical" href="https://raykie.cn/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#111827')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4bf55317870f35ca7fa52050e6e77f2c";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":2,"unescape":true,"pagination":{"enable":true,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'docker-compose部署应用',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/raykie-modern.css"><link rel="stylesheet" href="/live2d/css/live2d.css"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="http://raykie.cn:1200/"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page child" href="http://raykie.cn:5244/"><i class="fa-fw fas fa-folder-open"></i><span> AList</span></a></li><li><a class="site-page child" href="http://raykie.cn:4000/"><i class="fa-fw fas fa-server"></i><span> Ward</span></a></li><li><a class="site-page child" href="http://raykie.cn:181"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li><li><a class="site-page child" href="http://raykie.cn:8483/"><i class="fa-fw fas fa-book"></i><span> Docmost</span></a></li><li><a class="site-page child" href="http://raykie.cn:8618/"><i class="fa-fw fas fa-th-large"></i><span> Multica</span></a></li><li><a class="site-page child" href="http://raykie.cn:8480/"><i class="fa-fw fas fa-pen-nib"></i><span> Penpot</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/case/"><i class="fa-fw fas fa-images"></i><span> Case</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/%E4%B8%8B%E8%BD%BD.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" alt="Logo"><span class="site-name">Raykie’s blog</span></a><a class="nav-page-title" href="/"><span class="site-name">docker-compose部署应用</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="http://raykie.cn:1200/"><i class="fa-fw fas fa-rss-square"></i><span> RSSHUB</span></a></li><li><a class="site-page child" href="http://raykie.cn:5244/"><i class="fa-fw fas fa-folder-open"></i><span> AList</span></a></li><li><a class="site-page child" href="http://raykie.cn:4000/"><i class="fa-fw fas fa-server"></i><span> Ward</span></a></li><li><a class="site-page child" href="http://raykie.cn:181"><i class="fa-fw fas fa-book-reader"></i><span> TTRSS</span></a></li><li><a class="site-page child" href="http://raykie.cn:8483/"><i class="fa-fw fas fa-book"></i><span> Docmost</span></a></li><li><a class="site-page child" href="http://raykie.cn:8618/"><i class="fa-fw fas fa-th-large"></i><span> Multica</span></a></li><li><a class="site-page child" href="http://raykie.cn:8480/"><i class="fa-fw fas fa-pen-nib"></i><span> Penpot</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/case/"><i class="fa-fw fas fa-images"></i><span> Case</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">docker-compose部署应用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-12T09:49:24.000Z" title="发表于 2022-10-12 17:49:24">2022-10-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-19T15:08:36.205Z" title="更新于 2026-09-19 23:08:36">2026-09-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" data-flag-title="docker-compose部署应用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>最近用docker-compose部署了一个小应用，包括了JeecgBoot中springboot与vue，python以及一些中间件，挺全的，于是记录一下过程。<br />
+后续其他的中间件都会逐步补充，算是一个docker部署各种项目及中间件的一个汇总</p>
+<h2 id="基础环境搭建"><a class="markdownIt-Anchor" href="#基础环境搭建"></a> 基础环境搭建</h2>
+<p>既然是用docker-compose部署就逃不开安装docker与docker-compose的啦</p>
+<h3 id="docker安装"><a class="markdownIt-Anchor" href="#docker安装"></a> Docker安装</h3>
+<ul>
+<li>
+<p>安装依赖包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-engine</span><br><span class="line">sudo yum install -y yum-utils device-mapper-persistent-data lvm2</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>配置仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>安装docker</p>
+</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install docker-ce -y --allowerasing</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>设置docker自启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable docker</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>启动docker服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>查看docker版本</p>
+</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -v</span><br></pre></td></tr></table></figure>
+<h3 id="docker-compose-安装"><a class="markdownIt-Anchor" href="#docker-compose-安装"></a> docker-compose 安装</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L &quot;https://github.com/docker/compose/releases/download/v2.16.0/docker-compose-linux-x86_64&quot; -o /usr/bin/docker-compose</span><br><span class="line">chmod -R 777 /usr/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<h2 id="java部署"><a class="markdownIt-Anchor" href="#java部署"></a> Java部署</h2>
+<p>java springboot 的部署这里使用的是以前部署skywalking 的通用基础镜像</p>
+<h3 id="启动jar包脚本"><a class="markdownIt-Anchor" href="#启动jar包脚本"></a> 启动Jar包脚本</h3>
+<p>网上大部分教程都是将jar包直接打包进了镜像，这里使用脚本部署可以更加自由动态的运行jar包，将jar包与镜像解耦，不需要每一次改动jar包都需要重新打包进镜像</p>
+<p><code>startup.sh</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#到工作目录下，获取该目录下最新版本的jar</span></span><br><span class="line">WORK_DIR=/opt/docker/java/bootstrap</span><br><span class="line"><span class="built_in">cd</span> bootstrap</span><br><span class="line"></span><br><span class="line">BOOT_JAR=`<span class="built_in">ls</span> *.jar | <span class="built_in">sort</span> -k1.5r | sed -n <span class="string">&#x27;1p;1q&#x27;</span>`</span><br><span class="line"><span class="built_in">echo</span> ‘==================================’</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;容器将启动下面的jar文件: &#x27;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$BOOT_JAR</span></span><br><span class="line"><span class="built_in">echo</span> ‘==================================’</span><br><span class="line">java -Dfile.encoding=utf-8 -Djava.security.egd=file:/dev/./urandom -jar <span class="variable">$BOOT_JAR</span> <span class="string">&quot;<span class="variable">$@</span>&quot;</span> </span><br></pre></td></tr></table></figure>
+<p>该脚本会启动<code>/opt/docker/java/bootstrap</code>目录下最新的jar包</p>
+<h3 id="dockerfile文件"><a class="markdownIt-Anchor" href="#dockerfile文件"></a> Dockerfile文件</h3>
+<p>DockerFile是用来构建docker 镜像文件 的构建文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">FROM centos:7</span><br><span class="line">ENV LANG=C.UTF-8</span><br><span class="line">RUN mkdir -p /usr/skywalking/agent/ &amp;&amp;\</span><br><span class="line">  mkdir -p /usr/share/fonts/ &amp;&amp;\</span><br><span class="line">  yum install -y font-adobe-100dpi ttf-dejavu fontconfig  mkfontscale</span><br><span class="line"># A streamlined jre</span><br><span class="line">ADD jdk1.8.0_131/ /usr/java/jdk1.8.0_131/</span><br><span class="line">ADD skywalking-agent/ /usr/skywalking/agent/</span><br><span class="line">ADD dumb-init  /usr/local/bin</span><br><span class="line">ADD winfonts/  /usr/share/fonts/winfonts</span><br><span class="line"># set env </span><br><span class="line">ENV JAVA_HOME /usr/java/jdk1.8.0_131</span><br><span class="line"></span><br><span class="line">ENV PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH</span><br><span class="line">ENV CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib</span><br><span class="line">ENV JAVA_TOOL_OPTIONS=-javaagent:/usr/skywalking/agent/skywalking-agent.jar</span><br><span class="line">#增加Java应用的变量</span><br><span class="line">ENV HOME_PATH /opt/docker/java</span><br><span class="line">ENV RUN_ENV  docker</span><br><span class="line"></span><br><span class="line"># run container with base path:$HOME_PATH</span><br><span class="line">WORKDIR $HOME_PATH</span><br><span class="line">RUN  mkdir resources  &amp;&amp;  mkdir bin  &amp;&amp; mkdir bootstrap  &amp;&amp; mkdir -p /opt/attachment &amp;&amp; chown -R root:root .</span><br><span class="line">RUN mkfontscale &amp;&amp; mkfontdir &amp;&amp; fc-cache -fv </span><br><span class="line">COPY startup.sh  /opt/docker/java/bin</span><br><span class="line">USER root</span><br><span class="line">RUN chmod 777 /opt/docker/java/bin/startup.sh</span><br><span class="line">RUN chmod 777 /usr/local/bin/dumb-init</span><br><span class="line">VOLUME [ &quot;/opt/attachment&quot;]</span><br><span class="line">ENTRYPOINT [&quot;/usr/local/bin/dumb-init&quot;, &quot;--&quot;]</span><br><span class="line">CMD  /opt/docker/java/bin/startup.sh</span><br></pre></td></tr></table></figure>
+<p>这一系列的脚本使用了Centos作为基础镜像，加入了  <code>jdk1.8</code> <code>skywalking Agant</code> <code>dumb-init</code> <code>font</code>等文件，使用Centos作为基础镜像是为了减少一些奇奇怪怪的缺少驱动之类的因为系统原因导致的bug。为了减小镜像大小也可以使用<code>OpenJDK</code> 甚至于<code>alpine</code>作为基础镜像，可以极端的将镜像减少到大概100M左右。但是不推荐。</p>
+<h3 id="docker-compose-运行"><a class="markdownIt-Anchor" href="#docker-compose-运行"></a> docker-compose 运行</h3>
+<p>新建文件夹<code>jar</code>，将jar包配置相应的docker-compose.yaml文件运行即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># 文件服务</span><br><span class="line">pie-module-file:</span><br><span class="line">  container_name: pie-module-file</span><br><span class="line">  build:</span><br><span class="line">    context: sc_base_java_images/</span><br><span class="line">  volumes:</span><br><span class="line">    - ./jar/pie-module-file-0.0.1-SNAPSHOT.jar:/opt/docker/java/bootstrap/pie-module-file-0.0.1-SNAPSHOT.jar</span><br><span class="line">  ports:</span><br><span class="line">    - 1729:1729</span><br><span class="line">  environment:</span><br><span class="line">    - &quot;spring.datasource.dynamic.datasource.master.url=jdbc:mysql://mysql:3306/djszh?characterEncoding=UTF-8&amp;useUnicode=true&amp;useSSL=false&amp;tinyInt1isBit=false&quot;</span><br><span class="line">    - &quot;spring.redis.host=redis&quot;</span><br><span class="line">  networks:</span><br><span class="line">    - custom_net</span><br><span class="line">  depends_on:</span><br><span class="line">    - mysql</span><br><span class="line"># 系统后台服务</span><br><span class="line">pie-module-system:</span><br><span class="line">  container_name: pie-module-system</span><br><span class="line">  build:</span><br><span class="line">    context: sc_base_java_images/</span><br><span class="line">  volumes:</span><br><span class="line">    - ./jar/pie-module-system-0.0.1-SNAPSHOT.jar:/opt/docker/java/bootstrap/pie-module-file-0.0.1-SNAPSHOT.jar</span><br><span class="line">  ports:</span><br><span class="line">    - 1788:1788</span><br><span class="line">  environment:</span><br><span class="line">    - &quot;spring.datasource.dynamic.datasource.master.url=jdbc:mysql://mysql:3306/djszh?characterEncoding=UTF-8&amp;useUnicode=true&amp;useSSL=false&amp;tinyInt1isBit=false&quot;</span><br><span class="line">    - &quot;spring.redis.host=redis&quot;</span><br><span class="line">  networks:</span><br><span class="line">    - custom_net</span><br><span class="line">  depends_on:</span><br><span class="line">    - mysql</span><br></pre></td></tr></table></figure>
+<h2 id="vue前端"><a class="markdownIt-Anchor" href="#vue前端"></a> VUE前端</h2>
+<h3 id="修改后端地址配置"><a class="markdownIt-Anchor" href="#修改后端地址配置"></a> 修改后端地址配置</h3>
+<p>修改<code>vue.config.js</code>内后台地址为docker-compose对应的访问地址，如下所示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">  port: 3000,</span><br><span class="line">  proxy: &#123;</span><br><span class="line">    &#x27;/pie-jeecg/api/file/&#x27;: &#123;</span><br><span class="line">      target: &#x27;http://pie-module-file:1729&#x27;, //请求本地 需要jeecg-boot后台项目</span><br><span class="line">      ws: false,</span><br><span class="line">      changeOrigin: true,</span><br><span class="line">      pathRewrite: &#123;&#x27;^/pie-jeecg&#x27;: &#x27;/&#x27;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#x27;/api/file/&#x27;: &#123;</span><br><span class="line">      target: &#x27;http://pie-module-file:1729&#x27;, //请求本地 需要jeecg-boot后台项目</span><br><span class="line">      ws: false,</span><br><span class="line">      changeOrigin: true,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#x27;/pie-jeecg&#x27;: &#123;</span><br><span class="line">      target: &#x27;http://pie-module-system:1788&#x27;, //请求本地 需要jeecg-boot后台项目</span><br><span class="line">      ws: false,</span><br><span class="line">      changeOrigin: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;         </span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="项目打包"><a class="markdownIt-Anchor" href="#项目打包"></a> 项目打包</h3>
+<p>运行<code>build</code>命令<br />
+<img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/image.png" alt="Alt text" /></p>
+<p>运行后会生成dist文件夹，将文件夹拷贝至nginx的www文件夹下。</p>
+<h3 id="配置nginx"><a class="markdownIt-Anchor" href="#配置nginx"></a> 配置nginx</h3>
+<p>修改nginx配置文件添加以下代理映射</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">  root   /usr/share/nginx/html;</span><br><span class="line">  add_header Cache-Control no-store;</span><br><span class="line">  index  index.html;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ^~ /jeecg-boot &#123;</span><br><span class="line">  proxy_pass              http://pie-module-system:1788;</span><br><span class="line">  proxy_set_header        Host 127.0.0.1;</span><br><span class="line">  proxy_set_header        X-Real-IP $remote_addr;</span><br><span class="line">  proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="docker-compose-运行-2"><a class="markdownIt-Anchor" href="#docker-compose-运行-2"></a> docker-compose 运行</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">nginx-proxy:</span><br><span class="line">  container_name: nginx-proxy</span><br><span class="line">  image: nginx:latest</span><br><span class="line">  privileged: true</span><br><span class="line">  restart: always</span><br><span class="line">  volumes:</span><br><span class="line">     - ./nginx/conf:/etc/nginx</span><br><span class="line">     - ./nginx/logs:/var/log/nginx</span><br><span class="line">     - ./nginx/www:/usr/share/nginx/html</span><br><span class="line">  ports:</span><br><span class="line">    - 8002:443</span><br><span class="line">  networks:</span><br><span class="line">    - custom_net</span><br></pre></td></tr></table></figure>
+<h2 id="python显卡直通"><a class="markdownIt-Anchor" href="#python显卡直通"></a> Python(显卡直通)</h2>
+<p>像百度的Paddle，阿里的<a target="_blank" rel="noopener" href="https://modelscope.cn/">ModelScope</a>均有对应的docker镜像，这里使用了PaddleSpeech进行了ASR服务与文字分割，使用镜像为<code>paddlecloud/paddlespeech:develop-gpu-cuda11.2-cudnn8-52c7c1</code>,虽然使用了了官方镜像，但在运行中出现了各种报错，最后根据CUDA版本重新在镜像内重新安装对应 paddl版本才启动成功。</p>
+<h3 id="dockerfile文件-2"><a class="markdownIt-Anchor" href="#dockerfile文件-2"></a> Dockerfile文件</h3>
+<p>重新安装的CUDA12版本的paddle，启动容器后启动PaddleSpeech Service</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">FROM paddlecloud/paddlespeech:develop-gpu-cuda11.2-cudnn8-52c7c1</span><br><span class="line">ADD paddlespeech/ /mnt</span><br><span class="line">ADD  cache/ /root</span><br><span class="line">RUN  pip uninstall paddlepaddle_gpu -y</span><br><span class="line"># RUN  pip download urllib3==1.23  -d ./package  -i https://mirror.baidu.com/pypi/simple </span><br><span class="line"># RUN  pip download paddlepaddle-gpu==2.5.1 -d ./package -f https://www.paddlepaddle.org.cn/whl/linux/mkl/avx/stable.html</span><br><span class="line"># RUN  pip download torch torchvision torchaudio -d ./package </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pip3 install torch torchvision torchaudio</span><br><span class="line"></span><br><span class="line">RUN  pip install /mnt/package/*.whl</span><br><span class="line">CMD  paddlespeech_server start --config_file /mnt/speech_server/conf/application.yaml</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>paddlespeech 包含了一些需要装的离线好的python依赖文件，与PaddleSpeech Service 启动文件</p>
+<blockquote>
+<p>这些依赖文件是通过 pip download paddlepaddle-gpu==2.5.1 -d ./package -f  命令离线下载到package文件夹中</p>
+</blockquote>
+</li>
+<li>
+<p>cache 则包含了PaddleSpeech Service  需要的一些缓存在系统中的初始化文件。</p>
+<blockquote>
+<p>这些文件通过 docker diff 容器id 可以查看到容器修改了哪些文件，这些文件可以通过-v 映射持久化到宿主机 或者 docker copy 命令 如<code>docker cp 96f7f14e99ab:/www /tmp/</code>将容器文件拷贝出来</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="docker-compose-运行-3"><a class="markdownIt-Anchor" href="#docker-compose-运行-3"></a> docker-compose 运行</h3>
+<p>docker-compose还需要将gpu映射到容器内，新版本的docker比较简单，只需要添加几行配置即可，而不需要nvidia-docker了，具体详情可以查看官网<a target="_blank" rel="noopener" href="https://docs.docker.com/compose/gpu-support/">Turn on GPU access with Docker Compose </a></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">paddlespeech:</span></span><br><span class="line">  <span class="comment"># image: paddlecloud/paddlespeech:develop-gpu-cuda11.2-cudnn8-52c7c1</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">context:</span> <span class="string">paddlespeech_server/</span></span><br><span class="line">  <span class="attr">container_name:</span> <span class="string">paddlespeech</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">./paddlespeech_server/paddlespeech:/mnt</span></span><br><span class="line">  <span class="comment"># command:   /bin/bash -c &quot;while true;do echo hello docker;sleep 1;done&quot;</span></span><br><span class="line">  <span class="attr">deploy:</span></span><br><span class="line">    <span class="attr">resources:</span></span><br><span class="line">      <span class="attr">reservations:</span></span><br><span class="line">        <span class="attr">devices:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">driver:</span> <span class="string">nvidia</span></span><br><span class="line">            <span class="attr">count:</span> <span class="string">all</span></span><br><span class="line">            <span class="attr">capabilities:</span> [<span class="string">gpu</span>]</span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="number">8090</span><span class="string">:8090</span></span><br><span class="line">  <span class="attr">networks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">custom_net</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>docker 命令直通显卡的话 添加参数–gpus all 即可</p>
+</blockquote>
+<p>运行访问效果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/image-20231011110141114.png" alt="image-20231011110141114" /></p>
+<h2 id="elk部署"><a class="markdownIt-Anchor" href="#elk部署"></a> ELK部署</h2>
+<p>这里的ELK是指elastic 的三大开源框架Elasticsearch、Logstash、Kibana。围绕着Elasticsearch这个分布式搜索和分析引擎的一套生态的一部分，常用作日志的集中收集处理的解决方案。但是<a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/8.10/docker.html">官网</a>的docker-compose 部署非常麻烦，这里使用的<a target="_blank" rel="noopener" href="https://github.com/deviantony/docker-elk#initial-setup">docker-elk</a>安装</p>
+<h3 id="必备软件包"><a class="markdownIt-Anchor" href="#必备软件包"></a> 必备软件包</h3>
+<p><strong>Debian/Ubuntu</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt upgrade</span><br><span class="line">sudo apt install curl vim git</span><br></pre></td></tr></table></figure>
+<p><strong>RHEL/CentOS/RockyLinux 8</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y update</span><br><span class="line">sudo yum -y install curl vim git</span><br></pre></td></tr></table></figure>
+<p><strong>Fedora</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf update</span><br><span class="line">sudo dnf -y install curl vim git</span><br></pre></td></tr></table></figure>
+<h3 id="克隆docker-elk"><a class="markdownIt-Anchor" href="#克隆docker-elk"></a> 克隆docker-elk</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/deviantony/docker-elk.git</span><br><span class="line">cd docker-elk</span><br></pre></td></tr></table></figure>
+<h3 id="修改默认配置"><a class="markdownIt-Anchor" href="#修改默认配置"></a> 修改默认配置</h3>
+<p>修改配置文件 <strong><code>docker-compose.yml</code></strong></p>
+<blockquote>
+<p>通常，Elasticsearch 和 Logstash 都以分配给 JVM 堆大小的总主机内存的1/4开始。</p>
+</blockquote>
+<h4 id="配置-elasticsearch"><a class="markdownIt-Anchor" href="#配置-elasticsearch"></a> <strong>配置 Elasticsearch</strong></h4>
+<ul>
+<li>集群名</li>
+<li>禁用付费功能</li>
+</ul>
+<p>配置文件地址**<code>Elasticsearch/config/Elasticsearch.yml</code>**</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">elasticsearch:</span><br><span class="line">  environment:</span><br><span class="line">    ES_JAVA_OPTS: -Xm1g -Xms1g</span><br><span class="line">    cluster.name: my-cluster</span><br><span class="line">    xpack.license.self_generated.type: basic</span><br></pre></td></tr></table></figure>
+<h4 id="配置-kibana"><a class="markdownIt-Anchor" href="#配置-kibana"></a> 配置 <strong>Kibana</strong></h4>
+<p>配置文件地址**<code>kibana/config/kibana.yml</code>**</p>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kibana:</span><br><span class="line">  environment:</span><br><span class="line">    SERVER_NAME: kibana.example.com</span><br></pre></td></tr></table></figure>
+<h4 id="配置-logstash"><a class="markdownIt-Anchor" href="#配置-logstash"></a> 配置 Logstash</h4>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">logstash:</span><br><span class="line">  environment:</span><br><span class="line">    LS_JAVA_OPTS: -Xmx1g -Xms1g</span><br></pre></td></tr></table></figure>
+<h4 id="配置用户名-密码和版本"><a class="markdownIt-Anchor" href="#配置用户名-密码和版本"></a> 配置用户名、密码和版本</h4>
+<ul>
+<li>默认用户名<strong>elastic</strong></li>
+<li>配置文件地址**<code>./.env</code>**</li>
+<li>修改版本号与对应密码  目前最新版本号为<strong>8.3.2</strong></li>
+</ul>
+<h4 id="配置持久卷"><a class="markdownIt-Anchor" href="#配置持久卷"></a> 配置持久卷</h4>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /opt/docker/docker-compose/docker-elk/elasticsearch/data</span><br><span class="line">mkdir -p /opt/docker/docker-compose/docker-elk/setup/data</span><br><span class="line">docker volume create --driver local \</span><br><span class="line">    --opt type=none \</span><br><span class="line">    --opt device=/opt/docker/docker-compose/docker-elk/elasticsearch/data \</span><br><span class="line">    --opt o=bind elasticsearch</span><br><span class="line">docker volume create --driver local \</span><br><span class="line">    --opt type=none \</span><br><span class="line">    --opt device=/opt/docker/docker-compose/docker-elk/setup/data \</span><br><span class="line">    --opt o=bind setup</span><br><span class="line">docker volume list</span><br></pre></td></tr></table></figure>
+<p>修改配置文件 **<code>docker-compose.yml</code>**末尾</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.......</span><br><span class="line">volumes:</span><br><span class="line">  setup:</span><br><span class="line">    external: true</span><br><span class="line">  elasticsearch:</span><br><span class="line">    external: true</span><br></pre></td></tr></table></figure>
+<h3 id="运行"><a class="markdownIt-Anchor" href="#运行"></a> 运行</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://raykie.cn">Raykie</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://raykie.cn/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/">https://raykie.cn/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://raykie.cn" target="_blank">Raykie’s blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/docker/">docker</a></div><div class="post-share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/%E4%B8%8B%E8%BD%BD.webp" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2023/07/18/%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B/" title="如何训练属于自己的目标检测模型"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/image-20230719160626724.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">如何训练属于自己的目标检测模型</div></div><div class="info-2"><div class="info-item-1"> 如何训练属于自己的目标检测模型 YOLO，You Only Look Once，是目前应用最广泛的基于深度学习的目标检测算法之一。在当前大模型逐渐成为主流时，在目标检测领域依然非常能打。目前Yolo已经被ultralytics更新到了V8，有了更先进的跟踪检测算法。但在先前项目有目标检测需求时，Yolov5还是主流，彼时也仅仅由美团更新到了v6。因此以下文章所用的版本均为Yolov5。  准备代码环境 相对于Yolov8可以之间...</div></div></div></a><a class="pagination-related" href="/2022/09/29/Kubernetes%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kubernetes 学习笔记"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/k8s-logo-ft-blog-image-768x432.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Kubernetes 学习笔记</div></div><div class="info-2"><div class="info-item-1"> Kubernetes 学习笔记  2021年简单的学习了一下k8s时做的记录，距离现在比较久了，估计其中安装部分估计已经失效。   简介  什么是Kubernetes 一个为 容器化 应用提供集群部署和管理的开源工具，由 Google 开发。 Kubernetes 可以为你提供集中式的管理集群机器和应用，加机器、版本升级、版本回滚，那都是一个命令就搞定的事，不停机的灰度更新，确保高可用、高性能、高扩展。  主要特性 高可用，不宕...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2021/04/27/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/" title="搭建本地自动化部署环境"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-27</div><div class="info-item-2">搭建本地自动化部署环境</div></div><div class="info-2"><div class="info-item-1"> 搭建本地自动化部署环境  Docker开启远程访问 1234567891011vim /lib/systemd/system/docker.service#修改ExecStart这行ExecStart=/usr/bin/dockerd  -H tcp://0.0.0.0:2375  -H unix:///var/run/docker.sock# 重新加载配置文件systemctl daemon-reload #重启服务syste...</div></div></div></a><a class="pagination-related" href="/2020/08/15/Docker%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/" title="Docker学习实践记录"><img class="cover" src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/c0b418d39a3444e997791a823bc6bea3.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-15</div><div class="info-item-2">Docker学习实践记录</div></div><div class="info-2"><div class="info-item-1"> Docker学习实践记录  前言 关于docker 其实也接触过有一段时间的，曾这个周末有些时间，做一些记录，大部分内容都是收录网上的教程，做一个总结。  Docker简介  什么是Docker Docker 使用  Go 语言 进行开发实现，基于 Linux 内核的 cgroup，namespace，以及 OverlayFS 类的 Union FS 等技术，对进程进行封装隔离，属于 操作系统层面的虚拟化技术。由于隔离的进程独立...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images/img/jpg.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Raykie</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/GayHub1"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">1.</span> <span class="toc-text"> 基础环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text"> Docker安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-compose-%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text"> docker-compose 安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java%E9%83%A8%E7%BD%B2"><span class="toc-number">2.</span> <span class="toc-text"> Java部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8jar%E5%8C%85%E8%84%9A%E6%9C%AC"><span class="toc-number">2.1.</span> <span class="toc-text"> 启动Jar包脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dockerfile%E6%96%87%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text"> Dockerfile文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-compose-%E8%BF%90%E8%A1%8C"><span class="toc-number">2.3.</span> <span class="toc-text"> docker-compose 运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue%E5%89%8D%E7%AB%AF"><span class="toc-number">3.</span> <span class="toc-text"> VUE前端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%90%8E%E7%AB%AF%E5%9C%B0%E5%9D%80%E9%85%8D%E7%BD%AE"><span class="toc-number">3.1.</span> <span class="toc-text"> 修改后端地址配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85"><span class="toc-number">3.2.</span> <span class="toc-text"> 项目打包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEnginx"><span class="toc-number">3.3.</span> <span class="toc-text"> 配置nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-compose-%E8%BF%90%E8%A1%8C-2"><span class="toc-number">3.4.</span> <span class="toc-text"> docker-compose 运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E6%98%BE%E5%8D%A1%E7%9B%B4%E9%80%9A"><span class="toc-number">4.</span> <span class="toc-text"> Python(显卡直通)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dockerfile%E6%96%87%E4%BB%B6-2"><span class="toc-number">4.1.</span> <span class="toc-text"> Dockerfile文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-compose-%E8%BF%90%E8%A1%8C-3"><span class="toc-number">4.2.</span> <span class="toc-text"> docker-compose 运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#elk%E9%83%A8%E7%BD%B2"><span class="toc-number">5.</span> <span class="toc-text"> ELK部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%85%E5%A4%87%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="toc-number">5.1.</span> <span class="toc-text"> 必备软件包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%8B%E9%9A%86docker-elk"><span class="toc-number">5.2.</span> <span class="toc-text"> 克隆docker-elk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE"><span class="toc-number">5.3.</span> <span class="toc-text"> 修改默认配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-elasticsearch"><span class="toc-number">5.3.1.</span> <span class="toc-text"> 配置 Elasticsearch</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-kibana"><span class="toc-number">5.3.2.</span> <span class="toc-text"> 配置 Kibana</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-logstash"><span class="toc-number">5.3.3.</span> <span class="toc-text"> 配置 Logstash</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E5%90%8D-%E5%AF%86%E7%A0%81%E5%92%8C%E7%89%88%E6%9C%AC"><span class="toc-number">5.3.4.</span> <span class="toc-text"> 配置用户名、密码和版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%8C%81%E4%B9%85%E5%8D%B7"><span class="toc-number">5.3.5.</span> <span class="toc-text"> 配置持久卷</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C"><span class="toc-number">5.4.</span> <span class="toc-text"> 运行</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/18/%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B/" title="如何训练属于自己的目标检测模型"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/image-20230719160626724.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何训练属于自己的目标检测模型"/></a><div class="content"><a class="title" href="/2023/07/18/%E5%A6%82%E4%BD%95%E8%AE%AD%E7%BB%83%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B/" title="如何训练属于自己的目标检测模型">如何训练属于自己的目标检测模型</a><time datetime="2023-07-18T09:49:24.000Z" title="发表于 2023-07-18 17:49:24">2023-07-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" title="docker-compose部署应用"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/%E4%B8%8B%E8%BD%BD.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker-compose部署应用"/></a><div class="content"><a class="title" href="/2022/10/12/docker-compose%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" title="docker-compose部署应用">docker-compose部署应用</a><time datetime="2022-10-12T09:49:24.000Z" title="发表于 2022-10-12 17:49:24">2022-10-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/29/Kubernetes%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kubernetes 学习笔记"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/k8s-logo-ft-blog-image-768x432.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Kubernetes 学习笔记"/></a><div class="content"><a class="title" href="/2022/09/29/Kubernetes%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kubernetes 学习笔记">Kubernetes 学习笔记</a><time datetime="2022-09-29T06:57:18.000Z" title="发表于 2022-09-29 14:57:18">2022-09-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/30/RabbitMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="RabbitMQ学习笔记"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/logoimage.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RabbitMQ学习笔记"/></a><div class="content"><a class="title" href="/2022/07/30/RabbitMQ%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="RabbitMQ学习笔记">RabbitMQ学习笔记</a><time datetime="2022-07-29T16:00:00.000Z" title="发表于 2022-07-30 00:00:00">2022-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/09/2023%E5%B9%B4%E6%9C%AB%E8%AE%A1%E5%88%92/" title="2023年末计划"><img src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/20230709234428.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2023年末计划"/></a><div class="content"><a class="title" href="/2022/07/09/2023%E5%B9%B4%E6%9C%AB%E8%AE%A1%E5%88%92/" title="2023年末计划">2023年末计划</a><time datetime="2022-07-09T15:36:32.000Z" title="发表于 2022-07-09 23:36:32">2022-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2018 - 2026 By Raykie</span></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><img class="icp-icon" src="https://cdn.jsdelivr.net/gh/GayHub1/images@master/img/icp.png"><span>粤ICP备2023064499号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'hxN4EMnnWWFNeyk4xbNxQJT7-gzGzoHsz',
+      appKey: 'lewYKS5k1rb7D5sVgI4QeTAx',
+      avatar: 'monsterid',
+      serverURLs: 'http://raykie.cn/',
+      emojiMaps: "",
+      visitor: true,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer src="/js/vendor/footer-fish/fish.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="Search posts or keywords" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><div id="rembox">  <div id="landlord" style="display:block !important">    <div class="message" style="opacity:0"></div>    <canvas id="live2d" width="500" height="560" class="live2d"></canvas>    <input name="live_talk" id="live_talk" value="1" type="hidden">    <div class="live_ico_box"><div id="hideButton"></div></div>  </div>  <div id="open_live2d">召唤蕾姆</div></div><script>window.message_Path = "/live2d/"; window.talkAPI = "";</script><script src="/js/vendor/jquery.min.js"></script><script src="/live2d/js/live2d.js"></script><script src="/live2d/js/message.js"></script></body></html>
